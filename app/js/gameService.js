@@ -1,5 +1,5 @@
 
-dinnerPlannerApp.factory('Dinner',function ($resource) {
+dinnerPlannerApp.factory('Game',function ($resource) {
 
 
 this.QuizSearch = $resource('Adress till APIT motherf');
@@ -34,17 +34,18 @@ this.QuizSearch = $resource('Adress till APIT motherf');
 
 ///Funktion- sätt antal frågor (valmöjlighet)
 
+this.testFunction = function(){
+	return "Here is a new question from the model";
+}
 
+this.AddPoints = function(num) {
+	this.numberOfGuests = num;
+}
 
+this.AddPoints = function(num) {
+	this.numberOfGuests = num;
+}
 
-  this.AddPoints = function(num) {
-    this.numberOfGuests = num;
-  }
-
-  this.AddPoints = function(num) {
-    this.numberOfGuests = num;
-  }
-
-  return this;
+return this;
 
 });

@@ -9,13 +9,13 @@ this with Total price of the menu -->
 
 <div id="gameView" ng-controller="GameCtrl" ng-init="init()">
 	<h3>The Game is Live</h3>
-	<p id="question">{{question}}<p>
+	<p id="question">{{questionFromModel}}<p>
 
 	<form id="formAnswers" action="">
 		<ol>
-			<li id="answerOption1"><input type="radio" name="answer" ng-model="answer" value="toBeSet1"> Answer option 1<br></li>
-			<li id="answerOption2"><input type="radio" name="answer" ng-model="answer" value="toBeSet2"> Answer option 2<br></li>
-			<li id="answerOption3"><input type="radio" name="answer" ng-model="answer" value="toBeSet3"> Answer option 3</li>
+			<li id="answerOption1"><input type="radio" name="answer" ng-model="answer" value="a1"> Answer option 1<br></li>
+			<li id="answerOption2"><input type="radio" name="answer" ng-model="answer" value="a2"> Answer option 2<br></li>
+			<li id="answerOption3"><input type="radio" name="answer" ng-model="answer" value="a3"> Answer option 3</li>
 		</ol>
 	</form>
 	<p>You answered {{answer}}</p>
