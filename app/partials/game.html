@@ -7,35 +7,19 @@ purpose so you can see how some information from the model can be retrieved. In 
 this with Total price of the menu -->
 
 
-<div id="sideView" style="height:100%;" ng-controller="DinnerCtrl" ng-init="getMenu()">
-	<h3 style="margin-left: 10px;margin-top: 0px;">My Dinner</h3>
-	<p id="peopleParagraph">People:</p>
-	<input class="form-control" id="guestsInput" type="number" name="Guests" min="1" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)">
-	<table class="table table-condensed table-hover" id="sideViewTable" style="text-align: right;">
-		<thead style="background-color: #C0C0C0;border-top: solid 3px black;border-bottom: solid 3px black;">
-					<tr>
-				<th style="text-align: left;">Dish Name</th>
-				<th style="text-align: right;" colspan="2">Cost</th>
-			</tr>
-		</thead>
-		<tbody id="chart">
-			<tr ng-repeat="dish in menu" ng-hide="category == dish.Category">
-				<td style="text-align: left;" ng-show="dish.Title"> {{dish.Title}} </td>
-				<td style="text-align: right;" ng-show="dish.Title"> {{prices[$index]*getNumberOfGuests() | number:2}} 
-				<span ng-click="removeDish($event)" id="{{dish.RecipeID}}" class="glyphicon glyphicon-remove rm"></td>
-				<td ng-show="dish.Title"></td>
-			</tr>
-			<tr>
-				<td id="dish" style="text-align: left;">Pending</td>
-				<td id="price" style="text-align: right;" colspan="2">{{pendingDishP*getNumberOfGuests() | number:2}}</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td id="totalPrice">{{totalPrice*getNumberOfGuests() | number:2}} SEK</td>
-			</tr>
-		</tbody>
-	</table>
-	<div style="width:100%;text-align: center;">
-		<a href="#/overview" id="confirmDinner" pe="button" class="btn btn-warning btn-responsive" role="button">Confirm Dinner</a>
-	</div>
+<div id="gameView" ng-controller="GameCtrl" ng-init="">
+	<h3>The Game is Live</h3>
+	<p id="question">Question<p>
+
+	<form id="formAnswers" action="">
+		<ol>
+			<li id="answerOption1"><input type="radio" name="answer" ng-model="answer" value="toBeSet1"> Answer option 1<br></li>
+			<li id="answerOption2"><input type="radio" name="answer" ng-model="answer" value="toBeSet2"> Answer option 2<br></li>
+			<li id="answerOption3"><input type="radio" name="answer" ng-model="answer" value="toBeSet3"> Answer option 3</li>
+		</ol>
+	</form>
+	<p>You answered {{answer}}</p>
+	<button ng-click="">Answer</button>
+	<!--<input class="form-control" id="guestsInput" type="number" name="Guests" min="1" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)">
+	<a href="#/overview" id="confirmDinner" pe="button" class="btn btn-warning btn-responsive" role="button">Confirm Dinner</a>-->
 </div>

@@ -2,7 +2,7 @@
 dinnerPlannerApp.factory('Dinner',function ($resource) {
 
 
-this.QuizSearch = $resource('Adress till APIT motherf'});
+this.QuizSearch = $resource('Adress till APIT motherf');
 
 //Konceptet:
 //Vi kör på både en tidsaspekt och en skicka till en annan spelare effekt. 
