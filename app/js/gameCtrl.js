@@ -5,6 +5,23 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
 
-  $scope.answer = "No answer";
+  $scope.answer = "";
+  $scope.question = "";
 
+  $scope.init = function(){
+    getQuestion();
+  }
+
+  $scope.answered = function(answer){
+    if(answer == "a1" || answer == "a2" || answer == "a3"){
+      $scope.finalAnswer = answer;
+    }else{
+      alert("You need to select a valid answer by selecting one of the three options.");
+    }
+  }
+
+  function getQuestion(){
+    $scope.question = "Here is a new question";
+  }
+  
 });

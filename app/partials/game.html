@@ -7,9 +7,9 @@ purpose so you can see how some information from the model can be retrieved. In 
 this with Total price of the menu -->
 
 
-<div id="gameView" ng-controller="GameCtrl" ng-init="">
+<div id="gameView" ng-controller="GameCtrl" ng-init="init()">
 	<h3>The Game is Live</h3>
-	<p id="question">Question<p>
+	<p id="question">{{question}}<p>
 
 	<form id="formAnswers" action="">
 		<ol>
@@ -19,7 +19,8 @@ this with Total price of the menu -->
 		</ol>
 	</form>
 	<p>You answered {{answer}}</p>
-	<button ng-click="">Answer</button>
+	<button ng-click="answered(answer)">Answer</button>
+	<h3>Your final answer: {{finalAnswer}}</h3>
 	<!--<input class="form-control" id="guestsInput" type="number" name="Guests" min="1" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)">
 	<a href="#/overview" id="confirmDinner" pe="button" class="btn btn-warning btn-responsive" role="button">Confirm Dinner</a>-->
 </div>
