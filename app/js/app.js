@@ -10,15 +10,15 @@ dinnerPlannerApp.config(['$routeProvider',
       }).
       when('/newGame', {
         templateUrl: 'partials/newGame.html',
-        controller: 'newGameCtrl'
+        controller: 'NewGameCtrl'
       }).
       when('/game', {
         templateUrl: 'partials/game.html',
-        controller: 'gameCtrl'
+        controller: 'GameCtrl'
       }).
       when('/result', {
         templateUrl: 'partials/result.html',
-        controller: 'resultCtrl'
+        controller: 'ResultCtrl'
       }).
       otherwise({
         redirectTo: '/home'

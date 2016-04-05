@@ -1,16 +1,12 @@
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
-dinnerPlannerApp.controller('gameCtrl', function ($scope, $cookieStore, $routeParams,Dinner) {
+dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routeParams, Game) {
   // TODO in Lab 5: you need to get the dish according to the routing parameter
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
 
 
-  $scope.quiz =function(){
-    alert("Valt sort du");
-  }
-
-	Dinner.Dish.get({id:$routeParams.dishId},function(data){
+/*	Dinner.Dish.get({id:$routeParams.dishId},function(data){
      	$scope.dish=data;
      	$scope.ingredients=data.Ingredients;
      	var pris = 0.00;
@@ -24,30 +20,29 @@ dinnerPlannerApp.controller('gameCtrl', function ($scope, $cookieStore, $routePa
      	$scope.totalPrice = pris;
    			},function(data){
      	$scope.status = "There was an error";
-   	});
+   	});*/
 
-	$scope.getNumberOfGuests = function() {
-  		console.log("Nu är jag inne numFunc in DishC");
-    	return Dinner.getNumberOfGuests();
-  	}
+  $scope.answer = "";
+  $scope.questionquestionFromModel = "";
 
-    $scope.addToMenu = function(){
-      alert("valt geografi");
-      var pendingDish = Dinner.getPendingDish();
-      Dinner.addDishToMenu(pendingDish);
-      $scope.pendingDishP = 0.00;
-      Dinner.setPendingDish("");
-      var menu = Dinner.menu;
-      var menu = [];
-      for(x in Dinner.menu){
-        menu.push(Dinner.menu[x].RecipeID);
-      }
-      $cookieStore.put('menu', menu);
+
+  $scope.init = function(){
+    getQuestion();
+  }
+
+
+  $scope.answered = function(answer){
+    if(answer == "a1" || answer == "a2" || answer == "a3"){
+      $scope.finalAnswer = answer;
+    }else{
+      alert("You need to select a valid answer by selecting one of the three options.");
     }
+  }
 
-    $scope.removePendingDish = function(){
-      $scope.pendingDishP = 0.00;
-      Dinner.setPendingDish("");
-    }
+  function getQuestion(){
+    $scope.questionFromModel = Game.testFunction();
+  }
+
+
 
 });
