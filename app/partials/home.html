@@ -1,6 +1,24 @@
 <!-- TODO in Lab 5: there is not much to do on the home screen. Just arrange the layout so it
 looks a bit nicer. -->
 
-<div id="startView" class = "well well-lg"><h2 id="headerWell">A Home Dinner Service</h2><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><div id="divButtonInWell">Start Quickly:<br>
-<a href="#/search" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button">Create new dinner</a>
-</div></div>'
+
+<div id="startView" class = "well well-lg">
+
+	<div id="headerStart" class = "row">
+		<h2 id="headerWell">Antal spelare</h2>
+	</div>
+
+	<div id="numOfPlayers" class = "row">
+		<span class="glyphicon glyphicon-circle-arrow-left" ng-click="removeNumOfPlayers()"></span>
+		<span class="glyphicon glyphicon-circle-arrow-right" ng-click="addNumOfPlayers()"></span>
+	</div>
+
+	People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
+
+	Total number of guest: {{getNumberOfGuests()}}
+
+	<div id="divButtonInWell" class = "row" style="with:100%; text-align:center;">
+		<a href="#/newGame" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button">Klar
+		</a>
+	</div>
+</div>

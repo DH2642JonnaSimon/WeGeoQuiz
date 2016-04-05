@@ -7,8 +7,31 @@ purpose so you can see how some information from the model can be retrieved. In 
 this with Total price of the menu -->
 
 
-<div id="sideView" style="height:100%;" ng-controller="DinnerCtrl" ng-init="getMenu()">
-	<h3 style="margin-left: 10px;margin-top: 0px;">My Dinner</h3>
+<div id="gameContainer" style="height:100%;" ng-controller="gameCtrl">
+
+<div class="jumbotron">
+	<div class="row">
+
+
+		<div id="sportDiv" class="col-xs-3 col-sm-3 col-md-3" style="with:100%; text-align:center;">
+			<a id="sport" ng-click="quiz()" pe="button" class="btn btn-responsive" role="button">Sport
+			</a>
+		</div>
+		<div id="sportDiv" class="col-xs-3 col-sm-3 col-md-3" style="with:100%; text-align:center;">
+			<a id="sport" ng-click="quiz()" pe="button" class="btn btn-responsive" role="button">Historia
+			</a>
+		</div>
+		<div id="sportDiv" class="col-xs-3 col-sm-3 col-md-3" style="with:100%; text-align:center;">
+			<a id="sport" ng-click="quiz(sport)" pe="button" class="btn btn-responsive" role="button">Geografi
+			</a>
+		</div>
+<!-- 	    <div id="sport" class="col-xs-3 col-sm-3 col-md-3" ng-controller="gameCtrl" ng-click="quiz(sport)"> Sport </div>
+	    <div class="col-xs-3 col-sm-3 col-md-3"> Historia </div>
+	    <div class="col-xs-3 col-sm-3 col-md-3"> Geografi </div>
+	    <div class="col-xs-3 col-sm-3 col-md-3"> Användarnamn </div> -->
+     </div>
+ </div>
+<!-- 	<h3 style="margin-left: 10px;margin-top: 0px;">My Dinner</h3>
 	<p id="peopleParagraph">People:</p>
 	<input class="form-control" id="guestsInput" type="number" name="Guests" min="1" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)">
 	<table class="table table-condensed table-hover" id="sideViewTable" style="text-align: right;">
@@ -37,5 +60,5 @@ this with Total price of the menu -->
 	</table>
 	<div style="width:100%;text-align: center;">
 		<a href="#/overview" id="confirmDinner" pe="button" class="btn btn-warning btn-responsive" role="button">Confirm Dinner</a>
-	</div>
+	</div> -->
 </div>

@@ -2,10 +2,33 @@
 
 <ng-include src="'partials/dinner-sidebar.html'" style="padding:0px;height:100%;background-color: White;" class="col-xs-5 col-sm-3 col-md-3" ng-controller="DinnerCtrl"></ng-include>
 
-<!-- TODO in Lab 5: Display the dish information including image, Description, 
-Instructions, Ingredients and total cost. -->
+<div id="dishPreview" class="col-xs-12 col-sm-12 col-md-12 pre-scrollable" style="background-color: White;">
 
-<div id="dishPreview" class="col-xs-7 col-sm-9 col-md-9 pre-scrollable" ng-controller="DishCtrl" style="background-color: White;">
+	<tr ng-repeat="ingredient in ingredients">
+		<div class="row">
+			<form role="form">
+			    <div class="form-group col-xs6 col-sm-6 col-md-6">
+			      <label for="usr">Namn:</label>
+			      <input type="text" class="form-control" id="usr">
+			    </div>
+			</form>
+
+			<select class="col-xs6 col-sm-6 col-md-6">
+				<option value="smile" style="background-image:url(images/loading.gif);"></option>
+				<option value="saab">Saab</option>
+				<option value="honda">Honda</option>
+				<option value="audi">Audi</option>
+			</select>
+		</div>
+	</tr>
+
+	<div id="startGame" class = "row" style="with:100%; text-align:center;">
+		<a href="#/game" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button">Börja spela
+		</a>
+	</div>
+
+</div>
+<!-- <div id="dishPreview" class="col-xs-7 col-sm-9 col-md-9 pre-scrollable" ng-controller="DishCtrl" style="background-color: White;">
 	<div class="row" id="dishPreviewRow">
 		<div id="mainContent" class="col-xs-12 col-sm-12 col-md-6">
 			<h1 id="headerContent">{{dish.Title}}</h1>
@@ -48,4 +71,4 @@ Instructions, Ingredients and total cost. -->
 		<h2 id="headerPrep">Preparations</h2>
 		<p id="instructions">{{dish.Instructions}}</p>
 	</div>
-</div>
+</div> -->
