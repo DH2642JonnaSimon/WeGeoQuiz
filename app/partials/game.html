@@ -13,9 +13,10 @@ this with Total price of the menu -->
 
 	<form id="formAnswers" action="">
 		<ol>
-			<li id="answerOption1"><input type="radio" name="answer" ng-model="answer" value="a1"> Answer option 1<br></li>
-			<li id="answerOption2"><input type="radio" name="answer" ng-model="answer" value="a2"> Answer option 2<br></li>
-			<li id="answerOption3"><input type="radio" name="answer" ng-model="answer" value="a3"> Answer option 3</li>
+			<li id="answerOption1"><input type="radio" name="answer" ng-model="answer" value="A"> {{answerA}}<br></li>
+			<li id="answerOption2"><input type="radio" name="answer" ng-model="answer" value="B"> {{answerB}}<br></li>
+			<li id="answerOption3"><input type="radio" name="answer" ng-model="answer" value="C"> {{answerC}}<br></li>
+			<li id="answerOption4"><input type="radio" name="answer" ng-model="answer" value="D"> {{answerD}}</li>
 		</ol>
 	</form>
 	<p>You answered {{answer}}</p>
