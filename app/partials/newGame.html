@@ -1,10 +1,6 @@
-<!-- We include the sidebar as it is shared across two screens. -->
-
-<ng-include src="'partials/dinner-sidebar.html'" style="padding:0px;height:100%;background-color: White;" class="col-xs-5 col-sm-3 col-md-3" ng-controller="DinnerCtrl"></ng-include>
-
-<div id="dishPreview" class="col-xs-12 col-sm-12 col-md-12 pre-scrollable" style="background-color: White;">
-
-	<tr ng-repeat="ingredient in ingredients">
+<div id="dishPreview" class="col-xs-12 col-sm-12 col-md-12 pre-scrollable" style="background-color: White;" ng-controller="NewGameCtrl">
+ {{ getNumOfPlayers() }}
+	<div ng-repeat="i in getNumOfPlayers() track by $index">
 		<div class="row">
 			<form role="form">
 			    <div class="form-group col-xs6 col-sm-6 col-md-6">
@@ -20,7 +16,24 @@
 				<option value="audi">Audi</option>
 			</select>
 		</div>
-	</tr>
+	</div>
+
+<!-- 	<div ng-init="state = 1">
+		{{ state }}
+		<div ng-show="state == 1">
+			State 1
+			<button ng-click="state = 2">Next</button>
+		</div>
+		<div ng-show="state == 2">
+			State 2
+			<button ng-click="state = 3">Next</button>
+
+		</div>
+		<div ng-show="state == 3">State 3
+			<button ng-click="state = 1">Next</button>
+		</div>
+
+	</div> -->
 
 	<div id="startGame" class = "row" style="with:100%; text-align:center;">
 		<a href="#/game" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button">Börja spela

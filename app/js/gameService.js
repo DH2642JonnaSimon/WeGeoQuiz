@@ -31,6 +31,16 @@ this.counter = 0;
 ///Skapa spelare i spelgrupp - funktion (emoj/avatar och nickname ska in)
 
 ///Funktion som hämtar fråga
+this.numOfPlayers = 1;
+
+this.setNumOfPlayers = function(num){
+	this.numOfPlayers = num
+}
+
+this.getNumOfPlayers = function() {
+	return this.numOfPlayers;
+}
+
 this.getNewQuestion = function(){
 	var rn = Math.floor((Math.random() * questions.length) + 1);
 	question = questions[rn];

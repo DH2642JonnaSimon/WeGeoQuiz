@@ -2,20 +2,21 @@
 looks a bit nicer. -->
 
 
-<div id="startView" class = "well well-lg">
+<div id="home" ng-controller="HomeCtrl">
 
 	<div id="headerStart" class = "row">
 		<h2 id="headerWell">Antal spelare</h2>
 	</div>
-
+<!-- 
 	<div id="numOfPlayers" class = "row">
 		<span class="glyphicon glyphicon-circle-arrow-left" ng-click="removeNumOfPlayers()"></span>
 		<span class="glyphicon glyphicon-circle-arrow-right" ng-click="addNumOfPlayers()"></span>
+	</div> -->
+
+	<div id="numOfPlayersDiv" class = "row">
+		<input class="form-control" id="numOfPlayers" type="number" name="Players" min="1" ng-model="numOfPlayers" ng-change="setNumOfPlayers(numOfPlayers)">
+		Total number of guest: {{getNumOfPlayers()}}
 	</div>
-
-	People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
-
-	Total number of guest: {{getNumberOfGuests()}}
 
 	<div id="divButtonInWell" class = "row" style="with:100%; text-align:center;">
 		<a href="#/newGame" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button">Klar
