@@ -73,7 +73,7 @@ this.getNumOfPlayers = function() {
 this.getNewQuestion = function(){
 	var rn = Math.floor((Math.random() * questions.length) + 1);
 	question = questions[rn];
-
+}
 ///Funktion som hämtar ny slumpvald fråga
 this.generateNewQuestion = function(){
 	var rn = Math.floor((Math.random() * this.questions.length) + 1);
