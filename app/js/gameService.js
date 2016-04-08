@@ -17,7 +17,7 @@ this.question = '';
 
 
 //var topplista = [] #NERPRIORITERA
-var spelargrupp = []
+this.spelargrupp = [];
 //var svarstid = 0 
 this.amountOfQuestions = 5;
 this.counter = 0;
@@ -40,18 +40,21 @@ this.substractPoints = function(num){
 
 ///Funktion som slumpar fam vem som börjar
 this.whoStarts = function(){
-	var rn = Math.floor((Math.random() * this.spelargrupp.length) + 1);
-	return spelargrupp[rn];
+	var rn = Math.floor((Math.random() * this.spelargrupp.length));
+	console.log(rn);
+	return this.spelargrupp[rn];
 }
 
 ///Skapa spelare i spelgrupp - funktion (emoj/avatar och nickname ska in), samt lägg till denna spelare i spelargruppen
 this.newPlayer = function(nickname, emoj){
-	var player = function(nickname, emoj){
-		this.nickname = nickname;
-		this.emoj = emoj;
-		this.points = 0; 
-	}
-	spelargrupp.push(player);
+	this.playerlist = [];
+	var nickname = nickname;
+	var emoj = emoj;
+	var points = 0; 
+	this.playerlist.push(nickname, emoj, points);
+	this.spelargrupp.push(this.playerlist);
+	console.log(this.spelargrupp);
+	return this.spelargrupp
 }
 
 //sätter antal frågor som ska köras innan spelet är över

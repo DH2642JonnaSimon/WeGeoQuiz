@@ -2,21 +2,42 @@
  {{ getNumOfPlayers() }}
 	<div ng-repeat="i in getNumOfPlayers() track by $index">
 		<div class="row">
-			<form role="form">
-			    <div class="form-group col-xs6 col-sm-6 col-md-6">
+			<form name="PlayerForm" ng-submit="submit(nickName, avatar)" role="form">
 			      <label for="usr">Namn:</label>
-			      <input type="text" class="form-control" id="usr">
-			    </div>
-			</form>
+			      <!-- ng-model="feedback.text" -->
+			      <input type="text" name="nickName" ng-model="nickName" class="form-control" placeholder="Your_Nickname" ng-pattern="feedback.word" required ng-trim="false" id="usr">
 
-			<select class="col-xs6 col-sm-6 col-md-6">
-				<option value="smile" style="background-image:url(images/loading.gif);"></option>
-				<option value="saab">Saab</option>
-				<option value="honda">Honda</option>
-				<option value="audi">Audi</option>
-			</select>
+			    <div role="alert"><br>
+				    <span class="error" ng-show="PlayerForm.input.$error.required">
+				      Required!</span>
+				    <span class="error" ng-show="PlayerForm.input.$error.pattern">
+				      Single word only!</span>
+  				</div>
+
+  				<select class="col-xs6 col-sm-6 col-md-6" name="avatar" ng-model="avatar">
+					<option value="smile" style="background-image:url(images/loading.gif);"></option>
+					<option value="saab">Saab</option>
+					<option value="honda">Honda</option>
+					<option value="audi">Audi</option>
+				</select>
+
+  				<tt>text = {{feedback.text}}</tt><br/>
+				<tt>PlayerForm.input.$valid = {{PlayerForm.input.$valid}}</tt><br/>
+				<tt>PlayerForm.input.$error = {{PlayerForm.input.$error}}</tt><br/>
+				<tt>PlayerForm.$valid = {{PlayerForm.$valid}}</tt><br/>
+				<tt>PlayerForm.$error.required = {{!!PlayerForm.$error.required}}</tt><br/>
+
+				<input type="submit" value="submit"/>
+
+			</form>
 		</div>
 	</div>
+
+	<div id="startGame" class = "row" style="with:100%; text-align:center;">
+		<a href="#/game" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button" ng-click="setNumOfPlayers(numOfPlayers)">Börja spela
+		</a>
+	</div>
+
 
 <!-- 	<div ng-init="state = 1">
 		{{ state }}
@@ -34,54 +55,3 @@
 		</div>
 
 	</div> -->
-
-	<div id="startGame" class = "row" style="with:100%; text-align:center;">
-		<a href="#/game" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button">Börja spela
-		</a>
-	</div>
-
-</div>
-<!-- <div id="dishPreview" class="col-xs-7 col-sm-9 col-md-9 pre-scrollable" ng-controller="DishCtrl" style="background-color: White;">
-	<div class="row" id="dishPreviewRow">
-		<div id="mainContent" class="col-xs-12 col-sm-12 col-md-6">
-			<h1 id="headerContent">{{dish.Title}}</h1>
-			<div id="imgeDiv">
-				<image class="img-thumbnail " id="imagee" ng-src="{{dish.ImageURL}}" style=""></image>
-				<p>{{dish.Description}}</p>
-			</div>
-			<a href="#/search" id="back" pe="button" class="btn btn-warning btn-responsive back" role="button" ng-click="removePendingDish()">back to Select Dish</a>
-		</div>
-		<div id="ingredientsContent" class="col-xs-12 col-sm-12 col-md-6">
-			<div class="table-responsive">
-				<table class="table borderless" id="ingredients">
-					<h3 style='width: 100%;'>Ingredients for {{getNumberOfGuests()}} People</h3>
-					<tbody style='border-top: 1px solid #000;'>
-						<tr ng-repeat="ingredient in ingredients">
-							<td style='border: 0px !important;'>
-								{{ingredient.Quantity*getNumberOfGuests() | number:2}}
- 								{{ingredient.Unit}}
- 							</td>
- 							<td style='border: 0px !important;'>
- 								{{ingredient.Name}}
- 							</td>
- 							<td style='border: 0px !important;'>
- 								{{ingredient.Quantity*getNumberOfGuests() | number:2}}
- 							</td>
- 							<td style='border: 0px !important;'>
- 						</tr>
- 						<tr style='border-top: 1px solid #000;'>
- 							<td style='text-align:right;border: 0px !important;' colspan='4'>
- 								TotalPrice: {{totalPrice*getNumberOfGuests() | number:2}}
- 							</td>
- 						</tr>"
-				</table>
-			</div>
-			<a href="#/search" id="confirm" pe="button" ng-click="addToMenu()" class="btn btn-warning btn-responsive confirm" role="button">Confirm Dish</a>
-		</div>
-	</div>
-	<div id="Preparations">
-		<br>
-		<h2 id="headerPrep">Preparations</h2>
-		<p id="instructions">{{dish.Instructions}}</p>
-	</div>
-</div> -->

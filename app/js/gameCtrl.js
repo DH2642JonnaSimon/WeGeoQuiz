@@ -30,6 +30,13 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
     Game.initL(callbackQuestionsLoaded, Game);
   }
 
+  $scope.player = function(){
+    console.log("inne i play :)");
+    $scope.playerToStart = Game.whoStarts();
+    console.log($scope.playerToStart);
+    return $scope.playerToStart;
+  }
+
 
   $scope.answered = function(answer){
     if(answer == "A" || answer == "B" || answer == "C" || answer == "D"){

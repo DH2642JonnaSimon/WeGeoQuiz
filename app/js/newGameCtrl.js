@@ -6,4 +6,13 @@ $scope.getNumOfPlayers = function() {
   return new Array(this.num);  
   }
 
+$scope.feedback = {
+  text:"",
+  word: /^\s*\w*\s*$/
+};
+
+$scope.submit = function(nickName,avatar) {
+    Game.newPlayer(nickName,avatar);
+  };
+
 });
