@@ -73,4 +73,12 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
     $scope.presentNewQuestion();
   }
 
+  $scope.list1 = {title: 'Drag and Drop with custom confirmation'};
+  $scope.list2 = {};
+  $scope.onDrop = function(item, ui) {
+    //alert("You dropped and answer, check if it is correct, give feedback, check if game is over, give new question or go to result page.");
+    console.log(ui.draggable.attr('id'));
+    $scope.answered(ui.draggable.attr('id'));
+  };
+
 });
