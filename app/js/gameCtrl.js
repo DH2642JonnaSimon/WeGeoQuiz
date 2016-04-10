@@ -35,7 +35,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
     console.log("inne i play :)");
     $scope.playerToStart = Game.whoStarts();
     console.log($scope.playerToStart);
-    return $scope.playerToStart;
+    return $scope.playerToStart[0];
   }
 
      $scope.onShow = function() { 
