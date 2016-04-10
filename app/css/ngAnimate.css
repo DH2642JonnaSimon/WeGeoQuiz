@@ -331,22 +331,7 @@
   transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   /* easeOutQuad */
 }
-/* line 273, ../sass/ng-animation.scss */
-.slide-down.ng-enter {
-  transform: translateY(-60px);
-  -ms-transform: translateY(-60px);
-  -webkit-transform: translateY(-60px);
-  transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
-  opacity: 0;
-}
-/* line 279, ../sass/ng-animation.scss */
-.slide-down.ng-enter-active {
-  transform: translateY(0);
-  -ms-transform: translateY(0);
-  -webkit-transform: translateY(0);
-  opacity: 1;
-}
+
 /* line 284, ../sass/ng-animation.scss */
 .slide-down.ng-leave {
   transform: translateY(0);
@@ -436,14 +421,7 @@
   opacity: 1;
 }
 /* line 339, ../sass/ng-animation.scss */
-.bouncy-slide-top.ng-leave {
-  transform: translateY(0);
-  -ms-transform: translateY(0);
-  -webkit-transform: translateY(0);
-  transition-duration: 250ms;
-  -webkit-transition-duration: 250ms;
-  opacity: 1;
-}
+
 /* line 345, ../sass/ng-animation.scss */
 .bouncy-slide-top.ng-leave-active {
   transform: translateY(240px);
@@ -1040,54 +1018,7 @@
   opacity: 1;
 }
 /* line 722, ../sass/ng-animation.scss */
-.bouncy-scale-in.ng-leave {
-  transform: scale(1);
-  -ms-transform: scale(1);
-  -webkit-transform: scale(1);
-  transition-duration: 450ms;
-  -webkit-transition-duration: 450ms;
-  opacity: 1;
-}
-/* line 728, ../sass/ng-animation.scss */
-.bouncy-scale-in.ng-leave-active {
-  transform: scale(3);
-  -ms-transform: scale(3);
-  -webkit-transform: scale(3);
-  opacity: 0;
-}
-/* line 734, ../sass/ng-animation.scss */
-.bouncy-scale-in.ng-hide-add {
-  transform: scale(1);
-  -ms-transform: scale(1);
-  -webkit-transform: scale(1);
-  transition-duration: 450ms;
-  -webkit-transition-duration: 450ms;
-  opacity: 1;
-}
-/* line 739, ../sass/ng-animation.scss */
-.bouncy-scale-in.ng-hide-add.ng-hide-add-active {
-  transform: scale(3);
-  -ms-transform: scale(3);
-  -webkit-transform: scale(3);
-  opacity: 0;
-}
-/* line 745, ../sass/ng-animation.scss */
-.bouncy-scale-in.ng-hide-remove {
-  transform: scale(3);
-  -ms-transform: scale(3);
-  -webkit-transform: scale(3);
-  transition-duration: 450ms;
-  -webkit-transition-duration: 450ms;
-  display: block !important;
-  opacity: 0;
-}
-/* line 751, ../sass/ng-animation.scss */
-.bouncy-scale-in.ng-hide-remove.ng-hide-remove-active {
-  transform: scale(1);
-  -ms-transform: scale(1);
-  -webkit-transform: scale(1);
-  opacity: 1;
-}
+
 
 /* ------------------------------------------- */
 /* Flip In 

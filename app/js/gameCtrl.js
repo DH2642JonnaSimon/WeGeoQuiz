@@ -19,17 +19,45 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
   $scope.player = function(){
     console.log("inne i play :)");
     $scope.playerToStart = Game.whoStarts();
+<<<<<<< HEAD
+=======
+    console.log($scope.playerToStart);
+>>>>>>> DnD-Branch
     return $scope.playerToStart;
   }
 
-     $scope.onShow = function() { 
-        $scope.show = false;
-        $timeout(function() { 
-           showMe();
-        },700);
-     }
-     function showMe() {
-        $scope.show = true;
+  $scope.onShow = function() { 
+    $scope.options = [];
+      $timeout(function() {
+        if($scope.finalAnswer == true){
+          $('#answer').css("background-color", "Green");
+          $('#answer').css("color", "Black");
+          $('#answer').html("Correct"); 
+        } else{
+        	$('#answer').html("Wrong"); 
+        	$('#answer').css("background-color", "Red");
+        	$('#answer').css("color", "Black");
+        }     
+        $scope.onNewquestion();
+      },1000);
+   }
+
+   function showMe() {
+      $scope.options = [
+        { 'title': 'A', 'answer': $scope.answerA, 'drag': true },
+        { 'title': 'B', 'answer': $scope.answerB, 'drag': true },
+        { 'title': 'C', 'answer': $scope.answerC, 'drag': true },
+        { 'title': 'D', 'answer': $scope.answerD, 'drag': true }
+      ];
+      $scope.draggedAnswer = [];
+    }
+
+    $scope.onNewquestion = function() { 
+        $timeout(function() {
+        	$('#answer').html();  
+          	$('#answer').css("background-color", "yellow");   
+          	showMe();
+        },800);
      }
 
 
@@ -42,9 +70,9 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
       //kolla om svaret är korrekt
       var correctAnswer = Game.correctAnswer(answer);
       if(correctAnswer == true){
-        $scope.finalAnswer = "Congrats, you answerd correctly.";
+        $scope.finalAnswer = true;
       }else{
-        $scope.finalAnswer = "Wrong answer!"; 
+        $scope.finalAnswer = false; 
       }
       //kolla om spelet är slut annars ställ en ny fråga
       if(Game.isGameOver()){
@@ -67,7 +95,18 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
     $scope.answerB = Game.question.B;
     $scope.answerC = Game.question.C;
     $scope.answerD = Game.question.D;
+<<<<<<< HEAD
     $scope.player();
+=======
+    if(!$scope.options){
+      $scope.options = [
+          { 'title': 'A', 'answer': $scope.answerA, 'drag': true },
+          { 'title': 'B', 'answer': $scope.answerB, 'drag': true },
+          { 'title': 'C', 'answer': $scope.answerC, 'drag': true },
+          { 'title': 'D', 'answer': $scope.answerD, 'drag': true }
+        ];
+    }
+>>>>>>> DnD-Branch
 
   }
 
@@ -75,12 +114,51 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
     $scope.presentNewQuestion();
   }
 
-  $scope.list1 = {title: 'Drag and Drop with custom confirmation'};
-  $scope.list2 = {};
+  /*$scope.draggedAnswer = {title: 'Drag and Drop with custom confirmation'};
+  $scope.options = {};
   $scope.onDrop = function(item, ui) {
     //alert("You dropped and answer, check if it is correct, give feedback, check if game is over, give new question or go to result page.");
     console.log(ui.draggable.attr('id'));
     $scope.answered(ui.draggable.attr('id'));
+  };*/
+ $scope.images = [{'thumb': '1.png'}]
+  $scope.draggedAnswer = [];
+  angular.forEach($scope.images, function(val, key) {
+    $scope.draggedAnswer.push({});
+  });
+
+  $scope.startCallback = function(event, ui, title) {
+    //Började dra ett dragbart objekt
+    $scope.draggedTitle = title.title;
+    ui.helper.css("background-color", "Red");
+    console.log(event);
+  };
+
+  $scope.stopCallback = function(event, ui) {
+    //Objektet blev droppat över ett icke droppbart ställe
+    ui.helper.css("background-color", "#5bc0de");
+  };
+
+  $scope.dragCallback = function(event, ui) {
+    //Objektet blir dragen ;)
+    console.log('objektet dras');
+  };
+
+  $scope.dropCallback = function(event, ui) {
+    //dragbart objekt blev droppat till en ny droppbar zon/element
+    ui.draggable.css("background-color", "Yellow");
+    $scope.answered($scope.draggedTitle);
+  };
+
+  $scope.overCallback = function(event, ui) {
+    //Dragbart objekt är över ett droppbart ställe
+    ui.draggable.css("background-color", "Green");
+  };
+
+  $scope.outCallback = function(event, ui) {
+    //Dragbart objekt är inte över ett droppbart ställe    
+    ui.draggable.css("background-color", "Red");
+    
   };
 
 });
