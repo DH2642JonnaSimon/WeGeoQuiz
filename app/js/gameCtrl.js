@@ -1,15 +1,10 @@
-<<<<<<< HEAD
-=======
+
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
 dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routeParams, $location, Game, $timeout) {
   // TODO in Lab 5: you need to get the dish according to the routing parameter
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
-
->>>>>>> origin/master
-
-dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routeParams, $location, Game) {
 
   $scope.answer = "";
   $scope.questionquestionFromModel = "";
@@ -18,12 +13,13 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
 
   $scope.init = function(){
     Game.initL(callbackQuestionsLoaded, Game);
+    $scope.player(); 
   }
 
   $scope.player = function(){
     console.log("inne i play :)");
     $scope.playerToStart = Game.whoStarts();
-    return $scope.playerToStart[0];
+    return $scope.playerToStart;
   }
 
      $scope.onShow = function() { 
@@ -40,11 +36,8 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
 
 
   $scope.answered = function(answer){
-<<<<<<< HEAD
 
-=======
     $scope.onShow();
->>>>>>> origin/master
     if(answer == "A" || answer == "B" || answer == "C" || answer == "D"){
       //kolla om svaret är korrekt
       var correctAnswer = Game.correctAnswer(answer);
@@ -74,6 +67,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
     $scope.answerB = Game.question.B;
     $scope.answerC = Game.question.C;
     $scope.answerD = Game.question.D;
+    $scope.player();
 
   }
 
