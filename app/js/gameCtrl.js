@@ -19,10 +19,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
   $scope.player = function(){
     console.log("inne i play :)");
     $scope.playerToStart = Game.whoStarts();
-<<<<<<< HEAD
-=======
-    console.log($scope.playerToStart);
->>>>>>> DnD-Branch
+
     return $scope.playerToStart;
   }
 
@@ -95,9 +92,9 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
     $scope.answerB = Game.question.B;
     $scope.answerC = Game.question.C;
     $scope.answerD = Game.question.D;
-<<<<<<< HEAD
+
     $scope.player();
-=======
+
     if(!$scope.options){
       $scope.options = [
           { 'title': 'A', 'answer': $scope.answerA, 'drag': true },
@@ -106,7 +103,6 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
           { 'title': 'D', 'answer': $scope.answerD, 'drag': true }
         ];
     }
->>>>>>> DnD-Branch
 
   }
 
