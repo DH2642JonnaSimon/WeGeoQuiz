@@ -19,7 +19,8 @@ this.question = '';
 //var topplista = [] #NERPRIORITERA
 this.spelargrupp = [];
 //var svarstid = 0 
-this.amountOfQuestions = 5;
+this.rnStart = "";
+this.amountOfQuestions = 6;
 this.counter = 0;
 
 ///Addera poäng - funktion (tidaspekten)
@@ -40,9 +41,18 @@ this.substractPoints = function(num){
 
 ///Funktion som slumpar fam vem som börjar
 this.whoStarts = function(){
-	var rn = Math.floor((Math.random() * this.spelargrupp.length));
-	console.log(rn);
-	return this.spelargrupp[rn];
+	if (!this.rnStart){//om den är lika med en tom sträng gör följande
+		console.log("strängen är tom och nu randomas en spelare");
+		var rnStart = Math.floor((Math.random() * this.spelargrupp.length));
+		this.rnStart = rnStart;
+		console.log(this.rnStart);
+	}else if(this.rnStart >= this.spelargrupp.length - 1){
+		this.rnStart = this.rnStart + 1;
+	}else{
+		this.rnStart = 0;
+	}
+	console.log(this.spelargrupp[rnStart]);
+	return this.spelargrupp[rnStart];
 }
 
 ///Skapa spelare i spelgrupp - funktion (emoj/avatar och nickname ska in), samt lägg till denna spelare i spelargruppen
@@ -74,11 +84,13 @@ this.getNumOfPlayers = function() {
 }
 
 this.getNewQuestion = function(){
+	console.log("get new Q");
 	var rn = Math.floor((Math.random() * questions.length) + 1);
 	question = questions[rn];
 }
 ///Funktion som hämtar ny slumpvald fråga
 this.generateNewQuestion = function(){
+	console.log("generate new Q");
 	var rn = Math.floor((Math.random() * this.questions.length) + 1);
 	this.question = this.questions[rn];
 	return this.question;
@@ -100,6 +112,7 @@ this.correctAnswer = function(answer){
 
 ///Funktion som kollar om spelet är slut. Körs varjegång nån har kört en fråga
 this.isGameOver = function(){
+	console.log("Inne i isGameOver");
 	alert("cnter: " + this.counter + " amountof " + this.amountOfQuestions);
 	if(this.counter >= this.amountOfQuestions){
 		return true;
