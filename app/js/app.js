@@ -1,5 +1,5 @@
 
-var dinnerPlannerApp = angular.module('dinnerPlanner', ['ngRoute','ngResource', 'ngCookies', 'ngDragDrop']);
+var dinnerPlannerApp = angular.module('dinnerPlanner', ['ngRoute','ngResource', 'ngCookies', 'ngDragDrop', 'ngAnimate']);
 
 
 dinnerPlannerApp.config(['$routeProvider',

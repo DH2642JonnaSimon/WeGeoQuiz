@@ -100,7 +100,7 @@ this.correctAnswer = function(answer){
 
 ///Funktion som kollar om spelet är slut. Körs varjegång nån har kört en fråga
 this.isGameOver = function(){
-	alert("cnter: " + this.counter + " amountof " + this.amountOfQuestions);
+	//alert("cnter: " + this.counter + " amountof " + this.amountOfQuestions);
 	if(this.counter >= this.amountOfQuestions){
 		return true;
 	}else{

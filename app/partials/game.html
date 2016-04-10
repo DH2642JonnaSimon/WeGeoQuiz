@@ -28,19 +28,19 @@
 	<!--<span data-drag="true" jqyoui-draggable>So you think you can drag</span>-->
  <div class="row-fluid">
         <div class="span6">
-          <div class="btn btn-primary" id="A" data-drag="true" ng-model="answer" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid'}" ng-hide="!answerA" value="A">{{answerA}}</div>
+          <div class="btn btn-primary bouncy-scale-in answer" ng-show=show id="A" data-drag="true" ng-model="answer" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid'}" ng-hide="!answerA" value="A">{{answerA}}</div>
         </div>
         <div class="span6">
-          <div class="btn btn-primary" id="B" data-drag="true" ng-model="answer" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid'}" ng-hide="!answerB" value="B">{{answerB}}</div>
+          <div class="btn btn-primary bouncy-scale-in answer" ng-show=show id="B" data-drag="true" ng-model="answer" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid'}" ng-hide="!answerB" value="B">{{answerB}}</div>
         </div>
         <div class="span6">
-          <div class="btn btn-primary" id="C" data-drag="true" ng-model="answer" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid'}" ng-hide="!answerC" value="C">{{answerC}}</div>
+          <div class="btn btn-primary bouncy-scale-in answer" ng-show=show id="C" data-drag="true" ng-model="answer" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid'}" ng-hide="!answerC" value="C">{{answerC}}</div>
         </div>
         <div class="span6">
-          <div class="btn btn-primary" id="D" data-drag="true" ng-model="answer" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{animate: true}" ng-hide="!answerD" value="D">{{answerD}}</div>
+          <div class="btn btn-primary bouncy-scale-in answer" ng-show=show id="D" data-drag="true" ng-model="answer" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{animate: true}" ng-hide="!answerD" value="D">{{answerD}}</div>
         </div>
         <div class="span6">
-          <div class="thumbnail" data-drop="true" ng-model="list2" jqyoui-droppable="{onDrop: 'onDrop(item, $index)'}" ng-bind="list2.title ? 'Dropped successfully..!' : 'Drop here...'"></div>
+          <div class="thumbnail" data-drop="true" ng-model="list2" jqyoui-droppable="{onDrop: 'onDrop(item, $index)'}" ng-bind="list2.title ? 'dropped' : 'drop'"></div>
         </div>
       </div>
       TEST5
