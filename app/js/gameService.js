@@ -112,8 +112,12 @@ this.correctAnswer = function(answer){
 
 ///Funktion som kollar om spelet är slut. Körs varjegång nån har kört en fråga
 this.isGameOver = function(){
+<<<<<<< HEAD
 	console.log("Inne i isGameOver");
 	alert("cnter: " + this.counter + " amountof " + this.amountOfQuestions);
+=======
+	//alert("cnter: " + this.counter + " amountof " + this.amountOfQuestions);
+>>>>>>> origin/master
 	if(this.counter >= this.amountOfQuestions){
 		return true;
 	}else{
