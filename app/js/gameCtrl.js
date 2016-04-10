@@ -43,8 +43,12 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
       $timeout(function() {
         if($scope.finalAnswer == true){
           $('#answer').css("background-color", "Green");
+          $('#answer').css("color", "Black");
+          $('#answer').html("Correct"); 
         } else{
-          $('#answer').css("background-color", "Red");
+        	$('#answer').html("Wrong"); 
+        	$('#answer').css("background-color", "Red");
+        	$('#answer').css("color", "Black");
         }     
         $scope.onNewquestion();
       },1000);
@@ -62,8 +66,9 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
 
     $scope.onNewquestion = function() { 
         $timeout(function() {
-          $('#answer').css("background-color", "yellow");   
-          showMe();
+        	$('#answer').html();  
+          	$('#answer').css("background-color", "yellow");   
+          	showMe();
         },800);
      }
 
@@ -141,7 +146,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
 
   $scope.dragCallback = function(event, ui) {
     //Objektet blir dragen ;)
-    console.log('hey, look I`m flying');
+    console.log('objektet dras');
   };
 
   $scope.dropCallback = function(event, ui) {
@@ -158,6 +163,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
   $scope.outCallback = function(event, ui) {
     //Dragbart objekt är inte över ett droppbart ställe    
     ui.draggable.css("background-color", "Red");
+    
   };
 
 });
