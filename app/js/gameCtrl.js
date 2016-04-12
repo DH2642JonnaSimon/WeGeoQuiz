@@ -11,9 +11,10 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
   $scope.show = true;
   $scope.amountOfQuestions = Game.amountOfQuestions;
   $scope.questionNumber = 0;
-
+  $scope.playerToStart = "";
 
   $scope.init = function(){
+    console.log("inne i init");
     Game.initL(callbackQuestionsLoaded, Game);
   }
 
@@ -56,7 +57,20 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
         },800);
      }
 
+$scope.counter = 45;
 
+    $scope.onTimeout = function(){
+        $scope.counter--;
+        mytimeout = $timeout($scope.onTimeout,1000);
+    }
+    var mytimeout = $timeout($scope.onTimeout,1000);
+    
+function stop(){
+        var time = $scope.counter;
+        var player = $scope.playerToStart[0];
+        Game.timePoints(time,player);
+        $timeout.cancel(mytimeout);
+    }
 
 
   $scope.answered = function(answer){
@@ -80,6 +94,8 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
         Game.generateNewQuestion();
         $scope.presentNewQuestion();
       }
+      stop();
+      Game.whoStarts();
     }else{
       alert("You need to select a valid answer by selecting one of the three options.");
     }

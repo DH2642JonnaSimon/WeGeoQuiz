@@ -22,6 +22,25 @@ this.spelargrupp = [];
 this.rnStart = 1337;
 this.amountOfQuestions = 6;
 this.counter = 0;
+this.timePoints=0;
+
+this.timePoints = function(time,player){
+	if(time<= 45 && time>=35){
+		this.timePoints = 3;
+	}if(time<= 34 && time>=25){
+		this.timePoints = 2;
+	}if(time<= 24 && time>=0){
+		this.timePoints = 1;
+	}
+	addPoints();
+}
+
+function addPoints() {
+	//för de objektet i spelargrupplistan som har num rnStart
+	//där ska man addera timepoints till poängobjektet
+//	this.numberOfGuests = num;
+}
+
 
 ///Addera poäng - funktion (tidaspekten)
 this.substractPoints = function(num){
@@ -42,11 +61,9 @@ this.substractPoints = function(num){
 ///Funktion som slumpar fam vem som börjar
 this.whoStarts = function(){
 	if (this.rnStart == 1337){//om den är lika med en tom sträng gör följande
-		console.log("strängen är tom och nu randomas en spelare");
-		var rnStart = Math.floor((Math.random() * this.spelargrupp.length));
+		var rnStart = Math.floor((Math.random() * this.spelargrupp.length + 1));
 		this.rnStart = rnStart;
-		console.log(this.rnStart);
-	}else if(this.rnStart < this.spelargrupp.length-1){
+	}else if (this.rnStart < this.spelargrupp.length - 1){
 		this.rnStart = this.rnStart + 1;
 	}else{
 		this.rnStart = 0;
@@ -66,6 +83,8 @@ this.newPlayer = function(nickname, emoj){
 	console.log(this.spelargrupp);
 	return this.spelargrupp
 }
+
+
 
 //sätter antal frågor som ska köras innan spelet är över
 this.setGameLength = function(num){
@@ -130,14 +149,6 @@ this.setAmountOfQuestions = function(number){
 //returnerar nuvarande fråga
 this.getQuestion = function(){
 	return this.question;
-}
-
-this.AddPoints = function(num) {
-	this.numberOfGuests = num;
-}
-
-this.AddPoints = function(num) {
-	this.numberOfGuests = num;
 }
 
  this.initL = function(callback, Game){
