@@ -77,7 +77,7 @@ TEST13
       <div class="col-md-12" style="text-align: center;width: 100%;">
         <div class="container form-inline" style="text-align: left;">
           <div class="btn btn-droppable bouncy-scale-in answer" style="width: 20%;margin-left: 4%;" ng-repeat="item in options" data-drop="true" ng-model='options' jqyoui-droppable="{index: {{$index}}}">
-            <div class="btn btn-info btn-draggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="options" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.title">{{item.title}} - {{item.answer}}</div>
+            <div name="answer{{item.title}}" class="btn btn-info btn-draggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="options" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.title">{{item.title}} - {{item.answer}}</div>
           </div>
         </div>
       </div>

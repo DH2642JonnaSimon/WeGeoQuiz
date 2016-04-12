@@ -24,7 +24,6 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
   }
 
   $scope.onShow = function() { 
-    $scope.options = [];
       $timeout(function() {
         if($scope.finalAnswer == true){
           $('#answer').css("background-color", "Green");
@@ -34,6 +33,10 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
         	$('#answer').html("Wrong"); 
         	$('#answer').css("background-color", "Red");
         	$('#answer').css("color", "Black");
+          console.log($scope.finalAnswer);
+          $('[name="answer' + $scope.finalAnswer + '"]').css("background-color", "Green");
+          console.log('[name="answer' + $scope.finalAnswer + '"]');
+          console.log($([name="answer' + $scope.finalAnswer + '"]));
         }     
         $scope.onNewquestion();
       },1000);
@@ -82,7 +85,7 @@ function stop(){
       if(correctAnswer == true){
         $scope.finalAnswer = true;
       }else{
-        $scope.finalAnswer = false; 
+        $scope.finalAnswer = correctAnswer; 
       }
       //kolla om spelet är slut annars ställ en ny fråga
       if(Game.isGameOver()){

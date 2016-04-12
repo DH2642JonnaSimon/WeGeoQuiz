@@ -126,7 +126,7 @@ this.correctAnswer = function(answer){
 	if(this.question.answer == answer){
 		return true;
 	}else{
-		return false;
+		return this.question.answer;
 	}
 }
 
