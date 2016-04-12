@@ -25,6 +25,8 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
 
   $scope.onShow = function() { 
       $timeout(function() {
+        $scope.questionFromModel ="";
+        $scope.options = [];
         if($scope.finalAnswer == true){
           $('#answer').css("background-color", "Green");
           $('#answer').css("color", "Black");
@@ -43,6 +45,8 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
    }
 
    function showMe() {
+      $scope.questionFromModel = Game.question.question;
+      console.log($scope.questionFromModel);
       $scope.options = [
         { 'title': 'A', 'answer': $scope.answerA, 'drag': true },
         { 'title': 'B', 'answer': $scope.answerB, 'drag': true },
@@ -77,7 +81,6 @@ function stop(){
 
 
   $scope.answered = function(answer){
-
     $scope.onShow();
     if(answer == "A" || answer == "B" || answer == "C" || answer == "D"){
       //kolla om svaret är korrekt
@@ -95,7 +98,7 @@ function stop(){
         //spelet är inte slut, ladda ny fråga och presentera den
         $scope.questionNumber += 1;
         Game.generateNewQuestion();
-        $scope.presentNewQuestion();
+        $scope.presentNewQuestion(false);
       }
       stop();
     }else{
@@ -104,8 +107,11 @@ function stop(){
     
   }
 
-  $scope.presentNewQuestion = function(){
-    $scope.questionFromModel = Game.question.question;
+  $scope.presentNewQuestion = function(firstTime){
+    console.log($scope.questionFromModel+"//////////////");
+    if(firstTime){
+      $scope.questionFromModel = Game.question.question;
+    }
     $scope.answerA = Game.question.A;
     $scope.answerB = Game.question.B;
     $scope.answerC = Game.question.C;
@@ -125,7 +131,8 @@ function stop(){
   }
 
   function callbackQuestionsLoaded(Game){
-    $scope.presentNewQuestion();
+    var firstTime = true;
+    $scope.presentNewQuestion(firstTime);
   }
 
   /*$scope.draggedAnswer = {title: 'Drag and Drop with custom confirmation'};

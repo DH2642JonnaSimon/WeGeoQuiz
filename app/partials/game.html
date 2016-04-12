@@ -9,7 +9,7 @@
 	</div>
 
 	<h3>The Game is Live</h3>
-	<p id="question">{{questionFromModel}}<p>
+	<p id="question" class="slide-right" ng-show="questionFromModel" ng-hide="!questionFromModel">{{questionFromModel}}<p>
 
       <div class="row">
         <div class="col-sm-4"><uib-progressbar class="progress-striped active" max=amountOfQuestions value=questionNumber type="success"><i> {{questionNumber}} / {{amountOfQuestions}}</i></uib-progressbar></div>
