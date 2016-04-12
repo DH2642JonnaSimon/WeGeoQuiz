@@ -19,7 +19,7 @@ this.question = '';
 //var topplista = [] #NERPRIORITERA
 this.spelargrupp = [];
 //var svarstid = 0 
-this.rnStart = "";
+this.rnStart = 1337;
 this.amountOfQuestions = 6;
 this.counter = 0;
 
@@ -41,18 +41,18 @@ this.substractPoints = function(num){
 
 ///Funktion som slumpar fam vem som börjar
 this.whoStarts = function(){
-	if (!this.rnStart){//om den är lika med en tom sträng gör följande
+	if (this.rnStart == 1337){//om den är lika med en tom sträng gör följande
 		console.log("strängen är tom och nu randomas en spelare");
 		var rnStart = Math.floor((Math.random() * this.spelargrupp.length));
 		this.rnStart = rnStart;
 		console.log(this.rnStart);
-	}else if(this.rnStart >= this.spelargrupp.length - 1){
+	}else if(this.rnStart < this.spelargrupp.length-1){
 		this.rnStart = this.rnStart + 1;
 	}else{
 		this.rnStart = 0;
 	}
-	console.log(this.spelargrupp[rnStart]);
-	return this.spelargrupp[rnStart];
+	console.log(this.spelargrupp[this.rnStart]);
+	return this.spelargrupp[this.rnStart];
 }
 
 ///Skapa spelare i spelgrupp - funktion (emoj/avatar och nickname ska in), samt lägg till denna spelare i spelargruppen

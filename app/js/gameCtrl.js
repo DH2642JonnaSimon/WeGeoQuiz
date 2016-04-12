@@ -9,18 +9,17 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
   $scope.answer = "";
   $scope.questionquestionFromModel = "";
   $scope.show = true;
+  $scope.amountOfQuestions = Game.amountOfQuestions;
+  $scope.questionNumber = 0;
 
 
   $scope.init = function(){
     Game.initL(callbackQuestionsLoaded, Game);
-    $scope.player(); 
   }
 
   $scope.player = function(){
     console.log("inne i play :)");
     $scope.playerToStart = Game.whoStarts();
-
-    return $scope.playerToStart;
   }
 
   $scope.onShow = function() { 
@@ -77,6 +76,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
         $location.path('/result');
       }else{
         //spelet är inte slut, ladda ny fråga och presentera den
+        $scope.questionNumber += 1;
         Game.generateNewQuestion();
         $scope.presentNewQuestion();
       }
