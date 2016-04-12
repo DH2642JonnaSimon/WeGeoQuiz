@@ -95,7 +95,6 @@ function stop(){
         $scope.presentNewQuestion();
       }
       stop();
-      Game.whoStarts();
     }else{
       alert("You need to select a valid answer by selecting one of the three options.");
     }

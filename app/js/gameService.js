@@ -60,15 +60,19 @@ this.substractPoints = function(num){
 
 ///Funktion som slumpar fam vem som börjar
 this.whoStarts = function(){
+	console.log("///////////////////////////////////////////////////////////////////////");
 	if (this.rnStart == 1337){//om den är lika med en tom sträng gör följande
-		var rnStart = Math.floor((Math.random() * this.spelargrupp.length + 1));
+		var rnStart = Math.floor((Math.random() * this.spelargrupp.length));
 		this.rnStart = rnStart;
+		console.log("SLUMPAR RANDOM TAL DEN SKA VARA HÄR 1 GÅNG"  +  this.rnStart);
 	}else if (this.rnStart < this.spelargrupp.length - 1){
+		console.log("ADDERAR 1 till rnStart"  +  this.rnStart);
 		this.rnStart = this.rnStart + 1;
 	}else{
+		console.log("NoLLSTALLER rnStart " +  this.rnStart);
 		this.rnStart = 0;
 	}
-	console.log(this.spelargrupp[this.rnStart]);
+	console.log("Slutliga rnStart = " + this.rnStart);
 	return this.spelargrupp[this.rnStart];
 }
 
