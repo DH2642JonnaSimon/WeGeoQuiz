@@ -31,26 +31,17 @@ this.currentPlayer;
 
 this.timePoint = function(time,player){
 	console.log("inne i timePoints");
+	var timePoints = 0;
 	if(time<= 45 && time>=35){
-		console.log(this.timePoints);
-		this.timePoints = 3;
-		console.log(this.timePoints);
+		timePoints = 3;
 	}else if(time<= 34 && time>=25){
-		this.timePoints = 2;
-		console.log(this.timePoints);
+		timePoints = 2;
 	}else if(time<= 24){
-		this.timePoints = 1;
-		console.log(this.timePoints);
+		timePoints = 1;
 	}
 	this.curPlayer = this.spelargrupp[this.rnStart];
-	console.log(this.rnStart);
-}
-
-function addPoints() {
-	//för de objektet i spelargrupplistan som har num rnStart
-	//där ska man addera timepoints till poängobjektet
-//	this.numberOfGuests = num;
-	console.log("inne i addPoints");
+	this.curPlayer[2] += timePoints; 
+	console.log(this.curPlayer);
 }
 
 
