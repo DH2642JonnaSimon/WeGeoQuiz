@@ -23,6 +23,7 @@ this.rnStart = 1337;
 this.amountOfQuestions = 6;
 this.counter = 0;
 this.timePoints=0;
+this.currentPlayer;
 
 this.timePoints = function(time,player){
 	if(time<= 45 && time>=35){
@@ -73,7 +74,12 @@ this.whoStarts = function(){
 		this.rnStart = 0;
 	}
 	console.log("Slutliga rnStart = " + this.rnStart);
+	this.currentPlayer = this.spelargrupp[this.rnStart];
 	return this.spelargrupp[this.rnStart];
+}
+
+this.getCurrentPlayer = function(){
+	return this.currentPlayer;
 }
 
 ///Skapa spelare i spelgrupp - funktion (emoj/avatar och nickname ska in), samt lägg till denna spelare i spelargruppen

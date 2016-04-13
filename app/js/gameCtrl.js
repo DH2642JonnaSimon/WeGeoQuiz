@@ -20,7 +20,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
 
   $scope.player = function(){
     console.log("inne i play :)");
-    $scope.playerToStart = Game.whoStarts();
+    $scope.playerToStart = Game.getCurrentPlayer();
   }
 
   $scope.onShow = function() { 
@@ -39,7 +39,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
           $('[name="answer' + $scope.finalAnswer + '"]').css("background-color", "Green");
           console.log('[name="answer' + $scope.finalAnswer + '"]');
           console.log($([name="answer' + $scope.finalAnswer + '"]));
-        }     
+        } 
         $scope.onNewquestion();
       },1000);
    }
@@ -58,9 +58,11 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
 
     $scope.onNewquestion = function() { 
         $timeout(function() {
-        	$('#answer').html();  
-          	$('#answer').css("background-color", "yellow");   
-          	showMe();
+        	$('#answer').html();
+          Game.whoStarts();
+          $scope.switchQuestion = true;
+          $scope.nextPlayer = Game.getCurrentPlayer();
+          $scope.playerToStart = "";      
         },800);
      }
 
@@ -97,8 +99,7 @@ function stop(){
       }else{
         //spelet är inte slut, ladda ny fråga och presentera den
         $scope.questionNumber += 1;
-        Game.generateNewQuestion();
-        $scope.presentNewQuestion(false);
+        
       }
       stop();
     }else{
@@ -117,7 +118,7 @@ function stop(){
     $scope.answerC = Game.question.C;
     $scope.answerD = Game.question.D;
 
-    $scope.player();
+    
 
     if(!$scope.options){
       $scope.options = [
@@ -133,6 +134,16 @@ function stop(){
   function callbackQuestionsLoaded(Game){
     var firstTime = true;
     $scope.presentNewQuestion(firstTime);
+  }
+
+  $scope.nextQuestion = function (){
+    $scope.player();
+    Game.generateNewQuestion();
+    $scope.presentNewQuestion(false);
+    showMe();
+    $scope.playerToStart = Game.getCurrentPlayer(); 
+    $scope.switchQuestion = false; 
+    $scope.nextPlayer = false;     
   }
 
   /*$scope.draggedAnswer = {title: 'Drag and Drop with custom confirmation'};

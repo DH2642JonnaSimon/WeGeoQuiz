@@ -16,16 +16,7 @@
     </div>
 
 
-	<form id="formAnswers" action="">
-		<ol>
-			<li id="answerOption1"><input type="radio" name="answer" ng-model="answer" value="A"> {{answerA}}<br></li>
-			<li id="answerOption2"><input type="radio" name="answer" ng-model="answer" value="B"> {{answerB}}<br></li>
-			<li id="answerOption3"><input type="radio" name="answer" ng-model="answer" value="C"> {{answerC}}<br></li>
-			<li id="answerOption4"><input type="radio" name="answer" ng-model="answer" value="D"> {{answerD}}</li>
-		</ol>
-	</form>
-	<p>You answered {{answer}}</p>
-	<button ng-click="answered(answer)">Answer</button>
+	<p ng-show="nextPlayer">Utmnare redo? {{nextPlayer}}</p><button ng-click="nextQuestion()" ng-show=switchQuestion>Next</button>
 	<h3>Your final answer: {{finalAnswer}}</h3>
 	<!--<input class="form-control" id="guestsInput" type="number" name="Guests" min="1" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)">
 	<a href="#/overview" id="confirmDinner" pe="button" class="btn btn-warning btn-responsive" role="button">Confirm Dinner</a>-->
