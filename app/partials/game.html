@@ -9,23 +9,14 @@
 	</div>
 
 	<h3>The Game is Live</h3>
-	<p id="question">{{questionFromModel}}<p>
+	<p id="question" class="slide-right" ng-show="questionFromModel" ng-hide="!questionFromModel">{{questionFromModel}}<p>
 
       <div class="row">
         <div class="col-sm-4"><uib-progressbar class="progress-striped active" max=amountOfQuestions value=questionNumber type="success"><i> {{questionNumber}} / {{amountOfQuestions}}</i></uib-progressbar></div>
     </div>
 
 
-	<form id="formAnswers" action="">
-		<ol>
-			<li id="answerOption1"><input type="radio" name="answer" ng-model="answer" value="A"> {{answerA}}<br></li>
-			<li id="answerOption2"><input type="radio" name="answer" ng-model="answer" value="B"> {{answerB}}<br></li>
-			<li id="answerOption3"><input type="radio" name="answer" ng-model="answer" value="C"> {{answerC}}<br></li>
-			<li id="answerOption4"><input type="radio" name="answer" ng-model="answer" value="D"> {{answerD}}</li>
-		</ol>
-	</form>
-	<p>You answered {{answer}}</p>
-	<button ng-click="answered(answer)">Answer</button>
+	<p ng-show="nextPlayer">Utmnare redo? {{nextPlayer}}</p><button ng-click="nextQuestion()" ng-show=switchQuestion>Next</button>
 	<h3>Your final answer: {{finalAnswer}}</h3>
 	<!--<input class="form-control" id="guestsInput" type="number" name="Guests" min="1" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)">
 	<a href="#/overview" id="confirmDinner" pe="button" class="btn btn-warning btn-responsive" role="button">Confirm Dinner</a>-->
@@ -77,7 +68,7 @@ TEST13
       <div class="col-md-12" style="text-align: center;width: 100%;">
         <div class="container form-inline" style="text-align: left;">
           <div class="btn btn-droppable bouncy-scale-in answer" style="width: 20%;margin-left: 4%;" ng-repeat="item in options" data-drop="true" ng-model='options' jqyoui-droppable="{index: {{$index}}}">
-            <div class="btn btn-info btn-draggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="options" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.title">{{item.title}} - {{item.answer}}</div>
+            <div name="answer{{item.title}}" class="btn btn-info btn-draggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="options" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.title">{{item.title}} - {{item.answer}}</div>
           </div>
         </div>
       </div>

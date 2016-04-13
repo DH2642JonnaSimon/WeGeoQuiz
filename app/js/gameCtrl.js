@@ -20,12 +20,13 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
 
   $scope.player = function(){
     console.log("inne i play :)");
-    $scope.playerToStart = Game.whoStarts();
+    $scope.playerToStart = Game.getCurrentPlayer();
   }
 
   $scope.onShow = function() { 
-    $scope.options = [];
       $timeout(function() {
+        $scope.questionFromModel ="";
+        $scope.options = [];
         if($scope.finalAnswer == true){
           $('#answer').css("background-color", "Green");
           $('#answer').css("color", "Black");
@@ -34,12 +35,18 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
         	$('#answer').html("Wrong"); 
         	$('#answer').css("background-color", "Red");
         	$('#answer').css("color", "Black");
-        }     
+          console.log($scope.finalAnswer);
+          $('[name="answer' + $scope.finalAnswer + '"]').css("background-color", "Green");
+          console.log('[name="answer' + $scope.finalAnswer + '"]');
+          console.log($([name="answer' + $scope.finalAnswer + '"]));
+        } 
         $scope.onNewquestion();
       },1000);
    }
 
    function showMe() {
+      $scope.questionFromModel = Game.question.question;
+      console.log($scope.questionFromModel);
       $scope.options = [
         { 'title': 'A', 'answer': $scope.answerA, 'drag': true },
         { 'title': 'B', 'answer': $scope.answerB, 'drag': true },
@@ -51,9 +58,11 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
 
     $scope.onNewquestion = function() { 
         $timeout(function() {
-        	$('#answer').html();  
-          	$('#answer').css("background-color", "yellow");   
-          	showMe();
+        	$('#answer').html();
+          Game.whoStarts();
+          $scope.switchQuestion = true;
+          $scope.nextPlayer = Game.getCurrentPlayer();
+          $scope.playerToStart = "";      
         },800);
      }
 
@@ -74,7 +83,6 @@ function stop(){
 
 
   $scope.answered = function(answer){
-
     $scope.onShow();
     if(answer == "A" || answer == "B" || answer == "C" || answer == "D"){
       //kolla om svaret är korrekt
@@ -82,7 +90,7 @@ function stop(){
       if(correctAnswer == true){
         $scope.finalAnswer = true;
       }else{
-        $scope.finalAnswer = false; 
+        $scope.finalAnswer = correctAnswer; 
       }
       //kolla om spelet är slut annars ställ en ny fråga
       if(Game.isGameOver()){
@@ -91,8 +99,7 @@ function stop(){
       }else{
         //spelet är inte slut, ladda ny fråga och presentera den
         $scope.questionNumber += 1;
-        Game.generateNewQuestion();
-        $scope.presentNewQuestion();
+        
       }
       stop();
     }else{
@@ -101,14 +108,17 @@ function stop(){
     
   }
 
-  $scope.presentNewQuestion = function(){
-    $scope.questionFromModel = Game.question.question;
+  $scope.presentNewQuestion = function(firstTime){
+    console.log($scope.questionFromModel+"//////////////");
+    if(firstTime){
+      $scope.questionFromModel = Game.question.question;
+    }
     $scope.answerA = Game.question.A;
     $scope.answerB = Game.question.B;
     $scope.answerC = Game.question.C;
     $scope.answerD = Game.question.D;
 
-    $scope.player();
+    
 
     if(!$scope.options){
       $scope.options = [
@@ -122,7 +132,18 @@ function stop(){
   }
 
   function callbackQuestionsLoaded(Game){
-    $scope.presentNewQuestion();
+    var firstTime = true;
+    $scope.presentNewQuestion(firstTime);
+  }
+
+  $scope.nextQuestion = function (){
+    $scope.player();
+    Game.generateNewQuestion();
+    $scope.presentNewQuestion(false);
+    showMe();
+    $scope.playerToStart = Game.getCurrentPlayer(); 
+    $scope.switchQuestion = false; 
+    $scope.nextPlayer = false;     
   }
 
   /*$scope.draggedAnswer = {title: 'Drag and Drop with custom confirmation'};
