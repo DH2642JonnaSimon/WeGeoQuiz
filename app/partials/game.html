@@ -16,7 +16,7 @@
     </div>
 
 
-	<p ng-show="nextPlayer">Utmnare redo? {{nextPlayer}}</p><button ng-click="nextQuestion()" ng-show=switchQuestion>Next</button>
+	
 	<h3>Your final answer: {{finalAnswer}}</h3>
 	<!--<input class="form-control" id="guestsInput" type="number" name="Guests" min="1" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)">
 	<a href="#/overview" id="confirmDinner" pe="button" class="btn btn-warning btn-responsive" role="button">Confirm Dinner</a>-->
@@ -52,6 +52,8 @@ TEST13
           <div class="row-fluid" style="width: 100%;">
             <ul class="thumbnails" style="width: 100%;list-style-type:none;padding: 0px;">
               <li style="border: 5px solid red;text-align: center;width: 100%;" class="span3" style='margin-left:10px;text-align: center;' ng-repeat="image in images">
+                <div id="coveringDiv" ng-show=switchQuestion class="slide-down" style="width: 100%;z-index: 2;background-color: grey;height: 200px !important; position:absolute;"><p ng-show="nextPlayer">Utmnare redo? {{nextPlayer}}</p><button ng-click="nextQuestion()" ng-show=switchQuestion>Next</button></div>
+
 
 
                     <p style="text-align: center;"><h1>Final answer</h1><div class="btn btn-default btn-droppable slide-down" style="height:200px;width: 200px;" data-drop="true" ng-model='draggedAnswer' jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback',onOver: 'overCallback', onOut: 'outCallback'}">
