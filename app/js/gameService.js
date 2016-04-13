@@ -19,26 +19,34 @@ this.question = '';
 //var topplista = [] #NERPRIORITERA
 this.spelargrupp = [];
 //var svarstid = 0 
-this.rnStart = 1337;
+this.rnStart = "";
 this.amountOfQuestions = 6;
 this.counter = 0;
-this.timePoints=0;
+this.timePoints = 0;
+this.currentPlayer = "";
 
-this.timePoints = function(time,player){
+this.timePoint = function(time,player){
+	console.log("inne i timePoints");
 	if(time<= 45 && time>=35){
+		console.log(this.timePoints);
 		this.timePoints = 3;
-	}if(time<= 34 && time>=25){
+		console.log(this.timePoints);
+	}else if(time<= 34 && time>=25){
 		this.timePoints = 2;
-	}if(time<= 24 && time>=0){
+		console.log(this.timePoints);
+	}else if(time<= 24){
 		this.timePoints = 1;
+		console.log(this.timePoints);
 	}
-	addPoints();
+	this.currentPlayer = this.spelargrupp[this.rnStart];
+	console.log(this.rnStart);
 }
 
 function addPoints() {
 	//för de objektet i spelargrupplistan som har num rnStart
 	//där ska man addera timepoints till poängobjektet
 //	this.numberOfGuests = num;
+	console.log("inne i addPoints");
 }
 
 
@@ -60,19 +68,15 @@ this.substractPoints = function(num){
 
 ///Funktion som slumpar fam vem som börjar
 this.whoStarts = function(){
-	console.log("///////////////////////////////////////////////////////////////////////");
-	if (this.rnStart == 1337){//om den är lika med en tom sträng gör följande
+	if(!this.rnStart){//om den är lika med en tom sträng gör följande
 		var rnStart = Math.floor((Math.random() * this.spelargrupp.length));
 		this.rnStart = rnStart;
-		console.log("SLUMPAR RANDOM TAL DEN SKA VARA HÄR 1 GÅNG"  +  this.rnStart);
 	}else if (this.rnStart < this.spelargrupp.length - 1){
-		console.log("ADDERAR 1 till rnStart"  +  this.rnStart);
 		this.rnStart = this.rnStart + 1;
 	}else{
-		console.log("NoLLSTALLER rnStart " +  this.rnStart);
 		this.rnStart = 0;
 	}
-	console.log("Slutliga rnStart = " + this.rnStart);
+	console.log(this.spelargrupp[this.rnStart]);
 	return this.spelargrupp[this.rnStart];
 }
 
