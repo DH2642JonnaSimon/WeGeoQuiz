@@ -1,7 +1,7 @@
 
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
-dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routeParams, $location, Game, $timeout) {
+dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routeParams, $location, Game, $timeout, $interval) {
   // TODO in Lab 5: you need to get the dish according to the routing parameter
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
@@ -66,21 +66,36 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
         },800);
      }
 
-$scope.counter = 45;
+  $scope.counter = 45;
 
-    $scope.onTimeout = function(){
+  
+
+$scope.onTimeout= function(){
+    console.log($scope.counter);
+      $scope.timer = $interval(function(){
+        if ($scope.counter==0){
+          $scope.stopNoPoints();
+        }else{
+        console.log("Är detta en sek?");
         $scope.counter--;
-        mytimeout = $timeout($scope.onTimeout,1000);
+        }
+      },1000); 
     }
-    var mytimeout = $timeout($scope.onTimeout,1000);
-    
-function stop(){
-        var time = $scope.counter;
-        var player = $scope.playerToStart[0];
-        Game.timePoints(time,player);
-        $timeout.cancel(mytimeout);
+      
+  $scope.stopAddPoints = function(){
+    console.log("stop, go to add points");
+    var time = $scope.counter;
+    var player = $scope.playerToStart[0];
+    Game.timePoint(time,player);
+    $interval.cancel($scope.timer);
+    $scope.counter = 45;
     }
 
+  $scope.stopNoPoints = function(){
+    $interval.cancel($scope.timer);
+    $scope.counter = 45;
+    console.log("just stop");
+  }
 
   $scope.answered = function(answer){
     $scope.onShow();
@@ -89,8 +104,10 @@ function stop(){
       var correctAnswer = Game.correctAnswer(answer);
       if(correctAnswer == true){
         $scope.finalAnswer = true;
+        $scope.stopAddPoints();
       }else{
-        $scope.finalAnswer = correctAnswer; 
+        $scope.finalAnswer = correctAnswer;
+        $scope.stopNoPoints();    
       }
       //kolla om spelet är slut annars ställ en ny fråga
       if(Game.isGameOver()){
@@ -99,9 +116,7 @@ function stop(){
       }else{
         //spelet är inte slut, ladda ny fråga och presentera den
         $scope.questionNumber += 1;
-        
       }
-      stop();
     }else{
       alert("You need to select a valid answer by selecting one of the three options.");
     }
@@ -109,7 +124,6 @@ function stop(){
   }
 
   $scope.presentNewQuestion = function(firstTime){
-    console.log($scope.questionFromModel+"//////////////");
     if(firstTime){
       $scope.questionFromModel = Game.question.question;
     }
@@ -117,8 +131,6 @@ function stop(){
     $scope.answerB = Game.question.B;
     $scope.answerC = Game.question.C;
     $scope.answerD = Game.question.D;
-
-    
 
     if(!$scope.options){
       $scope.options = [
@@ -128,6 +140,7 @@ function stop(){
           { 'title': 'D', 'answer': $scope.answerD, 'drag': true }
         ];
     }
+    $scope.onTimeout();
 
   }
 

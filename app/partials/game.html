@@ -1,27 +1,34 @@
 
 <div id="gameView" class="col-md-12" ng-controller="GameCtrl" ng-init="init()">
 
-	<div class="jumbotron">
-		<div class="row">
-			<div class="col-xs-9 col-sm-9 col-md-9">{{counter}}</div>
-			<div class="col-xs-3 col-sm-3 col-md-3">{{playerToStart}}</div>
-		</div>
-	</div>
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-xs-9 col-sm-9 col-md-9">{{counter}}</div>
+      <div class="col-xs-3 col-sm-3 col-md-3">{{playerToStart}}</div>
+    </div>
+  </div>
 
-	<h3>The Game is Live</h3>
-	<p id="question" class="slide-right" ng-show="questionFromModel" ng-hide="!questionFromModel">{{questionFromModel}}<p>
+  <h3>The Game is Live</h3>
+  <p id="question" class="slide-right" ng-show="questionFromModel" ng-hide="!questionFromModel">{{questionFromModel}}<p>
 
       <div class="row">
         <div class="col-sm-4"><uib-progressbar class="progress-striped active" max=amountOfQuestions value=questionNumber type="success"><i> {{questionNumber}} / {{amountOfQuestions}}</i></uib-progressbar></div>
     </div>
 
 
+<<<<<<< HEAD
 	
 	<h3>Your final answer: {{finalAnswer}}</h3>
 	<!--<input class="form-control" id="guestsInput" type="number" name="Guests" min="1" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)">
 	<a href="#/overview" id="confirmDinner" pe="button" class="btn btn-warning btn-responsive" role="button">Confirm Dinner</a>-->
+=======
+  
+  <h3>Your final answer: {{finalAnswer}}</h3>
+  <!--<input class="form-control" id="guestsInput" type="number" name="Guests" min="1" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)">
+  <a href="#/overview" id="confirmDinner" pe="button" class="btn btn-warning btn-responsive" role="button">Confirm Dinner</a>-->
+>>>>>>> master
 
-	<!--<span data-drag="true" jqyoui-draggable>So you think you can drag</span>-->
+  <!--<span data-drag="true" jqyoui-draggable>So you think you can drag</span>-->
  <!--<div class="row-fluid">
         <div class="span6">
           <div class="btn btn-primary bouncy-scale-in answer" ng-show=show id="A" data-drag="true" ng-model="answer" jqyoui-draggable="{animate: true}" data-jqyoui-options="{revert: 'invalid'}" ng-hide="!answerA" value="A">{{answerA}}</div>
@@ -46,7 +53,7 @@
 TEST13
 
 
-	<div class="col-md-12" style="text-align: center;width: 100%;">
+  <div class="col-md-12" style="text-align: center;width: 100%;">
       <div class='contentWrapper ng-cloak' style="width: 100%;">
         <div class='content' style="width: 100%;">
           <div class="row-fluid" style="width: 100%;">
