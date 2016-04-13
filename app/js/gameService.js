@@ -19,11 +19,15 @@ this.question = '';
 //var topplista = [] #NERPRIORITERA
 this.spelargrupp = [];
 //var svarstid = 0 
-this.rnStart = "";
+this.rnStart = 1337;
 this.amountOfQuestions = 6;
 this.counter = 0;
+
 this.timePoints = 0;
-this.currentPlayer = "";
+this.curPlayer = "";
+
+this.currentPlayer;
+
 
 this.timePoint = function(time,player){
 	console.log("inne i timePoints");
@@ -38,7 +42,7 @@ this.timePoint = function(time,player){
 		this.timePoints = 1;
 		console.log(this.timePoints);
 	}
-	this.currentPlayer = this.spelargrupp[this.rnStart];
+	this.curPlayer = this.spelargrupp[this.rnStart];
 	console.log(this.rnStart);
 }
 
@@ -68,16 +72,22 @@ this.substractPoints = function(num){
 
 ///Funktion som slumpar fam vem som börjar
 this.whoStarts = function(){
-	if(!this.rnStart){//om den är lika med en tom sträng gör följande
+	if (this.rnStart == 1337){//om den är lika med en tom sträng gör följande
 		var rnStart = Math.floor((Math.random() * this.spelargrupp.length));
 		this.rnStart = rnStart;
+		
 	}else if (this.rnStart < this.spelargrupp.length - 1){
 		this.rnStart = this.rnStart + 1;
 	}else{
 		this.rnStart = 0;
 	}
-	console.log(this.spelargrupp[this.rnStart]);
+	this.currentPlayer = this.spelargrupp[this.rnStart];
 	return this.spelargrupp[this.rnStart];
+}
+
+
+this.getCurrentPlayer = function(){
+	return this.currentPlayer;
 }
 
 ///Skapa spelare i spelgrupp - funktion (emoj/avatar och nickname ska in), samt lägg till denna spelare i spelargruppen
@@ -130,7 +140,7 @@ this.correctAnswer = function(answer){
 	if(this.question.answer == answer){
 		return true;
 	}else{
-		return false;
+		return this.question.answer;
 	}
 }
 
