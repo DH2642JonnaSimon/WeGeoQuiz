@@ -12,6 +12,9 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
   $scope.amountOfQuestions = Game.amountOfQuestions;
   $scope.questionNumber = 0;
   $scope.playerToStart = "";
+  Game.weather.get({q:"Stockholm,uk"}, function(data){
+    console.log(data);
+  });
 
   $scope.init = function(){
     console.log("inne i init");

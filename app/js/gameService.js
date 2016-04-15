@@ -2,8 +2,9 @@
 dinnerPlannerApp.factory('Game',function ($resource, $http) {
 
 
-this.QuizSearch = $resource('Adress till APIT motherf');
 
+
+this.weather = $resource("http://api.openweathermap.org/data/2.5/weather",{callback:"test",appid:"ec6ab1cca646a53d843540957780ac3e"});
 //all questions
 this.questions = '';
 
