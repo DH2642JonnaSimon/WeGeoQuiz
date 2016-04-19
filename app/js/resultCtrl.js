@@ -1,49 +1,21 @@
-// Search controller that we use whenever we have a search inputs
-// and search results
-dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
+dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$cookieStore) {
 
-//$scope.dishes = Dinner.DishSearch.get({title_kw:query})
-  // TODO in Lab 5: you will need to implement a method that searchers for dishes
-  // including the case while the search is still running.
- $scope.search = function(query) {
-   $scope.status = "Searching...";
-   Dinner.DishSearch.get({title_kw:query},function(data){
-     $scope.dishes=data.Results;
-     $scope.status = "Showing " + data.Results.length + " results";
-   },function(data){
-     $scope.status = "There was an error";
-   });
- }
+  $scope.result=[];
 
+  $scope.init = function(){
+    Game.getResult();
+    $scope.result = Game.spelargrupp;
+    console.log($scope.result);
+  }
 
-  $scope.search = function(query) {
-   $scope.status = "Searching...";
-   if(query == ""){
-    return;
-   }
-   Dinner.DishSearch.get({title_kw:query},function(data){
-     $scope.dishes=data.Results;
-     $scope.status = "Showing " + data.Results.length + " results";
-   },function(data){
-     $scope.status = "There was an error";
-   });
- }
-
-   $scope.selectSearch = function(query2, query) {
-    Dinner.DishSearch.get({include_primarycat:query2},function(data){
-     $scope.dishes=data.Results;
-     $scope.status = "Showing " + " results";
-     console.log(data.Results);
-    $("#viewDishes").css("height", $("#selectDishView").height()-$("#selectDishBackground").height() - 10);
-  
-    },function(data){
-     $scope.status = "There was an error";
-   });
- }
-
-  $scope.getNumberOfGuests = function() {
-      console.log("HEHEHEHEH HEHEHEHEH HEHEHEH");
-      return Dinner.getNumberOfGuests();
-    }
+  $scope.removeCookies = function(){
+  	$cookieStore.remove('askedQuestions');
+  	$cookieStore.remove('numOfQ');
+  	$cookieStore.remove('rnList');
+  	$cookieStore.remove('spelargrupp');
+  	$cookieStore.remove('time');
+  	$cookieStore.remove('whoToPlay');
+  }
+  $scope.init();
 
 });

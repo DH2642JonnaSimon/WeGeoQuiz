@@ -7,6 +7,7 @@ $scope.numOfPlayers = 1;
 $scope.setNumOfPlayers = function(number){
     Game.setNumOfPlayers(number);
     $scope.numOfPlayers = number;
+    //$cookieStore.put('numPlayers', number);
     //$cookieStore.put('guests', number);
   }
 

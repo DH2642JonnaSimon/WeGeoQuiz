@@ -1,7 +1,7 @@
 
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
-dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routeParams, $location, Game, $timeout, $interval) {
+dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $location, Game, $timeout, $interval, $cookieStore) {
   // TODO in Lab 5: you need to get the dish according to the routing parameter
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
@@ -12,9 +12,9 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
   $scope.amountOfQuestions = Game.amountOfQuestions;
   $scope.questionNumber = 0;
   $scope.playerToStart = "";
-  Game.weather.get({q:"Stockholm,uk"}, function(data){
-    console.log(data);
-  });
+  // Game.weather.get({q:"Stockholm,uk"}, function(data){
+  //   console.log(data);
+  // });
 
   $scope.init = function(){
     console.log("inne i init");
@@ -22,11 +22,11 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
   }
 
   $scope.player = function(){
-    console.log("inne i play :)");
-    $scope.playerToStart = Game.getCurrentPlayer();
+    $scope.playerToStart = Game.currentPlayer;
   }
 
   $scope.onShow = function() { 
+    console.log("inne i onShow");
       $timeout(function() {
         $scope.questionFromModel ="";
         $scope.options = [];
@@ -43,13 +43,14 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
           console.log('[name="answer' + $scope.finalAnswer + '"]');
           console.log($([name="answer' + $scope.finalAnswer + '"]));
         } 
-        $scope.onNewquestion();
+        // $scope.onNewquestion();
       },1000);
    }
 
    function showMe() {
       $scope.questionFromModel = Game.question.question;
-      console.log($scope.questionFromModel);
+      console.log("Inne i showMe funktionen");
+
       $scope.options = [
         { 'title': 'A', 'answer': $scope.answerA, 'drag': true },
         { 'title': 'B', 'answer': $scope.answerB, 'drag': true },
@@ -59,10 +60,12 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
       $scope.draggedAnswer = [];
     }
 
-    $scope.onNewquestion = function() { 
+    $scope.onNewquestion = function() {
+        console.log("onNewQ i ctlen");
         $timeout(function() {
         	$('#answer').html();
           Game.whoStarts();
+          $scope.playerToStart = Game.currentPlayer;
           $scope.switchQuestion = true;
           $scope.nextPlayer = Game.getCurrentPlayer();
           $scope.playerToStart = "";      
@@ -73,17 +76,27 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $cookieStore, $routePa
 
   
 
-$scope.onTimeout= function(){
-    console.log($scope.counter);
+$scope.onTimeout= function(){  
       $scope.timer = $interval(function(){
+        var time = Game.reloadedTime;
+        console.log(time);
+
         if ($scope.counter==0){
           $scope.stopNoPoints();
-        }else{
-        console.log("Är detta en sek?");
+        }
+        else if(time !== 0){
+          $scope.counter = time;
+          Game.reloadedTime = 0;
+          var time = 0;
+        }
+        else{
         $scope.counter--;
+        var counter = $scope.counter;
+        $cookieStore.put('time', counter);
         }
       },1000); 
     }
+
       
   $scope.stopAddPoints = function(){
     console.log("stop, go to add points");
@@ -91,13 +104,21 @@ $scope.onTimeout= function(){
     var player = $scope.playerToStart[0];
     Game.timePoint(time,player);
     $interval.cancel($scope.timer);
+    $scope.onNewquestion();
     $scope.counter = 45;
     }
 
   $scope.stopNoPoints = function(){
+    console.log("Nu ska jag inte ha hunnit svara ");
     $interval.cancel($scope.timer);
-    $scope.counter = 45;
-    console.log("just stop");
+    if($scope.counter==0){
+      Game.addToCounter();
+      $scope.counter = 45;
+      $scope.onNewquestion();
+    }else{
+      $scope.counter = 45;
+      $scope.onNewquestion();
+    }   
   }
 
   $scope.answered = function(answer){
@@ -128,7 +149,9 @@ $scope.onTimeout= function(){
 
   $scope.presentNewQuestion = function(firstTime){
     if(firstTime){
+      console.log("Inne i present new Q, firstTime, funktionen");
       $scope.questionFromModel = Game.question.question;
+      $scope.playerToStart = Game.currentPlayer;
     }
     $scope.answerA = Game.question.A;
     $scope.answerB = Game.question.B;
@@ -157,7 +180,7 @@ $scope.onTimeout= function(){
     Game.generateNewQuestion();
     $scope.presentNewQuestion(false);
     showMe();
-    $scope.playerToStart = Game.getCurrentPlayer(); 
+    $scope.playerToStart = Game.currentPlayer; 
     $scope.switchQuestion = false; 
     $scope.nextPlayer = false;     
   }
@@ -208,5 +231,6 @@ $scope.onTimeout= function(){
     ui.draggable.css("background-color", "Red");
     
   };
+
 
 });

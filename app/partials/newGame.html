@@ -1,11 +1,12 @@
 <div id="dishPreview" class="col-xs-12 col-sm-12 col-md-12 pre-scrollable" style="background-color: White;" ng-controller="NewGameCtrl">
  {{ getNumOfPlayers() }}
+ {{ nickName }}
 	<div ng-repeat="i in getNumOfPlayers() track by $index">
 		<div class="row">
 			<form name="PlayerForm" ng-submit="submit(nickName, avatar)" role="form">
 			      <label for="usr">Namn:</label>
 			      <!-- ng-model="feedback.text" -->
-			      <input type="text" name="nickName" ng-model="nickName" class="form-control" placeholder="Your_Nickname" ng-pattern="feedback.word" required ng-trim="false" id="usr">
+			      <input type="text" name="nickName" ng-model="nickName" class="form-control" placeholder="Your_Username" ng-pattern="feedback.word" required ng-trim="false" id="usr">
 
 			    <div role="alert"><br>
 				    <span class="error" ng-show="PlayerForm.input.$error.required">
