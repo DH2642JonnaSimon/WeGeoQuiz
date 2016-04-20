@@ -20,7 +20,8 @@
 		<a href="#/newGame" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button">Klar
 		</a>
 	</div>
-<script>
+
+<!--<script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '1042588039140495',
@@ -117,7 +118,7 @@
         'Thanks for logging in, ' + response.name + '!';
     });
   }
-</script>
+</script>-->
 
 <!--
   Below we include the Login Button social plugin. This button uses
@@ -128,8 +129,8 @@
 <!--<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>-->
 
-<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true" onlogin="checkLoginState();"></div>
-
+<fb:login-button show-faces="false" max-rows="1" 
+  size="large" data-auto-logout-link="true"></fb:login-button>
 test
 
 <div id="status">

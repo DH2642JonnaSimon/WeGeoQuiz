@@ -28,9 +28,14 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
     <script src="js/app.js"></script>
     <script src="js/HomeCtrl.js"></script>
     <script src="js/gameService.js"></script>
+    <script src="js/authService.js"></script>
     <script src="js/newGameCtrl.js"></script>
     <script src="js/gameCtrl.js"></script>
     <script src="js/resultCtrl.js"></script>
+    <script src="js/loginCtrl.js"></script>
+    <script src="js/mainCtrl.js"></script>
+
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
 
      <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -65,6 +70,7 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
         <div ng-view class="row row-eq-height" id="viewHolder">
         </div>
     </div>
+    <div id="fb-root"></div>
 
   </body>
 </html>
