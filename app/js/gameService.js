@@ -20,7 +20,7 @@ this.question = '';
 this.spelargrupp = [];
 //var svarstid = 0 
 this.rnStart = 1337;
-this.amountOfQuestions = 6;
+this.amountOfQuestions = 3;
 this.counter = 0;
 
 this.timePoints = 0;

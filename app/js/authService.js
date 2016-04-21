@@ -1,6 +1,8 @@
 dinnerPlannerApp.factory('Auth', function($rootScope){
 var user;
 
+this.multiplayer = false;
+
 setUser = function(aUser){
 	user = aUser;
 }

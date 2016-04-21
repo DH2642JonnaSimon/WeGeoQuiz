@@ -1,49 +1,57 @@
 // Search controller that we use whenever we have a search inputs
 // and search results
-dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
-
-//$scope.dishes = Dinner.DishSearch.get({title_kw:query})
-  // TODO in Lab 5: you will need to implement a method that searchers for dishes
-  // including the case while the search is still running.
- $scope.search = function(query) {
-   $scope.status = "Searching...";
-   Dinner.DishSearch.get({title_kw:query},function(data){
-     $scope.dishes=data.Results;
-     $scope.status = "Showing " + data.Results.length + " results";
-   },function(data){
-     $scope.status = "There was an error";
-   });
- }
-
-
-  $scope.search = function(query) {
-   $scope.status = "Searching...";
-   if(query == ""){
-    return;
-   }
-   Dinner.DishSearch.get({title_kw:query},function(data){
-     $scope.dishes=data.Results;
-     $scope.status = "Showing " + data.Results.length + " results";
-   },function(data){
-     $scope.status = "There was an error";
-   });
- }
-
-   $scope.selectSearch = function(query2, query) {
-    Dinner.DishSearch.get({include_primarycat:query2},function(data){
-     $scope.dishes=data.Results;
-     $scope.status = "Showing " + " results";
-     console.log(data.Results);
-    $("#viewDishes").css("height", $("#selectDishView").height()-$("#selectDishBackground").height() - 10);
+dinnerPlannerApp.controller('ResultCtrl', function ($scope, Game, $http, Auth) {
   
-    },function(data){
-     $scope.status = "There was an error";
-   });
- }
+  
+  //postrequest för att lägga in i databasen
+  SendData = function (nickname, score) {
 
-  $scope.getNumberOfGuests = function() {
-      console.log("HEHEHEHEH HEHEHEHEH HEHEHEH");
-      return Dinner.getNumberOfGuests();
+            
+           // use $.param jQuery function to serialize data from JSON 
+            var data = $.param({
+                nickname: nickname,
+                score: score
+            });
+        
+            var config = {
+                headers : {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            }
+
+            $http.post('http://simonfra.se/WeGeoQuiz/insert.php', data, config)
+            .success(function (data, status, headers, config) {
+               $http.get("http://simonfra.se/WeGeoQuiz/topplist.php")
+    .then(function (response) {
+       console.log(response.data.rss.channels[0].items);
+      $scope.toplist = response.data.rss.channels[0].items; 
+            
+      //console.log(response.data.items[0]);
+
+      //console.log(response.data[0].items[0]);
+
+
+
+    });
+            })
+            .error(function (data, status, header, config) {
+              
+            });
+        };
+
+    insertData = function(){
+      for (var i = 0; i < Game.spelargrupp.length; ++i) {
+               SendData(Game.spelargrupp[i][0], Game.spelargrupp[i][2]);
+      }
     }
 
+    $scope.showToplist = true;
+
+    if(!Auth.multiplayer){
+      console.log("if");
+      insertData();
+    }else{
+      console.log("else");
+      $scope.showToplist = false;
+    }
 });

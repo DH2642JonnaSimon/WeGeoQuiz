@@ -29,7 +29,7 @@ dinnerPlannerApp.config(['$routeProvider',
 dinnerPlannerApp.run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
     $rootScope.$on('$routeChangeStart', function (event) {
         console.log();
-        if (!Auth.isLoggedIn() && $location.$$path != "/home") {
+        if (!Auth.isLoggedIn() && $location.$$path != "/home" && Auth.multiplayer == false) {
             console.log('DENY');
             event.preventDefault();
             $location.path('/home');
