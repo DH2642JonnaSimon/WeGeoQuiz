@@ -1,5 +1,6 @@
 
 
+<<<<<<< HEAD
 <div id="home">
   <h1>WeGeoQuiz</h1>
 
@@ -54,5 +55,31 @@
     <a ng-show="singleplayerMode || multiplayerMode" pe="button" class="btn btn-warning btn-responsive" ng-click="back()" class="btn btn-info" role="button">Back
     </a>
   </div>
+=======
+<!-- <iframe src="//giphy.com/embed/CMl1kDwGUdHsQ" width="2000" height="800" frameBorder="0" class="giphy-embed" style="pointer-events: none;" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/sun-CMl1kDwGUdHsQ">via GIPHY</a></p>  -->
+<!-- <iframe src="//giphy.com/embed/qWzB3ja63xk1a" width="480" height="202" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/robert-duvall-donald-pleasence-thx-1138-qWzB3ja63xk1a">via GIPHY</a></p> -->
+
+
+<div id="home" data-ng-controller="HomeCtrl" data-ng-init="activateAPI()" style="position:absolute; top:20px; left:20px; z-index:2;">
+
+	<div id="headerStart" class = "row">
+		<h2 id="headerWell">Antal spelare</h2>
+	</div>
+<!-- 
+	<div id="numOfPlayers" class = "row">
+		<span class="glyphicon glyphicon-circle-arrow-left" ng-click="removeNumOfPlayers()"></span>
+		<span class="glyphicon glyphicon-circle-arrow-right" ng-click="addNumOfPlayers()"></span>
+	</div> -->
+
+	<div id="numOfPlayersDiv" class = "row">
+		<input class="form-control" id="numOfPlayers" type="number" name="Players" min="1" ng-model="numOfPlayers" ng-change="setNumOfPlayers(numOfPlayers)">
+		Total number of guest: {{getNumOfPlayers()}}
+	</div>
+
+	<div id="divButtonInWell" class = "row" style="with:100%; text-align:center;">
+		<a href="#/newGame" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button">Klar
+		</a>
+	</div>
+>>>>>>> master
 </div>
 
