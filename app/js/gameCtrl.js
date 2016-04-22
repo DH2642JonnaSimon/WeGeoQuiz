@@ -176,6 +176,7 @@ $scope.onTimeout= function(){
   }
 
   $scope.nextQuestion = function (){
+    $('#answer').css("background-color", "Yellow");
     $scope.player();
     Game.generateNewQuestion();
     $scope.presentNewQuestion(false);
