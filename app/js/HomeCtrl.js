@@ -1,10 +1,5 @@
 
-<<<<<<< HEAD
-dinnerPlannerApp.controller('HomeCtrl', function ($scope, $cookieStore, $routeParams, Game, $http, Auth) {
-=======
-dinnerPlannerApp.controller('HomeCtrl', function ($scope, $cookieStore, $routeParams, Game, API) {
->>>>>>> master
-console.log("inne i homectrl")
+dinnerPlannerApp.controller('HomeCtrl', function ($scope, $cookieStore, $routeParams, Game, $http, Auth, API) {
 
 $scope.numOfPlayers = 1;
 
@@ -22,7 +17,7 @@ $scope.getNumOfPlayers = function() {
     return new Array(this.num); 
 }
 
-<<<<<<< HEAD
+
 $scope.multiplayerMode = false;
 $scope.singleplayerMode = false;
 
@@ -36,17 +31,14 @@ $scope.singleplayer = function(){
 }
 
 $scope.back = function(){
-    console.log("HEEJEJEJEJE");
     Auth.multiplayer = false;
     $scope.multiplayerMode = false;
     $scope.singleplayerMode = false;
-=======
+}
+
 $scope.activateAPI = function(){
 	API.initMap();
-	// Dinner.Dish.get({id:$routeParams.dishId},function(data){
-		
-	// });
->>>>>>> master
+
 }
 
 });

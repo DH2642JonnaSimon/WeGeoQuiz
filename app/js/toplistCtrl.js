@@ -2,7 +2,6 @@
 // and search results
 dinnerPlannerApp.controller('ToplistCtrl', function ($scope, Game, $http) {
   
-    console.log("FAKAKAKAKKAKAKAKAKA");
     //hämta ut topplistan
     $http.get("http://simonfra.se/WeGeoQuiz/topplist.php")
     .then(function (response) {

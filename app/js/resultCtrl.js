@@ -1,12 +1,22 @@
-<<<<<<< HEAD
-dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$cookieStore) {
+
+dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$cookieStore,Auth,$http) {
 
   $scope.result=[];
+  $scope.showToplist = true;
+
 
   $scope.init = function(){
     Game.getResult();
     $scope.result = Game.spelargrupp;
     console.log($scope.result);
+
+    if(!Auth.multiplayer){
+      console.log("if");
+      insertData();
+    }else{
+      console.log("else");
+      $scope.showToplist = false;
+    }
   }
 
   $scope.removeCookies = function(){
@@ -18,11 +28,8 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$co
   	$cookieStore.remove('whoToPlay');
   	$cookieStore.remove('numPlayers');
   }
-  $scope.init();
-=======
-// Search controller that we use whenever we have a search inputs
-// and search results
-dinnerPlannerApp.controller('ResultCtrl', function ($scope, Game, $http, Auth) {
+ 
+
   
   
   //postrequest för att lägga in i databasen
@@ -44,17 +51,13 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope, Game, $http, Auth) {
             $http.post('http://simonfra.se/WeGeoQuiz/insert.php', data, config)
             .success(function (data, status, headers, config) {
                $http.get("http://simonfra.se/WeGeoQuiz/topplist.php")
-    .then(function (response) {
-       console.log(response.data.rss.channels[0].items);
-      $scope.toplist = response.data.rss.channels[0].items; 
-            
-      //console.log(response.data.items[0]);
-
-      //console.log(response.data[0].items[0]);
+            .then(function (response) {
+            console.log(response.data.rss.channels[0].items);
+            $scope.toplist = response.data.rss.channels[0].items;
 
 
 
-    });
+              });
             })
             .error(function (data, status, header, config) {
               
@@ -66,15 +69,8 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope, Game, $http, Auth) {
                SendData(Game.spelargrupp[i][0], Game.spelargrupp[i][2]);
       }
     }
->>>>>>> Login_api_branch
 
-    $scope.showToplist = true;
+$scope.init();
 
-    if(!Auth.multiplayer){
-      console.log("if");
-      insertData();
-    }else{
-      console.log("else");
-      $scope.showToplist = false;
-    }
+    
 });

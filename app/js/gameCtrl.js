@@ -182,11 +182,7 @@ $scope.onTimeout= function(){
   }
 
   $scope.nextQuestion = function (){
-<<<<<<< HEAD
     $('#answer').css("background-color", "Yellow");
-=======
-    console.log("ON RELOAD");
->>>>>>> master
     $scope.player();
     Game.generateNewQuestion();
     $scope.presentNewQuestion(false);

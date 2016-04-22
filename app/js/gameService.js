@@ -2,97 +2,6 @@
 dinnerPlannerApp.factory('Game',function ($resource, $http, $cookieStore) {
 
 
-
-// this.weather = $resource("http://api.openweathermap.org/data/2.5/weather",{callback:"test",q:"Stockholm",appid:"ec6ab1cca646a53d843540957780ac3e"});
-// console.log(this.weather);
-//this.weather = $resource("http://api.openweathermap.org/data/2.5/weather",{callback:"test",appid:"ec6ab1cca646a53d843540957780ac3e"});
-// callbacks in apgee: api.openweathermap.org/data/2.5/weather?callback=test&q=Stockholm&appid=ec6ab1cca646a53d843540957780ac3e
-//all questions
-
-/////////////////////////// FLYTTA TILL NY MODELL /////////////////////////////
-
-
-
-
-
-
-// this.initMap = function() {
-// 	console.log("Inne i googleAPIt");
-//         // var map = new google.maps.Map(document.getElementById('map'), {
-//         //   center: {lat: -34.397, lng: 150.644},
-//         //   zoom: 6
-//         // });
-//         // var infoWindow = new google.maps.InfoWindow({map: map});
-
-//         // Try HTML5 geolocation.
-//     if (navigator.geolocation) {
-//     	console.log("Nu når vi geolocation");
-//           navigator.geolocation.getCurrentPosition(function(position) {
-//           	console.log("nu ska vi sätta vår nuvarande position");
-//             this.pos = {
-//               lat: position.coords.latitude,
-//               lng: position.coords.longitude
-//             };
-
-//             console.log(this.pos);
-
-//         });
-//     }else{
-//     	console.log("something went wrong!");
-//     }
-// }
-
-//             // infoWindow.setPosition(pos);
-//             // infoWindow.setContent('Location found.');
-//             // map.setCenter(pos);
-//         //   }, function() {
-//         //     handleLocationError(true, infoWindow, map.getCenter());
-//         //   });
-//         // } else {
-//         //   // Browser doesn't support Geolocation
-//         //   handleLocationError(false, infoWindow, map.getCenter());
-//         // }
-//       // }
-
-//       // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-//       //   infoWindow.setPosition(pos);
-//       //   infoWindow.setContent(browserHasGeolocation ?
-//       //                         'Error: The Geolocation service failed.' :
-//       //                         'Error: Your browser doesn\'t support geolocation.');
-//       // }
-
-
-
-
-
-
-
-// var API_PATH = 'http://api.openweathermap.org/data/2.5/weather?appid=ec6ab1cca646a53d843540957780ac3e';
-
-// var Weather = $resource(API_PATH);
-
-// this.checkWeather = function() {
-
-// 	var city = {
-// 	    q:"Stockholm"
-// 	    };
-
-// 	Weather.get(city, function(successResult) {
-//     this.weather = successResult;
-//     console.log(this.weather);
-//         }, function(errorResult) {
-//             console.log('Error: ' + errorResult);
-//         });     
-// }       
-
-
-
-
-
-
-/////////////////////////// FLYTTA TILL NY MODELL, SLUT /////////////////////////////
-
-
 this.questions = '';
 
 //current question being answered
@@ -111,13 +20,8 @@ this.askedQuestions=[];
 this.spelargrupp = [];
 //var svarstid = 0 
 this.rnStart = 1337;
-<<<<<<< HEAD
 this.amountOfQuestions = 2;
-=======
-this.amountOfQuestions = 3;
->>>>>>> Login_api_branch
 this.counter = 0;
-
 this.timePoints = 0;
 this.curPlayer = "";
 
