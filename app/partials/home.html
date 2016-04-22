@@ -1,5 +1,61 @@
 
 
+<<<<<<< HEAD
+<div id="home">
+  <h1>WeGeoQuiz</h1>
+
+  <div id="homeContainer">
+    <!-- Show if neither multiplayer nor singleplayer mode is selected-->
+    <div id="containerButtons" ng-show="!singleplayerMode && !multiplayerMode"> 
+      <a id="multiplayerButton" pe="button" class="btn btn-warning btn-responsive" ng-click="multiplayer()" class="btn btn-info" role="button">Multiplayer
+      </a>
+
+      <a id="singleplayerButton" pe="button" class="btn btn-warning btn-responsive" ng-click="singleplayer()" class="btn btn-info" role="button">Singleplayer
+      </a>
+    </div>
+    
+    <!-- Shown if multiplayermode is selected-->
+    <div ng-show="multiplayerMode">
+      <div>
+        <h2>Antal spelare</h2>
+      </div>
+    	<div id="numOfPlayersDiv">
+    		<input class="form-control" id="numOfPlayers" type="number" name="Players" min="1" ng-model="numOfPlayers" ng-change="setNumOfPlayers(numOfPlayers)">
+    		Total number of guest: {{getNumOfPlayers()}}
+    	</div>
+    	<div>
+    		<a href="#/newGame" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button">Klar
+    		</a>
+    	</div>
+    </div>
+
+    <!-- Show if singleplayermode is selected-->
+    <fb:login-button ng-show="singleplayerMode" show-faces="false" max-rows="1" 
+    size="large" data-auto-logout-link="true"></fb:login-button>
+
+    <div ng-show="singleplayerMode" id="status">
+    </div>
+
+    <div ng-show="singleplayerMode" class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse1">Toplist</a>
+          </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+          <div class="panel-body">
+          <ng-include src="'partials/topplist.html'" ng-controller="ToplistCtrl">
+        </ng-include></div>
+        </div>
+      </div>
+    </div>
+
+    <!-------------------- Shown if multiplayermode or singleplayer is selected-->
+    <a ng-show="singleplayerMode || multiplayerMode" pe="button" class="btn btn-warning btn-responsive" ng-click="back()" class="btn btn-info" role="button">Back
+    </a>
+  </div>
+=======
 <!-- <iframe src="//giphy.com/embed/CMl1kDwGUdHsQ" width="2000" height="800" frameBorder="0" class="giphy-embed" style="pointer-events: none;" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/sun-CMl1kDwGUdHsQ">via GIPHY</a></p>  -->
 <!-- <iframe src="//giphy.com/embed/qWzB3ja63xk1a" width="480" height="202" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/robert-duvall-donald-pleasence-thx-1138-qWzB3ja63xk1a">via GIPHY</a></p> -->
 
@@ -24,4 +80,6 @@
 		<a href="#/newGame" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button">Klar
 		</a>
 	</div>
+>>>>>>> master
 </div>
+

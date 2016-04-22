@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div id="resultPage" class="col-xs-7 col-sm-9 col-md-9" style="background-color: White;">
 
 	<div ng-init="init()">
@@ -15,5 +16,13 @@
 		<a href="#/home" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button" ng-click="removeCookies();">Nytt Spel
 		</a>
 	</div>
+=======
+<!-- We include the sidebar as it is shared across two screens. -->
+<div ng-show="showToplist">
+<ng-include  src="'partials/topplist.html'" ng-controller="ToplistCtrl">
+</ng-include>
+</div>
+
+>>>>>>> Login_api_branch
 
 </div>

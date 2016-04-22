@@ -111,7 +111,11 @@ this.askedQuestions=[];
 this.spelargrupp = [];
 //var svarstid = 0 
 this.rnStart = 1337;
+<<<<<<< HEAD
 this.amountOfQuestions = 2;
+=======
+this.amountOfQuestions = 3;
+>>>>>>> Login_api_branch
 this.counter = 0;
 
 this.timePoints = 0;
