@@ -15,6 +15,7 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$co
   	$cookieStore.remove('spelargrupp');
   	$cookieStore.remove('time');
   	$cookieStore.remove('whoToPlay');
+  	$cookieStore.remove('numPlayers');
   }
   $scope.init();
 

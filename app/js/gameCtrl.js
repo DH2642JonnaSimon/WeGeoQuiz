@@ -26,8 +26,9 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
   }
 
   $scope.onShow = function() { 
-    console.log("inne i onShow");
+      console.log("ON RELOAD");
       $timeout(function() {
+        console.log("ON RELOAD");
         $scope.questionFromModel ="";
         $scope.options = [];
         if($scope.finalAnswer == true){
@@ -35,6 +36,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
           $('#answer').css("color", "Black");
           $('#answer').html("Correct"); 
         } else{
+          console.log("ON RELOAD");
         	$('#answer').html("Wrong"); 
         	$('#answer').css("background-color", "Red");
         	$('#answer').css("color", "Black");
@@ -49,7 +51,8 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
 
    function showMe() {
       $scope.questionFromModel = Game.question.question;
-      console.log("Inne i showMe funktionen");
+
+      console.log("ON RELOAD");
 
       $scope.options = [
         { 'title': 'A', 'answer': $scope.answerA, 'drag': true },
@@ -61,7 +64,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
     }
 
     $scope.onNewquestion = function() {
-        console.log("onNewQ i ctlen");
+      console.log("ON RELOAD");
         $timeout(function() {
         	$('#answer').html();
           Game.whoStarts();
@@ -101,15 +104,15 @@ $scope.onTimeout= function(){
   $scope.stopAddPoints = function(){
     console.log("stop, go to add points");
     var time = $scope.counter;
-    var player = $scope.playerToStart[0];
-    Game.timePoint(time,player);
+    // var player = $scope.playerToStart[0];
+    Game.timePoint(time);
     $interval.cancel($scope.timer);
     $scope.onNewquestion();
     $scope.counter = 45;
     }
 
   $scope.stopNoPoints = function(){
-    console.log("Nu ska jag inte ha hunnit svara ");
+    console.log("Nu ska jag inte ha hunnit svara, tid 0 eller så har jag svarat fel");
     $interval.cancel($scope.timer);
     if($scope.counter==0){
       Game.addToCounter();
@@ -127,9 +130,11 @@ $scope.onTimeout= function(){
       //kolla om svaret är korrekt
       var correctAnswer = Game.correctAnswer(answer);
       if(correctAnswer == true){
+        console.log("Nu svarade jag rätt på frågan");
         $scope.finalAnswer = true;
         $scope.stopAddPoints();
       }else{
+        console.log("Nu svarade jag fel på frågan");
         $scope.finalAnswer = correctAnswer;
         $scope.stopNoPoints();    
       }
@@ -152,6 +157,7 @@ $scope.onTimeout= function(){
       console.log("Inne i present new Q, firstTime, funktionen");
       $scope.questionFromModel = Game.question.question;
       $scope.playerToStart = Game.currentPlayer;
+      console.log($scope.playerToStart);
     }
     $scope.answerA = Game.question.A;
     $scope.answerB = Game.question.B;
@@ -176,6 +182,7 @@ $scope.onTimeout= function(){
   }
 
   $scope.nextQuestion = function (){
+    console.log("ON RELOAD");
     $scope.player();
     Game.generateNewQuestion();
     $scope.presentNewQuestion(false);
@@ -202,7 +209,6 @@ $scope.onTimeout= function(){
     //Började dra ett dragbart objekt
     $scope.draggedTitle = title.title;
     ui.helper.css("background-color", "Red");
-    console.log(event);
   };
 
   $scope.stopCallback = function(event, ui) {
@@ -211,8 +217,6 @@ $scope.onTimeout= function(){
   };
 
   $scope.dragCallback = function(event, ui) {
-    //Objektet blir dragen ;)
-    console.log('objektet dras');
   };
 
   $scope.dropCallback = function(event, ui) {

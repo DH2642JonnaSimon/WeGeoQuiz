@@ -3,9 +3,96 @@ dinnerPlannerApp.factory('Game',function ($resource, $http, $cookieStore) {
 
 
 
-
+// this.weather = $resource("http://api.openweathermap.org/data/2.5/weather",{callback:"test",q:"Stockholm",appid:"ec6ab1cca646a53d843540957780ac3e"});
+// console.log(this.weather);
 //this.weather = $resource("http://api.openweathermap.org/data/2.5/weather",{callback:"test",appid:"ec6ab1cca646a53d843540957780ac3e"});
+// callbacks in apgee: api.openweathermap.org/data/2.5/weather?callback=test&q=Stockholm&appid=ec6ab1cca646a53d843540957780ac3e
 //all questions
+
+/////////////////////////// FLYTTA TILL NY MODELL /////////////////////////////
+
+
+
+
+
+
+// this.initMap = function() {
+// 	console.log("Inne i googleAPIt");
+//         // var map = new google.maps.Map(document.getElementById('map'), {
+//         //   center: {lat: -34.397, lng: 150.644},
+//         //   zoom: 6
+//         // });
+//         // var infoWindow = new google.maps.InfoWindow({map: map});
+
+//         // Try HTML5 geolocation.
+//     if (navigator.geolocation) {
+//     	console.log("Nu når vi geolocation");
+//           navigator.geolocation.getCurrentPosition(function(position) {
+//           	console.log("nu ska vi sätta vår nuvarande position");
+//             this.pos = {
+//               lat: position.coords.latitude,
+//               lng: position.coords.longitude
+//             };
+
+//             console.log(this.pos);
+
+//         });
+//     }else{
+//     	console.log("something went wrong!");
+//     }
+// }
+
+//             // infoWindow.setPosition(pos);
+//             // infoWindow.setContent('Location found.');
+//             // map.setCenter(pos);
+//         //   }, function() {
+//         //     handleLocationError(true, infoWindow, map.getCenter());
+//         //   });
+//         // } else {
+//         //   // Browser doesn't support Geolocation
+//         //   handleLocationError(false, infoWindow, map.getCenter());
+//         // }
+//       // }
+
+//       // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+//       //   infoWindow.setPosition(pos);
+//       //   infoWindow.setContent(browserHasGeolocation ?
+//       //                         'Error: The Geolocation service failed.' :
+//       //                         'Error: Your browser doesn\'t support geolocation.');
+//       // }
+
+
+
+
+
+
+
+// var API_PATH = 'http://api.openweathermap.org/data/2.5/weather?appid=ec6ab1cca646a53d843540957780ac3e';
+
+// var Weather = $resource(API_PATH);
+
+// this.checkWeather = function() {
+
+// 	var city = {
+// 	    q:"Stockholm"
+// 	    };
+
+// 	Weather.get(city, function(successResult) {
+//     this.weather = successResult;
+//     console.log(this.weather);
+//         }, function(errorResult) {
+//             console.log('Error: ' + errorResult);
+//         });     
+// }       
+
+
+
+
+
+
+/////////////////////////// FLYTTA TILL NY MODELL, SLUT /////////////////////////////
+
+
 this.questions = '';
 
 //current question being answered
@@ -35,7 +122,8 @@ this.reloadedTime = 0;
 
 
 this.timePoint = function(time,player){
-	console.log("inne i timePoints");
+	console.log("inne i timePoints" + time, player);
+
 	var timePoints = 0;
 	if(time<= 45 && time>=35){
 		timePoints = 3;
@@ -44,8 +132,10 @@ this.timePoint = function(time,player){
 	}else if(time<= 24){
 		timePoints = 1;
 	}
+	console.log(this.spelargrupp, this.rnStart);
 	this.curPlayer = this.spelargrupp[this.rnStart];
 
+	console.log(this.curPlayer);
 	this.curPlayer[2] += timePoints; 
 	$cookieStore.put('spelargrupp', this.spelargrupp);
 }
@@ -67,6 +157,7 @@ this.whoStarts = function(){
 
 	$cookieStore.put('whoToPlay', this.rnStart);
 	this.currentPlayer = this.spelargrupp[this.rnStart];
+	// console.log(this.spelargrupp);
 	return this.spelargrupp[this.rnStart];
 }
 
@@ -108,7 +199,6 @@ this.numOfPlayers = 1;
 
 this.setNumOfPlayers = function(num){
 	this.numOfPlayers = num
-	console.log(this.numOfPlayers);
 	$cookieStore.put('numPlayers', num);
 }
 
@@ -133,8 +223,6 @@ this.generateNewQuestion = function(){
 	this.question = this.questions[rn];
 	var checkQ = this.question;
 	  	for(i in this.askedQuestions){
-	  		console.log(i);
-	  		console.log(checkQ.question);
 		  		if(i === checkQ.question){
 		  			generateNewQuestion();
 		  		}else{
@@ -150,7 +238,9 @@ this.generateNewQuestion = function(){
 
 ///Funktion som kontrollerar att svar är rätt för frågan
 this.correctAnswer = function(answer){
+	console.log("kollar om det är rätt svar i servicen och adderar en till this.counter");
 	this.counter += 1;
+	console.log("HÅLLER RÄKNINGEN PÅ HUR MÅNGA GÅNGER VI KÖRT" + this.counter);
 	$cookieStore.put('numOfQ', this.counter);
 	if(this.question.answer == answer){
 		return true;
@@ -163,7 +253,10 @@ this.correctAnswer = function(answer){
     //Fil/Databas
 
 this.addToCounter = function(){
+	console.log("om tiden gått ut adderar en till this.counter");
 	this.counter += 1;
+	console.log("HÅLLER RÄKNINGEN PÅ HUR MÅNGA GÅNGER VI KÖRT" + this.counter);
+	$cookieStore.put('numOfQ', this.counter);
 }
 
 
@@ -180,13 +273,18 @@ this.isGameOver = function(){
 
 this.currentQuestion = function(rn){
 	this.rnList = $cookieStore.get('rnList');
-	console.log(this.rnList);
 	if(typeof $cookieStore.get('rnList') === "undefined"){
 		console.log("Här går jag in första gången en fråga laddas");
 		this.rnList = [];
 		this.rnList.push(rn);
 		$cookieStore.put('rnList', this.rnList);
 		this.question = this.questions[rn];
+		this.counter = $cookieStore.get('numOfQ');
+		if(typeof $cookieStore.get('numOfQ') === "undefined"){
+			console.log("Nu är den undefind" + typeof(this.counter));
+			this.counter = 0;
+			$cookieStore.put('numOfQ', this.counter);
+		}
 		// this.whoStarts();	
 	}else{
 		console.log("Här ska jag bara gå in om jag reloadar sidan");
@@ -197,15 +295,19 @@ this.currentQuestion = function(rn){
 		var rnLastElemant = this.rnList[this.rnList.length - 1];
 		this.question = this.questions[rnLastElemant];
 
-		this.rnStrat = $cookieStore.get('whoToPlay');
+		this.rnStart = $cookieStore.get('whoToPlay');
+		console.log(this.rnStart);
 		this.spelargrupp = $cookieStore.get('spelargrupp');
-		this.currentPlayer = this.spelargrupp[this.rnStrat];
+		console.log(this.spelargrupp);
+		this.currentPlayer = this.spelargrupp[this.rnStart];
 
 		this.reloadedTime = $cookieStore.get('time');
 
 		this.counter = $cookieStore.get('numOfQ');
-		
-		return this.question;
+		console.log(this.counter);
+
+
+		return this.question, this.rnStart;
 	}
 }
 
@@ -223,7 +325,7 @@ this.getQuestion = function(){
 //Hämtar in fråga från fil
  this.initL = function(callback, Game){
 	$http.get('../resources/triviaQuestions.json').success(function(data, status, headers, config) {
-		console.log("INNE I initL I SERVICE");
+
 		Game.questions = data;
 		var rn = Math.floor((Math.random() * Game.questions.length) + 1);
 		var checkQ = Game.questions[rn];
@@ -236,19 +338,19 @@ this.getQuestion = function(){
 
 
 this.getResult = function(){
-	console.log(this.spelargrupp);
+
 	this.spelargrupp = $cookieStore.get('spelargrupp');
  	this.spelargrupp.sort(function(a, b) {
      var valueA, valueB;
 
      valueA = a[2]; // Where 1 is your index, from your example
      valueB = b[2];
-     console.log(valueA, valueB);
+
 
      return valueB - valueA;
 	});
 	$cookieStore.put('spelargrupp', this.spelargrupp);
-	console.log(this.spelargrupp);
+
 }
 
 

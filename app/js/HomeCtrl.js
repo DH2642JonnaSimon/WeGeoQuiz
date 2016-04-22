@@ -1,5 +1,5 @@
 
-dinnerPlannerApp.controller('HomeCtrl', function ($scope, $cookieStore, $routeParams, Game) {
+dinnerPlannerApp.controller('HomeCtrl', function ($scope, $cookieStore, $routeParams, Game, API) {
 console.log("inne i homectrl")
 
 $scope.numOfPlayers = 1;
@@ -14,6 +14,13 @@ $scope.setNumOfPlayers = function(number){
 $scope.getNumOfPlayers = function() {
     this.num = Game.getNumOfPlayers();
     return new Array(this.num); 
+}
+
+$scope.activateAPI = function(){
+	API.initMap();
+	// Dinner.Dish.get({id:$routeParams.dishId},function(data){
+		
+	// });
 }
 
 });
