@@ -1,3 +1,11 @@
+<script type="text/javascript">
+      $(document).ready(function() {
+      $(window).resize(function(){
+      $("#newGameScroll").css("height", $("#homeContainer").height()-$("#heightDiv").height() - 20);
+    });
+  });
+</script>
+
 <div id="newGame" class="col-xs-12 col-sm-12 col-md-12" style="background-color: White;">
 
 	<div id="header">
@@ -5,7 +13,7 @@
   	</div>
 
   	<div id="homeContainer" class="col-xs-12 col-sm-12 col-md-12">
-  		<div id="newGameScroll" class="col-xs-12 col-sm-12 col-md-12 pre-scrollable">
+  		<div id="newGameScroll" class="col-xs-12 col-sm-12 col-md-12 pre-scrollable" style="max-height: 100%;height: 100%;">
 			<div ng-repeat="i in getNumOfPlayers() track by $index" id="playerForm">
 				<div class="row" id="nickName-{{$index}}">
 					<form name="PlayerForm" role="form">
@@ -56,7 +64,7 @@
 			</div>
 
 			<div id="startGame" class = "row" style="with:100%; text-align:center;">
-				<a data-target="#/game" href="#/game" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive button_example" class="btn btn-info" role="button" ng-click="setPlayerList($event)">Start Game
+				<a data-target="#/game" href="#/game" pe="button" class="btn btn-warning btn-responsive button_example"role="button" ng-click="setPlayerList($event)">Start Game
 				</a>
 			</div>
 		</div>

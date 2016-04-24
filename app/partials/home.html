@@ -1,3 +1,10 @@
+<script type="text/javascript">
+      $(document).ready(function() {
+      $(window).resize(function(){
+      $("#scrollDiv").css("height", $("#homeContainer").height()-$("#heightDiv").height() - 20);
+    });
+  });
+    </script>
 
 <div id="home" data-ng-init="activateAPI()">
   <div id="header">
@@ -39,35 +46,43 @@
       </div>
 
     	<div class="row" id="buttonDivNG">
-    		<a href="#/newGame" id="multiplayerDoneButton" pe="button" class="btn btn-warning btn-responsive button_example" class="btn btn-info button_example" role="button">Klar
-    		</a>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+          <a ng-show="multiplayerMode" pe="button" class="btn btn-warning btn-responsive button_example" ng-click="back()" class="btn btn-info button_example" style="float:right;margin: 0px; margin-top:" role="button">Back
+          </a>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+      		<a href="#/newGame" id="multiplayerDoneButton" pe="button" class="btn btn-warning btn-responsive button_example" class="btn btn-info button_example" style="margin: 0px;float:left;" role="button">Next
+      		</a>
+        </div>
     	</div>
     </div>
 
+  
+
     <!-- Show if singleplayermode is selected-->
     <div id="fbButton">
-      <fb:login-button ng-show="singleplayerMode" show-faces="false" max-rows="1" 
-      size="xlarge" data-auto-logout-link="true"></fb:login-button>
-    </div>
+     <div id="heightDiv" style="margin-bottom: 15px;" class="row">
 
-    <div ng-show="singleplayerMode" id="status">
-    </div>
-
-    <!--Shown if multiplayermode or singleplayer is selected-->
-    <div id="backBtnDiv">
-      <a ng-show="singleplayerMode || multiplayerMode" pe="button" class="btn btn-warning btn-responsive button_example" ng-click="back()" class="btn btn-info button_example" role="button">Back
+     <div class="col-md-6 col-sm-6 col-xs-6">
+     <a ng-show="singleplayerMode" pe="button" style="width: 90%;padding: 25px;" class="btn btn-warning btn-responsive button_example" ng-click="back()" class="btn btn-info button_example" role="button">Back
       </a>
-    </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6">
+      <fb:login-button ng-show="singleplayerMode && !loggedIn" class="button_example" style="width: 90%;" show-faces="false" max-rows="1" 
+      size="xlarge" data-auto-logout-link="false"></fb:login-button>
+      
+      
 
-    <!-- Shown if singpleyer is selected and you are logged in -->
-    <a href="#/game" ng-show="singleplayerMode && loggedIn" pe="button" class="btn btn-warning btn-responsive standardButton button_example" class="btn btn-info standardButtonchrome
-     button_example" role="button">Start Game</a>
-
-    <div ng-show="singleplayerMode && loggedIn" class="panel-group" style="overflow-y: scroll;">
+      <!-- Shown if singpleyer is selected and you are logged in -->
+      <a href="#/game" ng-show="singleplayerMode && loggedIn" pe="button" class="btn btn-warning btn-responsive standardButton button_example" class="btn btn-info standardButton
+     button_example" role="button" style="margin: 0px;width: 90%;padding: 25px;">Start Game</a>
+     </div>
+     </div>
+      <div id="scrollDiv" ng-show="singleplayerMode && loggedIn" class="panel-group" style="overflow-y:scroll;height: 360px;">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
-            <a data-toggle="collapse" data-target="#collapse1">Toplist</a>
+            <a data-toggle="collapse" data-target="#collapse1" class="btn button_example" style="width: 100%;">Toplist</a>
           </h4>
         </div>
         <div id="collapse1" class="panel-collapse collapse">
@@ -76,6 +91,16 @@
         <div class="panel-footer"></div>
       </div>
     </div>
+    </div
+     >
+
+    <div ng-show="singleplayerMode" id="status">
+    </div>
+
+
+    
+
+    
 
 
   </div>
