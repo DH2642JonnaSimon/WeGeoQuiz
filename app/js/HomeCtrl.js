@@ -42,8 +42,14 @@ $scope.back = function(){
     $cookieStore.put("multiplayer", Auth.multiplayer);
 }
 
+
+$scope.callback = function(weather){
+    $scope.weather = weather;
+    console.log("CURRENT WEATHER IN CONTROLER HUEHUE: " + $scope.weather);
+}
+
 $scope.activateAPI = function(){
-	API.initMap();
+	API.initMap(API, this);
 // Här ska jag få put väderID :P
 
 }

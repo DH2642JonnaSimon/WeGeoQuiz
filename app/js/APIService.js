@@ -11,7 +11,7 @@ dinnerPlannerApp.factory('API',function ($resource, $http, $cookieStore) {
 /////////////////////////// FLYTTA TILL NY MODELL /////////////////////////////
 this.curWeather ="";
 
-this.initMap = function(API, callback) {
+this.initMap = function(API, ctrl) {
 
     if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -22,8 +22,7 @@ this.initMap = function(API, callback) {
 
             console.log(this.pos);
             var pos = this.pos;
-            API.checkWeather(pos);
-            callback(API);
+            API.checkWeather(pos, ctrl);
         });
     }else{
     	console.log("something went wrong!");
@@ -35,7 +34,7 @@ var API_PATH = 'http://api.openweathermap.org/data/2.5/weather?appid=ec6ab1cca64
 
 var Weather = $resource(API_PATH);
 
-this.checkWeather = function(pos) {
+this.checkWeather = function(pos, ctrl) {
 
 	var lat = pos.lat;
 	var lng = pos.lng;
@@ -47,6 +46,7 @@ this.checkWeather = function(pos) {
 
 	Weather.get(coordinates, function(successResult) {
     this.weather = successResult.weather;
+    ctrl.callback(this.weather); 
     var i = 0;
     for (i in this.weather){
         this.curWeather = this.weather[i].id;
