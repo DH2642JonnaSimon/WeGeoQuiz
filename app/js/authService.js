@@ -5,7 +5,9 @@ this.multiplayer = false;
 this.loggedIn = false;
 
 this.init = function(){
-	$cookieStore.put("multiplayer", this.multiplayer);
+	if(typeof $cookieStore.get("multiplayer") === "undefined"){
+		$cookieStore.put("multiplayer", this.multiplayer);
+	}
 }
 this.init();
 

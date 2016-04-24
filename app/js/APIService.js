@@ -9,9 +9,9 @@ dinnerPlannerApp.factory('API',function ($resource, $http, $cookieStore) {
 //all questions
 
 /////////////////////////// FLYTTA TILL NY MODELL /////////////////////////////
+this.curWeather ="";
 
-
-this.initMap = function() {
+this.initMap = function(API, callback) {
 
     if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -22,8 +22,8 @@ this.initMap = function() {
 
             console.log(this.pos);
             var pos = this.pos;
-            checkWeather(pos);
-
+            API.checkWeather(pos);
+            callback(API);
         });
     }else{
     	console.log("something went wrong!");
@@ -35,7 +35,7 @@ var API_PATH = 'http://api.openweathermap.org/data/2.5/weather?appid=ec6ab1cca64
 
 var Weather = $resource(API_PATH);
 
-function checkWeather(pos) {
+this.checkWeather = function(pos) {
 
 	var lat = pos.lat;
 	var lng = pos.lng;
@@ -45,19 +45,20 @@ function checkWeather(pos) {
         lon: pos.lng
     };
 
-	this.curWeather = Weather.get(coordinates, function(successResult) {
-    this.weather = successResult;
-    console.log(this.weather);
+	Weather.get(coordinates, function(successResult) {
+    this.weather = successResult.weather;
+    var i = 0;
+    for (i in this.weather){
+        this.curWeather = this.weather[i].id;
+    }
         }, function(errorResult) {
             console.log('Error: ' + errorResult);
         });
-	var weatherInfo = this.curWeather;
-	var weather = weatherInfo.weather 
-	// console.log(weather);
-	// for (i in weather){
-	// 	console.log(i);
-	// }
+
 } 
+
+
+
 
 
 /////////////////////////// FLYTTA TILL NY MODELL, SLUT /////////////////////////////

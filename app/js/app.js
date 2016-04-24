@@ -32,6 +32,7 @@ dinnerPlannerApp.run(['$rootScope', '$location', 'Auth', function ($rootScope, $
         console.log($location.$$path);
          
          var multiplayer = Auth.getCookie();
+         console.log("JAA" +  multiplayer);
         
         if (!Auth.isLoggedIn() && $location.$$path != "/home" && multiplayer == false) {
             console.log('DENY');

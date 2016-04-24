@@ -44,6 +44,7 @@ $scope.back = function(){
 
 $scope.activateAPI = function(){
 	API.initMap();
+// Här ska jag få put väderID :P
 
 }
 
