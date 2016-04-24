@@ -27,15 +27,13 @@ dinnerPlannerApp.config(['$routeProvider',
   }]);
 
 //Makes sure the user is authenticated to be a specific location/path.
-dinnerPlannerApp.run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth, $cookieStore) {
+dinnerPlannerApp.run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
     $rootScope.$on('$routeChangeStart', function (event) {
         console.log($location.$$path);
-        try{
-          var multiplayer = $cookieStore.get('multPlayer');
-        }catch(err){
-          var multiplayer = false;
-        }
-        if (!Auth.isLoggedIn() && $location.$$path != "/home" && multiplayer === false) {
+         
+         var multiplayer = Auth.getCookie();
+        
+        if (!Auth.isLoggedIn() && $location.$$path != "/home" && multiplayer == false) {
             console.log('DENY');
             event.preventDefault();
             $location.path('/home');

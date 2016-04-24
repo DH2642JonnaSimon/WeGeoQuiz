@@ -27,8 +27,8 @@ $scope.singleplayerMode = false;
 
 $scope.multiplayer = function(){
     $scope.multiplayerMode = true;
-    $cookieStore.put('multPlayer', $scope.multiplayerMode);
     Auth.multiplayer = true;
+    $cookieStore.put("multiplayer", Auth.multiplayer);
 }
 
 $scope.singleplayer = function(){
@@ -38,8 +38,8 @@ $scope.singleplayer = function(){
 $scope.back = function(){
     Auth.multiplayer = false;
     $scope.multiplayerMode = false;
-    $cookieStore.put('multPlayer', $scope.multiplayerMode);
     $scope.singleplayerMode = false;
+    $cookieStore.put("multiplayer", Auth.multiplayer);
 }
 
 $scope.activateAPI = function(){

@@ -1,8 +1,13 @@
-dinnerPlannerApp.factory('Auth', function($rootScope){
+dinnerPlannerApp.factory('Auth', function($rootScope, $cookieStore){
 var user;
 
 this.multiplayer = false;
 this.loggedIn = false;
+
+this.init = function(){
+	$cookieStore.put("multiplayer", this.multiplayer);
+}
+this.init();
 
 //sets global variable users and sets loggedin status too true
 setUser = function(aUser){
@@ -28,6 +33,14 @@ this.watchAuthenticationStatusChange = function() {
 			setUser(false);
 		}
 	});
+}
+
+this.getCookie = function(){
+	try{
+	return $cookieStore.get("multiplayer");
+	}catch(err){
+		return false;
+	}
 }
 
 //Only when we are logged in we will show the toplist and start-play button, thats why we apply observer pattern
