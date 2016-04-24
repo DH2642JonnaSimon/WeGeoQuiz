@@ -27,6 +27,7 @@ $scope.singleplayerMode = false;
 
 $scope.multiplayer = function(){
     $scope.multiplayerMode = true;
+    $cookieStore.put('multPlayer', $scope.multiplayerMode);
     Auth.multiplayer = true;
 }
 
@@ -37,6 +38,7 @@ $scope.singleplayer = function(){
 $scope.back = function(){
     Auth.multiplayer = false;
     $scope.multiplayerMode = false;
+    $cookieStore.put('multPlayer', $scope.multiplayerMode);
     $scope.singleplayerMode = false;
 }
 

@@ -154,8 +154,8 @@ html,body,#container, #viewHolder{
 
 #increaseArr{
   height: 100%;
-  background-image: url("../../images/fastforward.png");
-  width: 20%;
+  background-image: url("../../images/right.png");
+  width: 50%;
   background-repeat: no-repeat;
   background-size:contain;
   background-position: center;
@@ -169,13 +169,19 @@ html,body,#container, #viewHolder{
 
 #decreaseArr{
   height: 100%;
-  background-image: url("../../images/interface.png");
-  width: 20%;
+  background-image: url("../../images/left.png");
+  width: 50%;
   background-repeat: no-repeat;
   background-size:contain;
   background-position: center;
   float: right;
 
+}
+
+#decreaseArr:hover, #increaseArr:hover{
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter:         drop-shadow(5px 5px 5px #222);
+    cursor: pointer; 
 }
 
 #buttonDivNG{
@@ -231,6 +237,63 @@ html,body,#container, #viewHolder{
   height: 10%;
   padding: 10px;
   margin: 0px auto;
+}
+
+/* RESULT PAGE */
+.resultTable{
+  font-size: 50px;
+  font-weight: normal; 
+}
+
+@media only screen and (max-width: 992px) {
+  .resultTable{
+    font-size: 20px;
+    margin: 10px !important;;
+    padding: 10px !important; 
+  }
+  #result{
+    width: 100% !important;
+    text-align: center;
+    margin: 0px! important;;
+    padding: 10px !important;
+    margin: 0px auto;
+  }
+
+  #resultRow{
+    margin-left: 10%;
+  }
+}
+
+#resultRow{
+    margin-left: 8%;
+  }
+
+#result{
+
+}
+
+.resultCell-1{
+  font-weight: bold !important; 
+}
+
+.button_example{
+  border:1px solid #7c5b2b; -webkit-border-radius: 16px; -moz-border-radius: 16px;border-radius: 16px;font-size:20px;font-family:helvetica, sans-serif; padding: 20px 20px 20px 20px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3); color: #FFFFFF;
+  background-color: #a67939; background-image: -webkit-gradient(linear, left top, left bottom, from(#a67939), to(#845108));
+  background-image: -webkit-linear-gradient(top, #a67939, #845108);
+  background-image: -moz-linear-gradient(top, #a67939, #845108);
+  background-image: -ms-linear-gradient(top, #a67939, #845108);
+  background-image: -o-linear-gradient(top, #a67939, #845108);
+  background-image: linear-gradient(to bottom, #a67939, #845108);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#a67939, endColorstr=#845108);
+}
+
+.button_example:hover{
+   border:1px solid #5a421f;
+   background-color: #805d2c; background-image: -webkit-gradient(linear, left top, left bottom, from(#805d2c), to(#543305));
+   background-image: -webkit-linear-gradient(top, #805d2c, #543305);
+   background-image: -moz-linear-gradient(top, #805d2c, #543305);
+   background-image: -ms-linear-gradient(top, #805d2c, #543305);
+   background-image: -o-linear-gradient(top, #805d2c, #543305);
+   background-image: linear-gradient(to bottom, #805d2c, #543305);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#805d2c, endColorstr=#543305);
 }
 
 
