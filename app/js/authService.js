@@ -2,84 +2,57 @@ dinnerPlannerApp.factory('Auth', function($rootScope){
 var user;
 
 this.multiplayer = false;
+this.loggedIn = false;
 
+//sets global variable users and sets loggedin status too true
 setUser = function(aUser){
 	user = aUser;
+	this.loggedIn = true;
 }
 
+//Returns a user if logged in else false
 this.isLoggedIn = function(aUser){
 	return(user)? user : false;
 }
 
+//When we log in/out from facebook with callback
 this.watchAuthenticationStatusChange = function() {
-
 	FB.Event.subscribe('auth.authResponseChange', function(res) {
-
-	if (res.status === 'connected') {
-	  
-	  /* 
-	   The user is already logged, 
-	   is possible retrieve his personal info
-	  */
-	  console.log('LOGGED IN' + res.authResponse);
-	  this.getUserInfo();
-	  setUser(res.authResponse);
-
-	  /*
-	   This is also the point where you should create a 
-	   session for the current user.
-	   For this purpose you can use the data inside the 
-	   res.authResponse object.
-	  */
-
-	} 
-	else {
-		console.log('NOT LOGGED IN');
-		setUser(false);
-
-	  /*
-	   The user is not logged to the app, or into Facebook:
-	   destroy the session on the server.
-	  */
-	   
-	}
-
+		if (res.status === 'connected') {
+		  this.getUserInfo();
+		  setUser(res.authResponse);
+		  notifyHomeCtrl(true);
+		} 
+		else {
+			notifyHomeCtrl("");
+			setUser(false);
+		}
 	});
-
 }
 
+//Only when we are logged in we will show the toplist and start-play button, thats why we apply observer pattern
+//using the array and 2 following methods. We also have a function setLoggedIn in the homecontroller which is added to the array (observerbles)
+var views = [];
+
+this.addObservable = function(view){
+	views.push(view);
+}
+
+notifyHomeCtrl = function(loggedIn){
+	for (var i = 0; i < views.length; ++i ){
+		views[i].setLoggedIn(loggedIn);
+	}
+}
+
+//get an authenticated users information and stores it in the variable Auth.user
 getUserInfo = function() {
-
-  var _self = this;
-
-  FB.api('/me', function(res) {
-
-    $rootScope.$apply(function() { 
-    	console.log(res);
-      $rootScope.user = _self.user = res; 
-
-    });
-
-  });
-
-}
-
-this.logout = function() {
-
-  var _self = this;
-
-  FB.logout(function(response) {
-
-    $rootScope.$apply(function() { 
-
-      $rootScope.user = _self.user = {}; 
-
-    }); 
-
-  });
-
+	var _self = this;
+	FB.api('/me', function(res) {
+		$rootScope.$apply(function() { 
+     		$rootScope.user = _self.user = res; 
+     	});
+	});
 }
 
 return this;
-
 })

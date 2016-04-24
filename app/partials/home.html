@@ -1,14 +1,16 @@
 
 <div id="home" data-ng-init="activateAPI()">
-  <h1>WeGeoQuiz</h1>
+  <div id="header">
+    <h1 id="title">WeGeoQuiz</h1>
+  </div>
 
   <div id="homeContainer">
     <!-- Show if neither multiplayer nor singleplayer mode is selected-->
     <div id="containerButtons" ng-show="!singleplayerMode && !multiplayerMode"> 
-      <a id="multiplayerButton" pe="button" class="btn btn-warning btn-responsive" ng-click="multiplayer()" class="btn btn-info" role="button">Multiplayer
+      <a id="multiplayerButton" pe="button" class="btn btn-warning btn-responsive" ng-click="multiplayer()" class="btn btn-info" role="button"><p class="buttonText">Multiplayer</p>
       </a>
 
-      <a id="singleplayerButton" pe="button" class="btn btn-warning btn-responsive" ng-click="singleplayer()" class="btn btn-info" role="button">Singleplayer
+      <a id="singleplayerButton" pe="button" class="btn btn-warning btn-responsive" ng-click="singleplayer()" class="btn btn-info" role="button"><p class="buttonText">Singleplayer</p>
       </a>
     </div>
     
@@ -22,36 +24,41 @@
     		Total number of guest: {{getNumOfPlayers()}}
     	</div>
     	<div>
-    		<a href="#/newGame" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button">Klar
+    		<a href="#/newGame" pe="button" class="btn btn-warning btn-responsive standardButton" class="btn btn-info" role="button">Start Game
     		</a>
     	</div>
     </div>
 
     <!-- Show if singleplayermode is selected-->
-    <fb:login-button ng-show="singleplayerMode" show-faces="false" max-rows="1" 
-    size="large" data-auto-logout-link="true"></fb:login-button>
+    <div id="fbButton">
+      <fb:login-button ng-show="singleplayerMode" show-faces="false" max-rows="1" 
+      size="xlarge" data-auto-logout-link="true"></fb:login-button>
+    </div>
 
     <div ng-show="singleplayerMode" id="status">
     </div>
 
-    <div ng-show="singleplayerMode" class="panel-group">
+    <!--Shown if multiplayermode or singleplayer is selected-->
+    <a ng-show="singleplayerMode || multiplayerMode" pe="button" class="btn btn-warning btn-responsive standardButton" ng-click="back()" class="btn btn-info" role="button">Back
+    </a>
+
+    <!-- Shown if singpleyer is selected and you are logged in -->
+    <a href="#/game" ng-show="singleplayerMode && loggedIn" pe="button" class="btn btn-warning btn-responsive standardButton" class="btn btn-info standardButtonchrome
+    " role="button">Start Game</a>
+
+    <div ng-show="singleplayerMode && loggedIn" class="panel-group" style="overflow-y: scroll;">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
-            <a data-toggle="collapse" href="#collapse1">Toplist</a>
+            <a data-toggle="collapse" data-target="#collapse1">Toplist</a>
           </h4>
         </div>
         <div id="collapse1" class="panel-collapse collapse">
-          <div class="panel-body">
-          <ng-include src="'partials/topplist.html'" ng-controller="ToplistCtrl">
-        </ng-include></div>
-        </div>
+          <div class="panel-body"><ng-include src="'partials/topplist.html'" ng-controller="ToplistCtrl">
+        </ng-include></div></div>
+        <div class="panel-footer"></div>
       </div>
     </div>
-
-    <!--Shown if multiplayermode or singleplayer is selected-->
-    <a ng-show="singleplayerMode || multiplayerMode" pe="button" class="btn btn-warning btn-responsive" ng-click="back()" class="btn btn-info" role="button">Back
-    </a>
   </div>
 </div>
 

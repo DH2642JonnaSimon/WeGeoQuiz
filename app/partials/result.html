@@ -4,10 +4,9 @@
 	<div ng-init="init()">
 
 		<div id="result" ng-repeat="i in result">
-
-			{{i[0]}}
-			{{i[2]}}
-
+			<div class="row">
+			  <div class="col-md-2">$index</div><div class="col-md-8">{{i[0]}}</div><div class="col-md-2">
+			{{i[2]}}</div>
 		</div>
 
 	</div>

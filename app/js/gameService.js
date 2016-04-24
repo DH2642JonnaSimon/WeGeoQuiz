@@ -20,7 +20,7 @@ this.askedQuestions=[];
 this.spelargrupp = [];
 //var svarstid = 0 
 this.rnStart = 1337;
-this.amountOfQuestions = 2;
+this.amountOfQuestions = 6;
 this.counter = 0;
 this.timePoints = 0;
 this.curPlayer = "";
@@ -249,7 +249,7 @@ this.getResult = function(){
 
 	this.spelargrupp = $cookieStore.get('spelargrupp');
  	this.spelargrupp.sort(function(a, b) {
-     var valueA, valueB;
+    var valueA, valueB;
 
      valueA = a[2]; // Where 1 is your index, from your example
      valueB = b[2];

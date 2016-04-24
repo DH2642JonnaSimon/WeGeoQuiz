@@ -4,20 +4,21 @@ dinnerPlannerApp.controller('HomeCtrl', function ($scope, $cookieStore, $routePa
 $scope.numOfPlayers = 1;
 
 Auth.multiplayer = false;
+Auth.addObservable(this);
 
+//set's number of players in multiplayer mode, it was a design choice to put this function on this routing location
 $scope.setNumOfPlayers = function(number){
     Game.setNumOfPlayers(number);
     $scope.numOfPlayers = number;
-    //$cookieStore.put('numPlayers', number);
-    //$cookieStore.put('guests', number);
   }
 
+//Get's number of players in multiplayer mode, it was a design choice to put this function on this routing location
 $scope.getNumOfPlayers = function() {
     this.num = Game.getNumOfPlayers();
     return new Array(this.num); 
 }
 
-
+//The 2 following scopevariable and 3 methods make sure that the player can play without having to log in if he plays multiplayer, have to log in if he plays single player, they keep track of the pages current state. 
 $scope.multiplayerMode = false;
 $scope.singleplayerMode = false;
 
@@ -40,5 +41,13 @@ $scope.activateAPI = function(){
 	API.initMap();
 
 }
+
+//used as an observerfunction to change the logged in status when logging in/out from facebook api, 1 view is dependent on this as of yet
+this.setLoggedIn = function(loggedIn){
+    $scope.$apply(function(){
+            $scope.loggedIn = loggedIn; 
+    });
+}
+
 
 });
