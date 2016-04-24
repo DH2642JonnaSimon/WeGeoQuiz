@@ -1,39 +1,58 @@
-<div id="dishPreview" class="col-xs-12 col-sm-12 col-md-12 pre-scrollable" style="background-color: White;" ng-controller="NewGameCtrl">
- {{ getNumOfPlayers() }}
- {{ nickName }}
-	<div ng-repeat="i in getNumOfPlayers() track by $index">
-		<div class="row" id="nickName-{{$index}}">
-			<form name="PlayerForm" role="form">
-			      <label for="usr">Namn:</label>
-			      <!-- ng-model="feedback.text" -->
-			      <input type="text" name="nickName-{{$index}}" ng-model="nickName" class="form-control" placeholder="Your_Username" ng-pattern="feedback.word" required ng-trim="false" id="usr">
+<div id="newGame" class="col-xs-12 col-sm-12 col-md-12" style="background-color: White;">
 
-<!-- onkeyup="stoppedTyping()" -->
-<!-- 			    <div role="alert"><br>
-				    <span class="error" ng-show="PlayerForm.input.$error.required">
-				      Required!</span>
-				    <span class="error" ng-show="PlayerForm.input.$error.pattern">
-				      Single word only!</span>
-  				</div> -->
+	<h1>WeGeoQuiz</h1>
 
-  				<select class="col-xs6 col-sm-6 col-md-6" name="avatar-{{$index}}" ng-model="avatar">
-					<option value="smile" ></option>
-					<option value="saab">Saab</option>
-					<option value="honda">Honda</option>
-					<option value="audi">Audi</option>
-				</select>
+  	<div id="homeContainer" class="col-xs-12 col-sm-12 col-md-12">
+  		<div id="newGameScroll" class="col-xs-12 col-sm-12 col-md-12 pre-scrollable">
+	 {{ getNumOfPlayers() }}
+	 {{ nickName }}
+			<div ng-repeat="i in getNumOfPlayers() track by $index" id="playerForm">
+				<div class="row" id="nickName-{{$index}}">
+					<form name="PlayerForm" role="form">
+						<div class="row" id="nameInForm">
+					      <label for="usr">Namn:</label>
+					      <!-- ng-model="feedback.text" -->
+					      <input type="text" name="nickName-{{$index}}" ng-model="nickName" class="form-control" placeholder="Your_Username" ng-pattern="feedback.word" required ng-trim="false" id="usr">
 
-			</form>
-			<!-- <div class="glyphicon glyphicon-remove" id="nickName-{{$index}},avatar-{{$index}}" ng-click="delete($event)"></div> -->
-			<div class="glyphicon glyphicon-remove" id="del" ng-click="deleteAddRow($event)"></div>
+					    </div>
+		<!-- onkeyup="stoppedTyping()" -->
+		<!-- 			    <div role="alert"><br>
+						    <span class="error" ng-show="PlayerForm.input.$error.required">
+						      Required!</span>
+						    <span class="error" ng-show="PlayerForm.input.$error.pattern">
+						      Single word only!</span>
+		  				</div> -->
+		  				<div class="row" id="selectInForm">
+		  					<div id="dishPreview" class="col-xs-10 col-sm-10 col-md-10">
+								<select name="avatar-{{$index}}" ng-model="avatar">
+									<option value="smile" ></option>
+									<option value="saab">Saab</option>
+									<option value="honda">Honda</option>
+									<option value="audi">Audi</option>
+								</select>
+							</div>
+
+							<div  class="col-xs-2 col-sm-2 col-md-2">
+								<div class="glyphicon glyphicon-remove" id="del" ng-click="deleteAddRow($event)">
+								</div>
+							</div>
+						</div>
+
+					</form>
+					<!-- <div class="glyphicon glyphicon-remove" id="nickName-{{$index}},avatar-{{$index}}" ng-click="delete($event)"></div> -->
+					
+				</div>
+			</div>
+
+			<div class="row" id="addPlRow">
+				<div class="glyphicon glyphicon-plus" id="add" ng-click="deleteAddRow($event)"></div>
+				<p>Add player</p>
+			</div>
+
+			<div id="startGame" class = "row" style="with:100%; text-align:center;">
+				<a href="#/game" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button" ng-click="setPlayerList()">Börja spela
+				</a>
+			</div>
 		</div>
 	</div>
-
-	<div class="row">
-	<div class="glyphicon glyphicon-plus" id="add" ng-click="deleteAddRow($event)"></div>
-	</div>
-
-	<div id="startGame" class = "row" style="with:100%; text-align:center;">
-		<a href="#/game" id="buttonInWell" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button" ng-click="setPlayerList()">Börja spela
-		</a>
-	</div>
+</div>

@@ -15,16 +15,31 @@
     </div>
     
     <!-- Shown if multiplayermode is selected-->
-    <div ng-show="multiplayerMode">
+    <div ng-show="multiplayerMode" id="multiplayerContainer">
       <div>
         <h2>Antal spelare</h2>
       </div>
-    	<div id="numOfPlayersDiv">
-    		<input class="form-control" id="numOfPlayers" type="number" name="Players" min="1" ng-model="numOfPlayers" ng-change="setNumOfPlayers(numOfPlayers)">
-    		Total number of guest: {{getNumOfPlayers()}}
-    	</div>
-    	<div>
-    		<a href="#/newGame" pe="button" class="btn btn-warning btn-responsive standardButton" class="btn btn-info" role="button">Start Game
+      <div class="row" id="arrowDiv">
+        <div class="col-xs-4 col-sm-4 col-lg-4 offset-3" id="decreaseDiv">
+          <div id="decreaseArr" ng-click="deleteAddRow($event)">
+          </div>
+        </div>
+
+        <div class="col-xs-4 col-sm-4 col-lg-4 offset-3" id="numOfPlayers">
+        
+        <p id="NumText">{{num}}</p>
+
+        </div>
+
+        <div class="col-xs-4 col-sm-4 col-lg-4" id="increaseDiv">
+          <div id="increaseArr" ng-click="deleteAddRow($event)">
+          </div>
+          <!-- class="glyphicon glyphicon-arrow-right" -->
+        </div>
+      </div>
+
+    	<div class="row" id="buttonDivNG">
+    		<a href="#/newGame" id="multiplayerDoneButton" pe="button" class="btn btn-warning btn-responsive" class="btn btn-info" role="button">Klar
     		</a>
     	</div>
     </div>
@@ -58,6 +73,12 @@
         </ng-include></div></div>
         <div class="panel-footer"></div>
       </div>
+    </div>
+
+    <!--Shown if multiplayermode or singleplayer is selected-->
+    <div id="backBtnDiv">
+      <a ng-show="singleplayerMode || multiplayerMode" pe="button" class="btn btn-warning btn-responsive" ng-click="back()" class="btn btn-info" role="button">Back
+      </a>
     </div>
   </div>
 </div>

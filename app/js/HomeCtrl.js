@@ -7,6 +7,9 @@ Auth.multiplayer = false;
 Auth.addObservable(this);
 
 //set's number of players in multiplayer mode, it was a design choice to put this function on this routing location
+
+$scope.num= 1;
+
 $scope.setNumOfPlayers = function(number){
     Game.setNumOfPlayers(number);
     $scope.numOfPlayers = number;
@@ -47,6 +50,26 @@ this.setLoggedIn = function(loggedIn){
     $scope.$apply(function(){
             $scope.loggedIn = loggedIn; 
     });
+}
+
+
+$scope.deleteAddRow = function($event){
+    var id = $event.currentTarget.id;
+    $scope.num = Game.getNumOfPlayers();
+    var num = $scope.num;
+
+    if(id === "decreaseArr" && num === 1){
+        $scope.num = Game.getNumOfPlayers();
+
+    }else if(id === "decreaseArr" && num > 1){
+        $scope.num = $scope.num-=1;
+        Game.setNumOfPlayers($scope.num);
+
+    }else if(id === "increaseArr"){
+        $scope.num = $scope.num+=1;
+        Game.setNumOfPlayers($scope.num);
+    }   
+    return $scope.num;  
 }
 
 

@@ -119,3 +119,124 @@ html,body,#container, #viewHolder{
   top: 50%;
   transform: translateY(-50%);
 }
+
+
+
+#multiplayerContainer{
+  width: 100%;
+  height: 90%;
+  border: 5px solid red;
+  margin: 0px auto;
+  text-align: center;
+  position:relative;
+}
+
+#arrowDiv{
+  width: 100%;
+  height: 75%;
+  margin: 0px auto;
+  border: 5px solid green;
+  text-align: center;
+  position: relative;
+}
+
+#increaseDiv{
+  height: 100%;
+  border: 5px solid green;
+  margin: 0px auto;
+}
+
+#decreaseDiv{
+  height: 100%;
+  border: 5px solid green;
+  margin: 0px auto;
+}
+
+#increaseArr{
+  height: 100%;
+  background-image: url("../../images/fastforward.png");
+  width: 20%;
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+  float: left;
+}
+
+#NumText{
+  margin-top: 15%;
+  font-size: 150px;
+}
+
+#decreaseArr{
+  height: 100%;
+  background-image: url("../../images/interface.png");
+  width: 20%;
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+  float: right;
+
+}
+
+#buttonDivNG{
+  width: 100%;
+  height: 10%;
+  border: 5px solid red;
+  margin: 0px auto;
+  margin-bottom: 0px;
+  position:absolute;
+
+}
+
+#multiplayerDoneButton{
+  position: relative;
+  margin-bottom: 10px;
+}
+
+#backBtnDiv{
+  width: 100%;
+  height: 10%;
+  border: 5px solid red;
+  margin: 0px auto;
+}
+
+#playerForm{
+  margin: 0px auto;
+  border: 5px solid green;
+}
+
+#newGame{
+  text-align: center;
+  height: 100%;
+}
+
+#newGameScroll{
+  width: 100%;
+  height: 200%;
+  border: 5px solid red;
+}
+
+#nameInForm{
+  padding: 10px;
+  margin: 0px auto;
+}
+
+#selectInForm{
+  padding: 10px;
+  margin: 0px auto;
+}
+
+#addPlRow{
+  width: 100%;
+  height: 10%;
+  padding: 10px;
+  margin: 0px auto;
+}
+
+
+
+
+
+
+
+

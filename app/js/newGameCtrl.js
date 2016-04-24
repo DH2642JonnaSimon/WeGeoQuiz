@@ -27,16 +27,16 @@ $scope.feedback = {
 };
 
 
-// $scope.stoppedTyping = function(){
-// 	console.log("inne i stoppedTyping");
-//     if(this.value.length > 0) {
-//     	console.log("om värdet av inputet är större än 0, disabled = false");
-//         document.getElementById('buttonInWell').disabled = false; 
-//     } else { 
-//     	console.log("om värdet av inputet är större än 0, disabled = true");
-//         document.getElementById('buttonInWell').disabled = true;
-//     }
-// }
+$scope.stoppedTyping = function(){
+	console.log("inne i stoppedTyping");
+    if(this.value.length > 0) {
+    	console.log("om värdet av inputet är större än 0, disabled = false");
+        document.getElementById('buttonInWell').disabled = false; 
+    } else { 
+    	console.log("om värdet av inputet är större än 0, disabled = true");
+        document.getElementById('buttonInWell').disabled = true;
+    }
+}
 
 
 $scope.setPlayerList =function(){
