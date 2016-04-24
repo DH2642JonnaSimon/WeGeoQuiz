@@ -80,19 +80,21 @@ this.newPlayer = function(nickname, emoj){
 		this.playerlist = [];
 		var nickname = nickname;
 		var emoj = emoj;
-		var points = 0; 
-	if(this.spelargrupp.length === this.numOfPlayers - 1){
-		console.log("Nu läggs sista spelar in och personen borde sparas som cookies");
-		this.playerlist.push(nickname, emoj, points);
-		this.spelargrupp.push(this.playerlist);
-		$cookieStore.put('spelargrupp', this.spelargrupp);
-		return this.spelargrupp
-	}else{
-		console.log("lägger till första spelaren");
-		this.playerlist.push(nickname, emoj, points);
-		this.spelargrupp.push(this.playerlist);
-		return this.spelargrupp
-	}
+		var points = 0;
+	// if(nickname)
+		if(this.spelargrupp.length === this.numOfPlayers - 1){
+			console.log("Nu läggs sista spelar in och personen borde sparas som cookies");
+			this.playerlist.push(nickname, emoj, points);
+			this.spelargrupp.push(this.playerlist);
+			$cookieStore.put('spelargrupp', this.spelargrupp);
+			return this.spelargrupp
+		}else{
+			console.log("lägger till första spelaren");
+			this.playerlist.push(nickname, emoj, points);
+			this.spelargrupp.push(this.playerlist);
+			console.log("Den tillagda spelaren i spelargruppen "+this.spelargrupp);
+			return this.spelargrupp
+		}
 }
 
 
