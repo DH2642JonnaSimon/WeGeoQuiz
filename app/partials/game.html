@@ -11,6 +11,22 @@
   });
 </script>
 
+<script type="text/javascript">
+//Making the covering div inbetween questions the correct height
+      $(document).ready(function() {
+      $(".innerBtnDraggable").css("width", $("#divDraggable").width());
+      $(".btnDraggable").css("width", $("#divDraggable").width());
+      $("#btnDroppable").css("width", $("#divDraggable").width());
+      $("#innerBtnDroppable").css("width", $("#btnDroppable").width());
+      $("#answer").css("width", $("#btnDroppable").width());
+      $(window).resize(function(){
+      $(".innerBtnDraggable").css("width", $("#divDraggable").width());
+      $(".btnDraggable").css("width", $("#divDraggable").width());
+      
+    });
+  });
+</script>
+
 
 <div id="gameView" class="col-md-12" ng-controller="GameCtrl" ng-init="init()" style="padding: 0px;color: white;">
   <div class="jumbotron" id="jumboheader" style="">
@@ -49,9 +65,9 @@
             <li id="listItem" class="span3" ng-repeat="image in images">
               <p id="droppablePara">
                 <div class="btn btn-default btn-droppable slide-down" id="btnDroppable" data-drop="true" ng-model='draggedAnswer' jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback',onOver: 'overCallback', onOut: 'outCallback'}">
-                  <h4 ng-show="!draggedAnswer[$index].title">Drag your answer here</h4>
+                  <h4 id="dragText" ng-show="!draggedAnswer[$index].title">Drag your answer here</h4>
                   <br>
-                  <div class="btn btn-info btn-draggable btn-inline bouncy-scale-in slide-down" id="answer" id="innerBtnDroppable" ng-show="draggedAnswer[$index].title" data-drag="{{draggedAnswer[$index].drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="draggedAnswer" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">{{draggedAnswer[$index].title}} - {{draggedAnswer[$index].answer}}</div>
+                  <div class="btn btn-info btn-draggable btn-inline bouncy-scale-in slide-down button_example" id="answer" id="innerBtnDroppable" ng-show="draggedAnswer[$index].title" data-drag="{{draggedAnswer[$index].drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="draggedAnswer" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">{{draggedAnswer[$index].title}} - {{draggedAnswer[$index].answer}}</div>
                 </div>
               </p>
             </li>
@@ -61,8 +77,8 @@
     </div>
     <div class="row">
       <div class="col-md-3 col-xs-6 col-sm-6 col-lg-3" id="divDraggable" ng-repeat="item in options">
-        <div class="btn btn-droppable bouncy-scale-in answer" id="btnDraggable" data-drop="true" ng-model='options' jqyoui-droppable="{index: {{$index}}}">
-          <div name="answer{{item.title}}" id="innerBtnDraggable" class="btn btn-info btn-draggable button_example" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="options" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.title">{{item.title}} - {{item.answer}}</div>
+        <div class="btn btn-droppable bouncy-scale-in answer btnDraggable" id="btnDraggable" data-drop="true" ng-model='options' jqyoui-droppable="{index: {{$index}}}">
+          <div name="answer{{item.title}}" id="innerBtnDraggable" class="btn btn-info btn-draggable button_example innerBtnDraggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="options" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.title">{{item.title}} - {{item.answer}}</div>
         </div>
       </div>
     </div>

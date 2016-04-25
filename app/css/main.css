@@ -130,6 +130,13 @@ html,body,#container, #viewHolder{
   }
 }
 
+@media only screen and (max-width: 550px) {
+  
+  #divDraggable{
+    padding: 0px !important;
+  }
+}
+
 #fbButton{
  margin-top: 10px;
 }
@@ -446,23 +453,47 @@ html,body,#container, #viewHolder{
 }
 
 #divDraggable{
-  text-align: left;
+  text-align: center;
+  margin: 0px;
   margin-top: 40px;
+  padding-left: 5px;
 }
 
 #btnDraggable{
-  margin-left: 4%;
   width: 100%
 }
 
 #innerBtnDraggable{
-  width: 100%;
   font-size: 15px;
+  border-width: 5px;
+  margin:0 auto;
 }
 
+#btnDroppable{
+  width: 400px;
+  background-color: rgba(0,60,0,0.6);
+  border-radius: 25px;
+  border: 2px solid rgba(0,60,0,0.6);
+  margin:0 auto;
+}
 
+#answer{
+  width: 90%;
+  background-color: yellow;
+  background-image: none;
+}
 
+#dragText{
+  position: relative;
+  top: 40%;
+  transform: translateY(-40%);
+}
 
+#answer{
+  position: relative;
+  top: 15%;
+  transform: translateY(-15%);
+}
 
 
 

@@ -209,12 +209,12 @@ $scope.onTimeout= function(){
   $scope.startCallback = function(event, ui, title) {
     //Började dra ett dragbart objekt
     $scope.draggedTitle = title.title;
-    ui.helper.css("background-color", "Red");
+    ui.helper.css("border-color", "Red");
   };
 
   $scope.stopCallback = function(event, ui) {
     //Objektet blev droppat över ett icke droppbart ställe
-    ui.helper.css("background-color", "#5bc0de");
+    ui.helper.css("border-color", "#7c5b2b");
   };
 
   $scope.dragCallback = function(event, ui) {
@@ -222,18 +222,18 @@ $scope.onTimeout= function(){
 
   $scope.dropCallback = function(event, ui) {
     //dragbart objekt blev droppat till en ny droppbar zon/element
-    ui.draggable.css("background-color", "Yellow");
+    ui.draggable.css("border-color", "Yellow");
     $scope.answered($scope.draggedTitle);
   };
 
   $scope.overCallback = function(event, ui) {
     //Dragbart objekt är över ett droppbart ställe
-    ui.draggable.css("background-color", "Green");
+    ui.draggable.css("border-color", "Green");
   };
 
   $scope.outCallback = function(event, ui) {
     //Dragbart objekt är inte över ett droppbart ställe    
-    ui.draggable.css("background-color", "Red");
+    ui.draggable.css("border-color", "Red");
     
   };
 
