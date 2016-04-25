@@ -70,7 +70,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
           Game.whoStarts();
           $scope.playerToStart = Game.currentPlayer;
           $scope.switchQuestion = true;
-          $("#coveringDiv").css("height", $("#innerDiven").height()+30);
+          $("#coveringDiv").css("height", $("#questionDiv").height());
           $scope.nextPlayer = Game.getCurrentPlayer();
           $scope.playerToStart = "";      
         },800);
