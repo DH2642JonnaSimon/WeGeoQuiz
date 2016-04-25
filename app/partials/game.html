@@ -16,16 +16,16 @@
     <div class="row">
       <div class="col-xs-4 col-sm-4 col-md-4"><h3 style="margin: 0px;margin-top: 20px;">Player's Turn: {{playerToStart[0]}}</h3></div>
       <div class="col-xs-4 col-sm-4 col-md-4" style="text-align: center;"><h1 style="margin: 3px;">TIMER: <br> {{counter}}</h1></div>
-      <div class="col-xs-4 col-sm-4 col-md-4"><h3 style="margin: 0px;float: right;margin-top: 20px;">Current Score: {{playerToStart[0]}}</h3></div>
+      <div class="col-xs-4 col-sm-4 col-md-4"><h3 style="margin: 0px;float: right;margin-top: 20px;">Current Score: {{playerToStart[2]}}</h3></div>
     </div>
   </div>
 
-  <div id="coveringDiv" ng-show=switchQuestion class="slide-down" style="width: 100%;z-index: 2;background-color: rgba(0,80,0,1);height: 200px !important; position:absolute;text-align: center;"><p ng-show="nextPlayer"><h2>Next player's turn is {{nextPlayer[0]}}. Are you ready?</h2></p><button ng-click="nextQuestion()" ng-show=switchQuestion class="button_example">Ready</button></div>
+  <div id="coveringDiv" ng-show=switchQuestion class="slide-down" style="width: 100%;z-index: 2;background-color: rgba(0,80,0,1);height: 150px !important; position:absolute;text-align: center;"><p ng-show="nextPlayer"><h2>Next player's turn is {{nextPlayer[0]}}. Are you ready?</h2></p><button ng-click="nextQuestion()" ng-show=switchQuestion class="button_example">Ready</button></div>
 
-  <div class="row" id="questionDiv" style="height: 200px;">
+  <div class="row" id="questionDiv" style="height: 150px;">
   <div class="col-md-12" style="text-align: center;">
-  <h5 style="margin: 0px;margin-top: 30px;">Question: </h5>
-  <h2 id="question" class="slide-right" ng-show="questionFromModel" ng-hide="!questionFromModel">{{questionFromModel}}<h2>
+  <h5 style="margin: 0px;margin-top: 25px;">Question: </h5>
+  <h2 id="question" class="slide-right" ng-show="questionFromModel" ng-hide="!questionFromModel" style="margin: 0px;">{{questionFromModel}}<h2>
   </div>
       
         
@@ -44,7 +44,7 @@
 
 
 
-                    <p style="text-align: center;"><h1>Answer</h1><div class="btn btn-default btn-droppable slide-down" style="height:200px;width: 200px;" data-drop="true" ng-model='draggedAnswer' jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback',onOver: 'overCallback', onOut: 'outCallback'}">
+                    <p style="text-align: center;"><div class="btn btn-default btn-droppable slide-down" style="height:150px;width: 200px;" data-drop="true" ng-model='draggedAnswer' jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback',onOver: 'overCallback', onOut: 'outCallback'}">
                     <h4>Drag your answer here</h4>
                     <br>
                       <div class="btn btn-info btn-draggable btn-inline bouncy-scale-in slide-down" id="answer" style="text-align: center;margin:0 auto;background-color: yellow;" ng-show="draggedAnswer[$index].title" data-drag="{{draggedAnswer[$index].drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="draggedAnswer" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">{{draggedAnswer[$index].title}} - {{draggedAnswer[$index].answer}}</div>
@@ -55,10 +55,10 @@
           </div>
         </div>
       </div>
-      <div class="col-md-12" style="text-align: center;width: 100%;padding: 0px;">
-        <div class="container form-inline" style="text-align: left;">
-          <div class="btn btn-droppable bouncy-scale-in answer" style="width: 20%;margin-left: 4%;" ng-repeat="item in options" data-drop="true" ng-model='options' jqyoui-droppable="{index: {{$index}}}">
-            <div name="answer{{item.title}}" class="btn btn-info btn-draggable button_example" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="options" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.title">{{item.title}} - {{item.answer}}</div>
+      <div class="row">
+        <div class="col-md-3 col-xs-6 col-sm-6 col-lg-3" style="text-align: left;margin-top: 40px;" ng-repeat="item in options">
+          <div class="btn btn-droppable bouncy-scale-in answer" style="margin-left: 4%;width: 100%" data-drop="true" ng-model='options' jqyoui-droppable="{index: {{$index}}}">
+            <div name="answer{{item.title}}" style="width: 100%;font-size: 15px;" class="btn btn-info btn-draggable button_example" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="options" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.title">{{item.title}} - {{item.answer}}</div>
           </div>
         </div>
       </div>
