@@ -238,6 +238,18 @@ html,body,#container, #viewHolder{
   height: 100%;
 }
 
+#startGame{
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align:center;
+}
+
+#startGameBtn{
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
 #newGameScroll{
   width: 70%;
   height: 200%;
@@ -347,6 +359,110 @@ html,body,#container, #viewHolder{
   color: red;
 }
 
+#jumboheader{
+  padding: 10px;
+  margin-bottom: 0px;background-image: url('../../images/headerjumbo.jpg');
+  background-size:contain;
+  background-position: center;
+  border: 5px solid black;
+}
+
+#playerStatus{
+  margin: 0px;
+  margin-top: 20px;
+}
+
+#scoreStatus{
+  margin: 0px;float: right;
+  margin-top: 20px;
+}
+
+#timerDiv{
+  text-align: center;
+}
+
+#timer{
+  margin: 3px;
+}
+
+#coveringDiv{
+  width: 100%;z-index: 2;
+  background-color: rgba(0,80,0,1);
+  height: 150px !important; 
+  position:absolute;
+  text-align: center;
+}
+
+#questionDiv{
+  height: 150px;
+}
+
+#innerQuestionDiv{
+  text-align: center;
+  background-color: rgba(0,60,0,0.6);
+}
+
+#questionHead{
+  margin: 0px;
+  margin-top: 25px;
+}
+
+#question{
+  margin: 0px;
+}
+
+#innerDiven{
+  text-align: center;
+  width: 100%;
+  padding: 0px;
+}
+
+#divWidth1, #divWidth2, #divWidth3{
+  width: 100%;
+}
+
+#ulContainer{
+  width: 100%;
+  list-style-type:none;
+  padding: 0px;
+}
+
+#listItem{
+  text-align: center;
+  width: 100%;
+  margin-left:10px;
+  text-align: center;
+}
+
+#droppablePara{
+  text-align: center;
+}
+
+#btnDroppable{
+  height:150px;
+  width: 200px;
+}
+
+#innerBtnDroppable{
+  text-align: center;
+  margin:0 auto;
+  background-color: yellow;
+}
+
+#divDraggable{
+  text-align: left;
+  margin-top: 40px;
+}
+
+#btnDraggable{
+  margin-left: 4%;
+  width: 100%
+}
+
+#innerBtnDraggable{
+  width: 100%;
+  font-size: 15px;
+}
 
 
 
