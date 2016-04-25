@@ -20,26 +20,6 @@ $scope.getNumOfPlayers = function() {
   }
 
 
-
-// $scope.feedback = {
-//   text:"",
-//   word: /^\s*\w*\s*$/
-// };
-
-
-// $scope.stoppedTyping = function(event){
-// 	console.log("inne i stoppedTyping");
-// 	var value = event.currentTarget.value;
-//     if(value !== "undefined") {
-//     	console.log("om värdet av inputet är större än 0, disabled = false");
-//         document.getElementById('buttonInWell').disabled = false; 
-//     } else { 
-//     	console.log("om värdet av inputet är större än 0, disabled = true");
-//         document.getElementById('buttonInWell').disabled = true;
-//     }
-// }
-
-
 $scope.setPlayerList =function($event){
  	$scope.valueInput = "";
  	$scope.valueSelect = "";

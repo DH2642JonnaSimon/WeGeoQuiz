@@ -48,6 +48,7 @@ $scope.callback = function(weather){
     console.log("CURRENT WEATHER IN CONTROLER HUEHUE: " + $scope.weather);
     if($scope.weather >= 801 && $scope.weather <=804){
         console.log("MOLN");
+        // $(".giphy-embed").css("pointer-events: none;z-index: -10;position: absolute;height:120%;margin-top: -10px;margin-bottom: .20px;");
     }else if($scope.weather >= 800){
         console.log("KLART, molnfritt");
     }
