@@ -46,10 +46,16 @@ $scope.back = function(){
 $scope.callback = function(weather){
     $scope.weather = weather;
     console.log("CURRENT WEATHER IN CONTROLER HUEHUE: " + $scope.weather);
+    if($scope.weather >= 801 && $scope.weather <=804){
+        console.log("MOLN");
+    }else if($scope.weather >= 800){
+        console.log("KLART, molnfritt");
+    }
+
 }
 
 $scope.activateAPI = function(){
-	API.initMap(API, this);
+	$scope.weather = API.initMap(API, this);
 // Här ska jag få put väderID :P
 
 }

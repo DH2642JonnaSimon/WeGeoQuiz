@@ -46,10 +46,10 @@ this.checkWeather = function(pos, ctrl) {
 
 	Weather.get(coordinates, function(successResult) {
     this.weather = successResult.weather;
-    ctrl.callback(this.weather); 
     var i = 0;
     for (i in this.weather){
         this.curWeather = this.weather[i].id;
+        ctrl.callback(this.curWeather); 
     }
         }, function(errorResult) {
             console.log('Error: ' + errorResult);
