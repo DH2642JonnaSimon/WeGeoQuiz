@@ -46,13 +46,78 @@ $scope.back = function(){
 $scope.callback = function(weather){
     $scope.weather = weather;
     console.log("CURRENT WEATHER IN CONTROLER HUEHUE: " + $scope.weather);
-    if($scope.weather >= 801 && $scope.weather <=804){
-        console.log("MOLN");
-        // $(".giphy-embed").css("pointer-events: none;z-index: -10;position: absolute;height:120%;margin-top: -10px;margin-bottom: .20px;");
+    $scope.randomNumber=0;
+    if($scope.weather >= 801 && $scope.weather <=804 || $scope.weather >= 951 && $scope.weather <=954){
+        if ($("#iframeWeather").attr('src') === ""){
+            console.log("MOLN1");
+            var cloudArr = ["//giphy.com/embed/TC8Cap201LtsI", "//giphy.com/embed/SnI9JZGHU9vb2", "//giphy.com/embed/Xmq44SuwVpr1e"];
+            $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
+            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
+        }else{
+            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);
+        }
     }else if($scope.weather >= 800){
         console.log("KLART, molnfritt");
+        if ($("#iframeWeather").attr('src') === ""){
+            var cloudArr = ["//giphy.com/embed/NU9hqIw9vN0fm", "//giphy.com/embed/SnI9JZGHU9vb2", "//giphy.com/embed/CkShVRmZnvHqM"];
+            $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
+            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
+        }else{
+            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);
+        }
+    }else if($scope.weather >= 500 && $scope.weather <=531 || $scope.weather >= 300 && $scope.weather <= 321){
+        console.log("rain!!");
+        if ($("#iframeWeather").attr('src') === ""){
+            var cloudArr = ["//giphy.com/embed/qczA5gN00zI8U", "//giphy.com/embed/QCL9EzG4pHiFi", "//giphy.com/embed/2xdzNrPE50WLC"];
+            $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
+            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
+        }else{
+            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);
+        }
+    }else if($scope.weather >= 200 && $scope.weather <=232){
+        console.log("thunderStorm");
+        if ($("#iframeWeather").attr('src') === ""){
+            var cloudArr = ["//giphy.com/embed/9vb54xSyXXo8o", "//giphy.com/embed/Ik9yPi8vsYDXq", "//giphy.com/embed/9vb54xSyXXo8o", "//giphy.com/embed/d7PElE9GaaodG"];
+            $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
+            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
+        }else{
+            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);
+        }
+    }else if($scope.weather >= 600 && $scope.weather <=622 || $scope.weather === 903){
+        console.log("snow");
+        if ($("#iframeWeather").attr('src') === ""){
+            var cloudArr = ["//giphy.com/embed/THKr9ClAOJAFa", "//giphy.com/embed/8XdaAvz3eN4Qw", "//giphy.com/embed/mwiOcCHkSwLrq"];
+            $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
+            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
+        }else{
+            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);
+        }
+    }else if($scope.weather >= 701 && $scope.weather <=781){
+        console.log("mist, smoke");
+        if ($("#iframeWeather").attr('src') === ""){
+            var cloudArr = ["//giphy.com/embed/ofrQ8FYfTD8gE", "//giphy.com/embed/KU57UJZIYdgha", "//giphy.com/embed/3oGRFx7dy5pEywA9Ec"];
+            $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
+            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
+        }else{
+            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);
+        }
+    }else if($scope.weather === 905 || $scope.weather >= 955 && $scope.weather <=961){
+        console.log("windy");
+        if ($("#iframeWeather").attr('src') === ""){
+            $("#iframeWeather").attr("src", "//giphy.com/embed/5kx1QxAJwQuyc");           
+        }else{
+            $("#iframeWeather").attr("src", "//giphy.com/embed/5kx1QxAJwQuyc");
+        }
+    }else if($scope.weather === 904){
+        console.log("HOT");
+        if ($("#iframeWeather").attr('src') === ""){
+            $("#iframeWeather").attr("src", "//giphy.com/embed/qWzB3ja63xk1a");           
+        }else{
+            $("#iframeWeather").attr("src", "//giphy.com/embed/qWzB3ja63xk1a");
+        }
+    }else{
+        $("#iframeWeather").attr("src", "//giphy.com/embed/HRwfngi7yYpfq");
     }
-
 }
 
 $scope.activateAPI = function(){
