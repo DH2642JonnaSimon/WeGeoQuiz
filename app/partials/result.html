@@ -1,12 +1,18 @@
 <iframe src="" id="iframeR" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 <div id="resultPage" style="width: 100%;">
+	
+	<div class="jumbotron" id="jumboheader" style="">
+	    <div class="row">
+	      <h1 id="title">WeGeoQuiz</h1>
+	    </div>
+	 </div>
 
 	<div ng-init="init()" style="width: 100%;">
-		<div id="result" ng-repeat="i in result" ng-init="parentIndex = $index" style="width: 90%;margin: 0px auto;padding: 20px;border: 5px solid green;margin-bottom: 20px;border-radius: 25px;" class="resultCell-{{$index+1}}">
-					<div id="resultRow" class="row" style="padding: 10px;text-align: center;">
-						<div class="resultTable col-md-2 col-xs-2 col-lg-2 col-sm-2" style="text-align: center;padding:20px;margin:20px;margin-top: 20px;padding-left:40px;display: inline;border: 5px solid green;border-radius: 25px;">{{$index+1}}.</div>
-						<div class="resultTable col-md-5 col-xs-4 col-lg-5 col-sm-4" style="padding:20px;margin:20px;display: inline;border: 5px solid green;border-radius: 25px;">{{i[0]}}</div>
-						<div class="resultTable col-md-2 col-xs-2 col-lg-2 col-sm-2" style="padding:20px;margin:20px;display: inline;border: 5px solid green;border-radius: 25px;">{{i[2]}}</div>
+		<div id="result" ng-repeat="i in result" ng-init="parentIndex = $index" class="resultCell-{{$index+1}}">
+					<div id="resultRow" class="row">
+						<div class="resultTable col-md-2 col-xs-2 col-lg-2 col-sm-2">{{$index+1}}.</div>
+						<div class="resultTable col-md-5 col-xs-4 col-lg-5 col-sm-4">{{i[0]}}</div>
+						<div class="resultTable col-md-2 col-xs-2 col-lg-2 col-sm-2">{{i[2]}} points</div>
 					</div>
 		</div>
 
