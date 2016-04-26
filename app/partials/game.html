@@ -78,7 +78,7 @@
     <div class="row">
       <div class="col-md-3 col-xs-6 col-sm-6 col-lg-3" id="divDraggable" ng-repeat="item in options">
         <div class="btn btn-droppable bouncy-scale-in answer btnDraggable" id="btnDraggable" data-drop="true" ng-model='options' jqyoui-droppable="{index: {{$index}}}">
-          <div name="answer{{item.title}}" id="innerBtnDraggable" class="btn btn-info btn-draggable button_example innerBtnDraggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="options" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.title">{{item.title}} - {{item.answer}}</div>
+          <div name="answer{{item.title}}" id="innerBtnDraggable" class="btn btn-info btn-draggable button_example innerBtnDraggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="options" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.title || timeOut">{{item.title}} - {{item.answer}}</div>
         </div>
       </div>
     </div>

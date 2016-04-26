@@ -12,6 +12,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
   $scope.amountOfQuestions = Game.amountOfQuestions;
   $scope.questionNumber = 0;
   $scope.playerToStart = "";
+  $scope.timeOut = false;
   // Game.weather.get({q:"Stockholm,uk"}, function(data){
   //   console.log(data);
   // });
@@ -117,6 +118,12 @@ $scope.onTimeout= function(){
       Game.addToCounter();
       $scope.counter = 45;
       $scope.onNewquestion();
+      $timeout(function() {
+        $scope.$apply(function(){
+          $scope.timeOut = true;
+          console.log($scope.timeOut);
+        }); 
+      });
     }else{
       $scope.counter = 45;
       $scope.onNewquestion();
@@ -187,7 +194,15 @@ $scope.onTimeout= function(){
     showMe();
     $scope.playerToStart = Game.currentPlayer; 
     $scope.switchQuestion = false; 
-    $scope.nextPlayer = false;     
+    $scope.nextPlayer = false;
+
+    $timeout(function() {
+      $scope.$apply(function(){
+        $scope.timeOut = false;
+        console.log($scope.timeOut);
+      }); 
+    });
+   
   }
 
   /*$scope.draggedAnswer = {title: 'Drag and Drop with custom confirmation'};

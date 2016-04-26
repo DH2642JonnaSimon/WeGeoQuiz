@@ -11,9 +11,11 @@
 
 <div id="newGame" class="col-xs-12 col-sm-12 col-md-12">
 
-	<div id="header">
-    	<h1 id="title">WeGeoQuiz</h1>
-  	</div>
+  <div class="jumbotron" id="jumboheader" style="">
+    <div class="row">
+      <h1 id="title">WeGeoQuiz</h1>
+    </div>
+  </div>
 
   	<div id="homeContainer" class="col-xs-12 col-sm-12 col-md-12">
   		<div id="newGameScroll" class="col-xs-12 col-sm-12 col-md-12 pre-scrollable" style="max-height: 200%;height: 50%;text-align: center;">
@@ -23,7 +25,7 @@
 					<form name="PlayerForm" role="form" id="playerFormen">
 						<div class="row" id="nameInForm">
 							<div class="col-xs-11 col-sm-11 col-md-11">
-						      <label id="playerName" for="usr">Spelare {{$index + 1}}:</label>
+						      <label id="playerName" for="usr">Player {{$index + 1}}:</label>
 						      <!-- ng-model="feedback.text" -->
 						      <input type="text" name="nickName-{{$index}}" ng-model="nickName" class="form-control inputfieldValue" placeholder="Your_Username" ng-pattern="feedback.word" required ng-trim="false" id="usr">
 					      </div>

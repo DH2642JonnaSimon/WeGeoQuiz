@@ -7,9 +7,13 @@
     </script>
 
 <div id="home" data-ng-init="activateAPI()">
-  <div id="header">
-    <h1 id="title">WeGeoQuiz</h1>
+
+  <div class="jumbotron" id="jumboheader" style="">
+    <div class="row">
+      <h1 id="title">WeGeoQuiz</h1>
+    </div>
   </div>
+
 
   <!-- Shown if page is loading and not have got the API-connection-->
 
@@ -30,9 +34,7 @@
     
     <!-- Shown if multiplayermode is selected-->
     <div ng-show="multiplayerMode" id="multiplayerContainer">
-      <div>
-        <h2>Antal spelare</h2>
-      </div>
+
       <div class="row" id="arrowDiv">
         <div class="col-xs-4 col-sm-4 col-lg-4 offset-3" id="decreaseDiv">
           <div id="decreaseArr" class="shadow" ng-click="deleteAddRow($event)">
@@ -40,8 +42,14 @@
         </div>
 
         <div class="col-xs-4 col-sm-4 col-lg-4 offset-3" id="numOfPlayers">
-        
-        <p id="NumText">{{num}}</p>
+
+        <div id="numPlayers" class="row">
+          Number of players
+        </div>
+
+        <div class="row">
+          <p id="NumText">{{num}}</p>
+        </div>
 
         </div>
 
