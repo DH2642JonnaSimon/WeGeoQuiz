@@ -1,5 +1,5 @@
 
-dinnerPlannerApp.controller('HomeCtrl', function ($scope, $cookieStore, $routeParams, Game, $http, Auth, API) {
+dinnerPlannerApp.controller('HomeCtrl', function ($scope, $cookieStore, $routeParams, Game, $http, Auth, API, $timeout) {
 
 $scope.numOfPlayers = 1;
 
@@ -42,8 +42,7 @@ $scope.back = function(){
     $cookieStore.put("multiplayer", Auth.multiplayer);
 }
 
-
-$scope.callback = function(weather){
+$scope.callback = function(weather, ctrl){
     $scope.weather = weather;
     console.log("CURRENT WEATHER IN CONTROLER HUEHUE: " + $scope.weather);
     $scope.randomNumber=0;
@@ -118,10 +117,26 @@ $scope.callback = function(weather){
     }else{
         $("#iframeWeather").attr("src", "//giphy.com/embed/HRwfngi7yYpfq");
     }
+
+    this.APIrespoFunc();
+
 }
 
-$scope.activateAPI = function(){
-	$scope.weather = API.initMap(API, this);
+$scope.APIrespoFunc = function(){
+    console.log("kollar scope var");
+    $timeout(function() {
+        $scope.$apply(function(){
+            $scope.APIrespo = true;
+            console.log($scope.APIrespo);
+        });
+    });
+
+}
+
+
+
+$scope.activateAPI = function(){   
+	API.initMap(API, this);
 // Här ska jag få put väderID :P
 
 }

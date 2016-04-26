@@ -23,7 +23,6 @@ $scope.getNumOfPlayers = function() {
 $scope.setPlayerList =function($event){
  	$scope.valueInput = "";
  	$scope.valueSelect = "";
-
  	$scope.errorList = 0;
 
 

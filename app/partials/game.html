@@ -1,86 +1,69 @@
 
-<iframe src="" id="iframeQ"  frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-
+<iframe src="" id="iframeQ" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 <script type="text/javascript">
-//Making the covering div inbetween questions the correct height
       $(document).ready(function() {
       $(window).resize(function(){
       $("#coveringDiv").css("height", $("#questionDiv").height());
     });
   });
-</script>
-
-<script type="text/javascript">
-//Making the covering div inbetween questions the correct height
-      $(document).ready(function() {
-      $(".innerBtnDraggable").css("width", $("#divDraggable").width());
-      $(".btnDraggable").css("width", $("#divDraggable").width());
-      $("#btnDroppable").css("width", $("#divDraggable").width());
-      $("#innerBtnDroppable").css("width", $("#btnDroppable").width());
-      $("#answer").css("width", $("#btnDroppable").width());
-      $(window).resize(function(){
-      $(".innerBtnDraggable").css("width", $("#divDraggable").width());
-      $(".btnDraggable").css("width", $("#divDraggable").width());
-      
-    });
-  });
-</script>
+    </script>
 
 
-<div id="gameView" class="col-md-12" ng-controller="GameCtrl" ng-init="init()" style="padding: 0px;color: white;">
-  <div class="jumbotron" id="jumboheader" style="">
-    <div class="row">
-      <div class="col-xs-4 col-sm-4 col-md-4">
-        <h3 id="playerStatus">Player's Turn: {{playerToStart[0]}}</h3>
-      </div>
-      <div class="col-xs-4 col-sm-4 col-md-4" id="timerDiv">
-        <h1 id="timer">TIMER: <br> {{counter}}</h1>
-      </div>
-      <div class="col-xs-4 col-sm-4 col-md-4">
-        <h3 id="scoreStatus">Current Score: {{playerToStart[2]}}</h3>
+<div id="gameView" class="col-md-12" ng-controller="GameCtrl" ng-init="init()" style="padding: 0px;">
+
+    <div class="jumbotron" style="padding: 10px;margin-bottom: 0px;">
+      <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4"><h3 style="margin: 0px;margin-top: 20px;">Player's Turn: {{playerToStart[0]}}</h3></div>
+        <div class="col-xs-4 col-sm-4 col-md-4" style="text-align: center;"><h1 style="margin: 3px;">TIMER: <br> {{counter}}</h1></div>
+        <div class="col-xs-4 col-sm-4 col-md-4"><h3 style="margin: 0px;float: right;margin-top: 20px;">Current Score: {{playerToStart[0]}}</h3></div>
       </div>
     </div>
-  </div>
 
-  <div id="coveringDiv" ng-show=switchQuestion class="slide-down">
-    <p ng-show="nextPlayer">
-      <h2>Next player's turn is {{nextPlayer[0]}}. Are you ready?</h2>
-    </p>
-    <button ng-click="nextQuestion()" ng-show=switchQuestion class="button_example">Ready</button>
-  </div>
 
-  <div class="row" id="questionDiv">
-    <div class="col-md-12" id="innerQuestionDiv">
-      <h5 id="questionHead">Question: </h5>
-      <h2 id="question" class="slide-right" ng-show="questionFromModel" ng-hide="!questionFromModel">{{questionFromModel}}<h2>
+    <div id="coveringDiv" ng-show=switchQuestion class="slide-down" style="width: 100%;z-index: 2;background-color: rgba(0,80,0,1);height: 200px !important; position:absolute;text-align: center;">
+      <p ng-show="nextPlayer"><h2>Next player's turn is {{nextPlayer[0]}}. Are you ready?</h2></p><button ng-click="nextQuestion()" ng-show=switchQuestion class="button_example">Ready</button>
     </div>
-  </div>
-  
-  <div id="innerDiven" class="col-md-12">
-    <div class='contentWrapper ng-cloak' id="divWidth1">
-      <div class='content' id="divWidth2">
-        <div class="row-fluid" id="divWidth3">
-          <ul class="thumbnails" id="ulContainer">
-            <li id="listItem" class="span3" ng-repeat="image in images">
-              <p id="droppablePara">
-                <div class="btn btn-default btn-droppable slide-down" id="btnDroppable" data-drop="true" ng-model='draggedAnswer' jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback',onOver: 'overCallback', onOut: 'outCallback'}">
-                  <h4 id="dragText" ng-show="!draggedAnswer[$index].title">Drag your answer here</h4>
-                  <br>
-                  <div class="btn btn-info btn-draggable btn-inline bouncy-scale-in slide-down button_example" id="answer" id="innerBtnDroppable" ng-show="draggedAnswer[$index].title" data-drag="{{draggedAnswer[$index].drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="draggedAnswer" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">{{draggedAnswer[$index].title}} - {{draggedAnswer[$index].answer}}</div>
-                </div>
-              </p>
-            </li>
-          </ul>
+
+    <div class="row" id="questionDiv" style="height: 200px;">
+      <div class="col-md-12" style="text-align: center;">
+        <h5 style="margin: 0px;margin-top: 30px;">Question: </h5>
+        <h2 id="question" class="slide-right" ng-show="questionFromModel" ng-hide="!questionFromModel">{{questionFromModel}}<h2>
+      </div>
+                   
+    </div>
+
+
+    
+
+    <div id="innerDiven" class="col-md-12" style="text-align: center;width: 100%;padding: 0px;">
+        <div class='contentWrapper ng-cloak' style="width: 100%;">
+          <div class='content' style="width: 100%;">
+            <div class="row-fluid" style="width: 100%;">
+              <ul class="thumbnails" style="width: 100%;list-style-type:none;padding: 0px;">
+                <li style="border: 5px solid red;text-align: center;width: 100%;" class="span3" style='margin-left:10px;text-align: center;' ng-repeat="image in images">
+                  
+
+
+
+                      <p style="text-align: center;"><h1>Answer</h1><div class="btn btn-default btn-droppable slide-down" style="height:200px;width: 200px;" data-drop="true" ng-model='draggedAnswer' jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback',onOver: 'overCallback', onOut: 'outCallback'}">
+                      <h4>Drag your answer here</h4>
+                      <br>
+                        <div class="btn btn-info btn-draggable btn-inline bouncy-scale-in slide-down" id="answer" style="text-align: center;margin:0 auto;background-color: yellow;" ng-show="draggedAnswer[$index].title" data-drag="{{draggedAnswer[$index].drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="draggedAnswer" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">{{draggedAnswer[$index].title}} - {{draggedAnswer[$index].answer}}</div>
+                      </div></p>
+
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" style="text-align: center;width: 100%;padding: 0px;">
+          <div class="container form-inline" style="text-align: left;">
+            <div class="btn btn-droppable bouncy-scale-in answer" style="width: 20%;margin-left: 4%;" ng-repeat="item in options" data-drop="true" ng-model='options' jqyoui-droppable="{index: {{$index}}}">
+              <div name="answer{{item.title}}" class="btn btn-info btn-draggable button_example" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="options" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.title">{{item.title}} - {{item.answer}}</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3 col-xs-6 col-sm-6 col-lg-3" id="divDraggable" ng-repeat="item in options">
-        <div class="btn btn-droppable bouncy-scale-in answer btnDraggable" id="btnDraggable" data-drop="true" ng-model='options' jqyoui-droppable="{index: {{$index}}}">
-          <div name="answer{{item.title}}" id="innerBtnDraggable" class="btn btn-info btn-draggable button_example innerBtnDraggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="options" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.title">{{item.title}} - {{item.answer}}</div>
-        </div>
-      </div>
-    </div>
-  </div>
+
 </div>

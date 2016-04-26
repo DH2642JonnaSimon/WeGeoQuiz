@@ -23,8 +23,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
       var randomNumber = Math.floor(Math.random()*cloudArr.length);
     if ($("#iframeQ").attr('src') === ""){
       console.log("iframe scr är tom");
-
-      $("#iframeQ").attr("src", cloudArr[randomNumber]);           
+      $("#iframeQ").attr("src", cloudArr[randomNumber]);          
     }else{
       $("#iframeQ").attr("src", cloudArr[randomNumber]);
     }
