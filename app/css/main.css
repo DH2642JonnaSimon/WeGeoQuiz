@@ -69,10 +69,6 @@ html,body,#container, #viewHolder{
   margin-bottom: 20px;
 }
 
-#loadImg{
-/*  background-image: url('../../images/loading.');*/
-}
-
 
 #homeContainer{
   width: 100%;
@@ -374,8 +370,7 @@ html,body,#container, #viewHolder{
 
 #jumboheader{
   padding: 10px;
-  margin-bottom: 0px;
-  background-image: url('../../images/headerjumbo.jpg');
+  margin-bottom: 0px;background-image: url('../../images/headerjumbo.jpg');
   background-size:contain;
   background-position: center;
   border: 5px solid black;
