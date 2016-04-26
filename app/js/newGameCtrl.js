@@ -69,14 +69,20 @@ $scope.setPlayerList =function($event){
 			Game.newPlayer(nickname,avatar);
 		}
  	}
-			
-
- 	
 }
 
 
 $scope.deleteAddRow = function($event){
 	var id = $event.currentTarget.id;
+	this.num = Game.getNumOfPlayers();
+	if(this.num <= 1){
+		console.log($(".errorDiv").html());
+		if($(".errorDiv").html() == undefined){
+			$("#newGameScroll").append("<h1 class='errorDiv'>The minimum amount of players is 1</h1>");
+		}
+		$(".errorDiv").fadeOut(800, function() { $(this).remove(); });
+		return;
+	}
 	console.log(id);
 	if(id === "del"){
 		this.num = Game.getNumOfPlayers();
@@ -89,7 +95,6 @@ $scope.deleteAddRow = function($event){
 		Game.setNumOfPlayers(num);
 		return new Array(num); 
 	}
-	
 }
 
 
