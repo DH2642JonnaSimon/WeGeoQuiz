@@ -41,7 +41,11 @@ $scope.setPlayerList =function($event){
  		}
  	});
 
- 	$(".selectValue").each(function(index, data){
+ 	$(".avatar").each(function(index, data){
+ 		$scope.valueSelect = $(this).val();
+ 	});
+
+ 	/*$(".selectValue").each(function(index, data){
  		$scope.valueSelect = $(this).val();
  		console.log("Value of undefiened icon" + $scope.value);
  		if($scope.valueSelect === '? undefined:undefined ?'){
@@ -53,7 +57,12 @@ $scope.setPlayerList =function($event){
  			$("[name='errorDivSelect-" + index + "']").html("");
  			console.log($scope.errorList);
  		}
+ 	});*/
+ 	var avatars = [];
+ 	$(":radio:checked").each(function(index, data){
+ 		avatars.push($(this).attr("id"));
  	});
+ 	//alert($("input[name=options]:checked").attr('id'));
 
  	
  	if ($scope.errorList === 0){
@@ -62,7 +71,8 @@ $scope.setPlayerList =function($event){
  		for(var i = 0; i < numPlayers;++i ){
 			console.log("nu sätter vi spelarna");
 			var nickname = $("[name='nickName-"+ i +"']").val();
-			var avatar = $("[name='avatar-"+ i +"']").val();
+			var avatar = avatars[i];
+			console.log(avatars[i]);
 
 			console.log(nickname, avatar);
 			Game.newPlayer(nickname,avatar);
@@ -74,7 +84,7 @@ $scope.setPlayerList =function($event){
 $scope.deleteAddRow = function($event){
 	var id = $event.currentTarget.id;
 	this.num = Game.getNumOfPlayers();
-	if(this.num <= 1){
+	if(this.num <= 1 && id == "del"){
 		console.log($(".errorDiv").html());
 		if($(".errorDiv").html() == undefined){
 			$("#newGameScroll").append("<h1 class='errorDiv'>The minimum amount of players is 1</h1>");

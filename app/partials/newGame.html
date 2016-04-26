@@ -16,11 +16,11 @@
   	</div>
 
   	<div id="homeContainer" class="col-xs-12 col-sm-12 col-md-12">
-  		<div id="newGameScroll" class="col-xs-12 col-sm-12 col-md-12 pre-scrollable" style="max-height: 200%;height: 50%;">
+  		<div id="newGameScroll" class="col-xs-12 col-sm-12 col-md-12 pre-scrollable" style="max-height: 200%;height: 50%;text-align: center;">
 
-			<div ng-repeat="i in getNumOfPlayers() track by $index" class="col-xs-6 col-sm-6 col-md-6" id="playerForm">
+			<div ng-repeat="i in getNumOfPlayers() track by $index" class="col-xs-12 col-sm-12 col-md-6" id="playerForm">
 				<div class="row" id="nickName-{{$index}}">
-					<form name="PlayerForm" role="form">
+					<form name="PlayerForm" role="form" id="playerFormen">
 						<div class="row" id="nameInForm">
 							<div class="col-xs-11 col-sm-11 col-md-11">
 						      <label id="playerName" for="usr">Spelare {{$index + 1}}:</label>
@@ -39,7 +39,8 @@
 						    <span class="error" ng-show="PlayerForm.input.$error.pattern">
 						      Single word only!</span>
 		  				</div> -->
-		  				<div class="row" id="selectInForm">
+		  				
+		  				<!--<div class="row" id="selectInForm">
 		  					<div id="selectAvatar" class="col-xs-12 col-sm-12 col-md-8">
 								<select id="select" name="avatar-{{$index}}" ng-model="avatar" class="selectValue">
 									<option value="smile" ></option>
@@ -48,14 +49,53 @@
 									<option value="audi">Audi</option>
 								</select>
 							</div>
+							-->
+							<div class="row">
+								<div id="errorMessage" class="col-xs-12 col-sm-12 col-md-12">
+									<div name="errorDiv-{{$index}}"></div>
+								      
+								 	<div name="errorDivSelect-{{$index}}"></div>
+								</div>
+							</div>
+						<div class="row" style="text-align: center;">
+							<div class="col-md-12">							
+							<div class="btn-group" data-toggle="buttons" class="avatarButtons">
+							  <label class="btn btn-primary active button_example">
+							    <input type="radio" name="options" id="1" autocomplete="off" checked> <img src="../../images/avatars/1.png" class="avatar" ng-click="avatar($event)" id="1" alt="Smiley face" height="40" width="40">
+							  </label>
+							  <label class="btn btn-primary button_example">
+							    <input type="radio" name="options" id="2" autocomplete="off"> <img src="../../images/avatars/2.png" class="avatar " ng-click="avatar($event)" id="2" alt="Smiley face" height="40" width="40">
+							  </label>
+							  <label class="btn btn-primary button_example">
+							    <input type="radio" name="options" id="3" autocomplete="off"> <img src="../../images/avatars/3.png" class="avatar" ng-click="avatar($event)" id="3" alt="Smiley face" height="40" width="40">
+							  </label>
+							  <label class="btn btn-primary">
+							    <input type="radio" name="options" id="4" autocomplete="off"> <img src="../../images/avatars/4.png" class="avatar" ng-click="avatar($event)" id="4" alt="Smiley face" height="40" width="40">
+							  </label>
+							  <label class="btn btn-primary">
+							    <input type="radio" name="options" id="5" autocomplete="off"> <img src="../../images/avatars/5.png" class="avatar" ng-click="avatar($event)" id="5" alt="Smiley face" height="40" width="40">
+							  </label>
+							  <br>
+							  <label class="btn btn-primary">
+							    <input type="radio" name="options" id="6" autocomplete="off"> <img src="../../images/avatars/6.png" class="avatar" ng-click="avatar($event)" id="6" alt="Smiley face" height="40" width="40">
+							  </label>
+							  <label class="btn btn-primary">
+							    <input type="radio" name="options" id="7" autocomplete="off"> <img src="../../images/avatars/7.png" class="avatar" ng-click="avatar($event)" id="7" alt="Smiley face" height="40" width="40">
+							  </label>
+							  <label class="btn btn-primary">
+							    <input type="radio" name="options" id="8" autocomplete="off"> <img src="../../images/avatars/8.png"  class="avatar" ng-click="avatar($event)" id="8" alt="Smiley face" height="40" width="40">
+							  </label>
+							  <label class="btn btn-primary">
+							    <input type="radio" name="options" id="9" autocomplete="off"> <img src="../../images/avatars/9.png" class="avatar" ng-click="avatar($event)" id="9" alt="Smiley face" height="40" width="40">
+							  </label>
+							  <label class="btn btn-primary">
+							    <input type="radio" name="options" id="10" autocomplete="off"> <img src="../../images/avatars/10.png" class="avatar" ng-click="avatar($event)" id="10" alt="Smiley face" height="40" width="40">
+							  </label>
+							</div>
 
-							<div id="errorMessage" class="col-xs-12 col-sm-12 col-md-2">
-								<div name="errorDiv-{{$index}}"></div>
-							      
-							 	<div name="errorDivSelect-{{$index}}"></div>
+
 							</div>
 						</div>
-
 					</form>
 					<!-- <div class="glyphicon glyphicon-remove" id="nickName-{{$index}},avatar-{{$index}}" ng-click="delete($event)"></div> -->
 					

@@ -237,12 +237,17 @@ html,body,#container, #viewHolder{
 
 }
 
-#playerForm{
-  margin: 0px auto;
+#playerFormen{
+  margin: 0;
   border-style: solid;
-  border-top: 2px black;
-  border-left: 2px black;
-  border-right: 2px black;
+  border: 2px black solid;
+  border-radius: 25px;
+  text-align: center;
+  display: inline-block;
+  width: 90%;
+}
+#playerForm{
+  margin-top: 20px !important;
 }
 
 #newGame{
@@ -512,9 +517,11 @@ html,body,#container, #viewHolder{
 }
 
 #del{
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .glyphicon-remove, .glyphicon-plus {
     font-size: 2.0em;
 }
+
+
