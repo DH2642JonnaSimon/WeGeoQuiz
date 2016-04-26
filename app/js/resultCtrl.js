@@ -6,6 +6,7 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$co
 
 
   $scope.init = function(){
+    console.log("INIT result");
     Game.getResult();
     $scope.result = Game.spelargrupp;
     console.log($scope.result);
@@ -16,6 +17,16 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$co
     }else{
       console.log("else");
       $scope.showToplist = false;
+    }
+    var cloudArr = ["//giphy.com/embed/weKozimGUbPMI", "//giphy.com/embed/S0gd87kFXjUje", "//giphy.com/embed/m0pnkCXTtEiGs"];
+    var randomNumber = Math.floor(Math.random()*cloudArr.length);
+
+    if ($("#iframeR").attr('src') === ""){
+      console.log("iframe scr är tom");
+
+      $("#iframeR").attr("src", cloudArr[randomNumber]);           
+    }else{
+      $("#iframeR").attr("src", cloudArr[randomNumber]);
     }
   }
 

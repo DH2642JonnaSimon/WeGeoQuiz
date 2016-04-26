@@ -64,8 +64,9 @@ html,body,#container, #viewHolder{
   z-index: -10;
   position: absolute;
   height:120%;
-  margin-top: -10px;
-  margin-bottom: .20px;
+  width: 110%;
+  margin-top: 35px;
+  margin-bottom: 20px;
 }
 
 

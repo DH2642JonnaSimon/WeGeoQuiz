@@ -17,8 +17,17 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
   // });
 
   $scope.init = function(){
-    console.log("inne i init");
     Game.initL(callbackQuestionsLoaded, Game);
+    console.log("INIT");
+      var cloudArr = ["//giphy.com/embed/xwy9AbBlXlIFW", "//giphy.com/embed/c5Rlke9hRLoDS", "//giphy.com/embed/pPtbW1ziRZsBO"];
+      var randomNumber = Math.floor(Math.random()*cloudArr.length);
+    if ($("#iframeQ").attr('src') === ""){
+      console.log("iframe scr är tom");
+
+      $("#iframeQ").attr("src", cloudArr[randomNumber]);           
+    }else{
+      $("#iframeQ").attr("src", cloudArr[randomNumber]);
+    }
   }
 
   $scope.player = function(){
@@ -26,9 +35,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
   }
 
   $scope.onShow = function() { 
-      console.log("ON RELOAD");
       $timeout(function() {
-        console.log("ON RELOAD");
         $scope.questionFromModel ="";
         $scope.options = [];
         if($scope.finalAnswer == true){
@@ -36,14 +43,10 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
           $('#answer').css("color", "Black");
           $('#answer').html("Correct"); 
         } else{
-          console.log("ON RELOAD");
         	$('#answer').html("Wrong"); 
         	$('#answer').css("background-color", "Red");
         	$('#answer').css("color", "Black");
-          console.log($scope.finalAnswer);
           $('[name="answer' + $scope.finalAnswer + '"]').css("background-color", "Green");
-          console.log('[name="answer' + $scope.finalAnswer + '"]');
-          console.log($([name="answer' + $scope.finalAnswer + '"]));
         } 
         // $scope.onNewquestion();
       },1000);
@@ -51,8 +54,6 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
 
    function showMe() {
       $scope.questionFromModel = Game.question.question;
-
-      console.log("ON RELOAD");
 
       $scope.options = [
         { 'title': 'A', 'answer': $scope.answerA, 'drag': true },
@@ -64,7 +65,6 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
     }
 
     $scope.onNewquestion = function() {
-      console.log("ON RELOAD");
         $timeout(function() {
         	$('#answer').html();
           Game.whoStarts();
@@ -83,7 +83,6 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
 $scope.onTimeout= function(){  
       $scope.timer = $interval(function(){
         var time = Game.reloadedTime;
-        console.log(time);
 
         if ($scope.counter==0){
           $scope.stopNoPoints();
@@ -158,7 +157,6 @@ $scope.onTimeout= function(){
       console.log("Inne i present new Q, firstTime, funktionen");
       $scope.questionFromModel = Game.question.question;
       $scope.playerToStart = Game.currentPlayer;
-      console.log($scope.playerToStart);
     }
     $scope.answerA = Game.question.A;
     $scope.answerB = Game.question.B;
