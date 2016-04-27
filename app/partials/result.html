@@ -2,10 +2,10 @@
 <script type="text/javascript">
       $(document).ready(function() {
       $("#resultScroll").css("max-height", $("#resultPage").height()-$(".jumbotron").height() -$("#newGame").height() - 45);
-      $("#scrollDiv").css("height", $("#resultPage").height()-$("#resultScroll").height() - 20);
+      $("#scrollDiv").css("height", $("#resultPage").height()-$("#resultScroll").height() -$(".jumbotron").height() -$("#newGame").height()- 20);
       $(window).resize(function(){
       $("#resultScroll").css("max-height", $("#resultPage").height()-$(".jumbotron").height() -$("#newGame").height() - 45);
-   	  $("#scrollDiv").css("height", $("#resultPage").height()-$("#resultScroll").height() - 20);
+   	  $("#scrollDiv").css("height", $("#resultPage").height()-$("#resultScroll").height() -$(".jumbotron").height() -$("#newGame").height()- 20);
 
     });
   });
@@ -32,7 +32,7 @@
 						<div id="resultRow" class="row">
 							<div class="resultTable col-md-2 col-xs-1 col-lg-2 col-sm-2 leftCol" id="rankCell-{{$index+1}}"style="">{{$index+1}}.</div>
 							<div class="resultTable col-md-5 col-xs-5 col-lg-5 col-sm-5" style="text-align: left;">
-							<img class="avaPic" src="../../images/avatars/{{i[1]}}.png" id="1" height="80" width="80"> {{i[0]}}</div>
+							<img ng-show="mplayer" class="avaPic" src="../../images/avatars/{{i[1]}}.png" id="1" height="80" width="80"> {{i[0]}}</div>
 							<div class="resultTable col-md-2 col-xs-2 col-lg-2 col-sm-1" style="text-align: left;">{{i[2]}} pts</div>
 						</div>
 			</div>
@@ -45,7 +45,7 @@
 	</div>
 
 <!-- We include the sidebar as it is shared across two screens. -->
-<div id="scrollDiv" class="panel-group" style="overflow-y:scroll;height: 360px;">
+<div ng-show="!mplayer" id="scrollDiv" class="panel-group" style="overflow-y:scroll;height: 360px;">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">

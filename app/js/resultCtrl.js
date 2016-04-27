@@ -3,15 +3,16 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$co
 
   $scope.result=[];
   $scope.showToplist = true;
+  $scope.mplayer = $cookieStore.get('multiplayer');
+  
 
-
-  $scope.init = function(){
+  init = function(){
     console.log("INIT result");
     Game.getResult();
     $scope.result = Game.spelargrupp;
     console.log($scope.result);
 
-    if(!Auth.multiplayer){
+    if(!Auth.multiplayer && !$scope.mplayer){
       console.log("if");
       insertData();
     }else{
@@ -30,6 +31,7 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$co
     }
   }
 
+
   $scope.removeCookies = function(){
   	$cookieStore.remove('askedQuestions');
   	$cookieStore.remove('numOfQ');
@@ -47,8 +49,6 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$co
   
   //postrequest för att lägga in i databasen
   SendData = function (nickname, score) {
-
-            
            // use $.param jQuery function to serialize data from JSON 
             var data = $.param({
                 nickname: nickname,
@@ -66,7 +66,11 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$co
                $http.get("http://simonfra.se/WeGeoQuiz/topplist.php")
             .then(function (response) {
             console.log(response.data.rss.channels[0].items);
+            $scope.$apply(function(){
+            $scope.APIrespo = true;
             $scope.toplist = response.data.rss.channels[0].items;
+            });
+            
 
 
 
@@ -78,12 +82,13 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$co
         };
 
     insertData = function(){
-      for (var i = 0; i < Game.spelargrupp.length; ++i) {
-               SendData(Game.spelargrupp[i][0], Game.spelargrupp[i][2]);
+      if(Game.spelargrupp.length > 1){
+        alert("wooot?");
       }
+      SendData(Game.spelargrupp[0][0], Game.spelargrupp[0][2]);
     }
 
-$scope.init();
+  init();
 
     
 });

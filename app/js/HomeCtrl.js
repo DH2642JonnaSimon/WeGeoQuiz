@@ -1,5 +1,5 @@
 
-dinnerPlannerApp.controller('HomeCtrl', function ($scope, $cookieStore, $routeParams, Game, $http, Auth, API, $timeout) {
+dinnerPlannerApp.controller('HomeCtrl', function ($scope, $cookieStore, $routeParams, Game, $http, Auth, API, $timeout, $window) {
 
 $scope.numOfPlayers = 1;
 
@@ -8,7 +8,7 @@ $cookieStore.remove("multiplayer");
 Auth.multiplayer = false;
 Auth.addObservable(this);
 
-
+$window.fbAsyncInit();
 
 //set's number of players in multiplayer mode, it was a design choice to put this function on this routing location
 //if cookie exists it sets the number of players to the valune int he cookie.
