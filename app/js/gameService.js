@@ -11,6 +11,7 @@ this.counter = 0;
 this.timePoints = 0;
 this.curPlayer = "";
 this.reloadedTime = 0;
+this.count = 1;
 
 //Denna funktion tar in tid och beräknar poäng utifrån tid om rätt svar.
 this.timePoint = function(time,player){
@@ -197,6 +198,7 @@ this.initL = function(callback, Game){
 
 //sorts players depending on point/score
 this.getResult = function(){
+	if (this.spelargrupp.length <= 1) {return;}
 	this.spelargrupp = $cookieStore.get('spelargrupp');
  	this.spelargrupp.sort(function(a, b) {
 	    var valueA, valueB;

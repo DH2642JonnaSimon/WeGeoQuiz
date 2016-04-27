@@ -8,7 +8,9 @@ $cookieStore.remove("multiplayer");
 Auth.multiplayer = false;
 Auth.addObservable(this);
 
-$window.fbAsyncInit();
+
+//$window.fbAsyncInit();
+
 
 //set's number of players in multiplayer mode, it was a design choice to put this function on this routing location
 //if cookie exists it sets the number of players to the valune int he cookie.
@@ -194,6 +196,21 @@ $scope.deleteAddRow = function($event){
     }   
     return $scope.num;  
 }
+
+$scope.removeCookies = function(){
+    $cookieStore.remove('askedQuestions');
+    $cookieStore.remove('numOfQ');
+    $cookieStore.remove('rnList');
+    $cookieStore.remove('spelargrupp');
+    $cookieStore.remove('time');
+    $cookieStore.remove('whoToPlay');
+    $cookieStore.remove('backgroundImg');
+    $cookieStore.remove('multiplayer');
+    Game.resetGame();
+    $cookieStore.remove('firstQAsked');
+    $scope.result=[];  
+}
+
 
 
 });

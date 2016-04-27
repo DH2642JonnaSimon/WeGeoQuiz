@@ -275,7 +275,7 @@ html,body,#container, #viewHolder{
   #divDraggable{
     margin-top: 30px !important;
   }
-  
+
   #prgbar{
     display: none !important;
   }
@@ -469,12 +469,6 @@ html,body,#container, #viewHolder{
 
 }
 
-#fbButton{
- margin-top: 10px;
- position: relative;
- margin-top: 15%;
-
-}
 
 #multiplayerContainer{
   width: 100%;

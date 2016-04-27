@@ -1,5 +1,5 @@
 
-dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$cookieStore,Auth,$http) {
+dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$cookieStore,Auth,$http,$timeout) {
 
   $scope.result=[];
   $scope.showToplist = true;
@@ -42,9 +42,9 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$co
   	$cookieStore.remove('numPlayers');
     $cookieStore.remove('backgroundImg');
     $cookieStore.remove('multiplayer');
-    $cookieStore.remove('firstQAsked');
     Game.resetGame();
-   
+    $cookieStore.remove('firstQAsked');
+    $scope.result=[];
   }
  
 
@@ -69,13 +69,14 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$co
                $http.get("http://simonfra.se/WeGeoQuiz/topplist.php")
             .then(function (response) {
             console.log(response.data.rss.channels[0].items);
-            $scope.$apply(function(){
-            $scope.APIrespo = true;
-            $scope.toplist = response.data.rss.channels[0].items;
-            });
             
-
-
+            $timeout(function() {
+                $scope.$apply(function(){
+                $scope.APIrespo = true;
+                $scope.toplist = response.data.rss.channels[0].items;
+              });
+            });
+          
 
               });
             })
@@ -85,9 +86,6 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$co
         };
 
     insertData = function(){
-      if(Game.spelargrupp.length > 1){
-        alert("wooot?");
-      }
       SendData(Game.spelargrupp[0][0], Game.spelargrupp[0][2]);
     }
 

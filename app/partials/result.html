@@ -45,16 +45,16 @@
 	</div>
 
 <!-- We include the sidebar as it is shared across two screens. -->
-<div ng-show="!mplayer" id="scrollDiv" class="panel-group" style="overflow-y:scroll;height: 360px;">
-      <div class="panel panel-default">
-        <div class="panel-heading">
+<div ng-show="!mplayer" id="scrollDiv" class="panel-group" style="overflow-y:scroll;height: 360px;color: white">
+      <div class="panel panel-default" style="background-color: rgba(0,60,0,0.6);color: white">
+        <div class="panel-heading" style="background-color: rgba(0,60,0,0.6);color: white">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-target="#collapse1" class="btn button_example" style="width: 100%;">Toplist</a>
           </h4>
         </div>
-        <div id="collapse1" class="panel-collapse collapse">
-          <div class="panel-body"><ng-include src="'partials/topplist.html'" ng-controller="ToplistCtrl">
+        <div id="collapse1" class="panel-collapse collapse" style="background-color: rgba(0,60,0,0.6);color: white">
+          <div class="panel-body"><ng-include src="'partials/topplist.html'" style="background-color: rgba(0,60,0,0.6);color: white" ng-controller="ToplistCtrl">
         </ng-include></div></div>
-        <div class="panel-footer"></div>
+        <div class="panel-footer" style="background-color: rgba(0,60,0,0.6);color: white"></div>
       </div>
     </div>
