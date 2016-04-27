@@ -247,6 +247,7 @@ $scope.onTimeout= function(){
   $scope.startCallback = function(event, ui, title) {
     //Började dra ett dragbart objekt
     $scope.draggedTitle = title.title;
+    ui.helper.css("cursor", "-webkit-grabbing", "important");
     ui.helper.css("border-color", "Red");
   };
 
@@ -256,6 +257,7 @@ $scope.onTimeout= function(){
   };
 
   $scope.dragCallback = function(event, ui) {
+
   };
 
   $scope.dropCallback = function(event, ui) {

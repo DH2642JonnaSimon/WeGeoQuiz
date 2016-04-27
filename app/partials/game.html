@@ -28,49 +28,49 @@
 </script>
 
 
-<div id="gameView" class="col-md-12" ng-init="init()" style="padding: 0px;color: white;">
+<div id="gameView" class="col-md-12" ng-init="init()" style="padding: 0px;color: white;height: 100%;">
   <div class="jumbotron" id="jumboheader" style="">
     <div class="row">
       <div class="col-xs-4 col-sm-4 col-md-4">
-        <h3 id="playerStatus">Player's Turn:
+        <h3 ng-show="playerToStart[0]" id="playerStatus">Player's Turn
         <br> 
         <img class="avatarGame" src="../../images/avatars/{{playerToStart[1]}}.png" id="1" height="80" width="80">  {{playerToStart[0]}}</h3>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-4" id="timerDiv">
-        <h1 id="timer">TIMER: <br> {{counter}}</h1><br>
-        Total questions answered:
+        <h1 id="timer">TIMER <br> <span id="time">{{counter}}</span></h1><br>
+        Total questions answered
         <div class="row">
-        <div class="col-sm-12"><uib-progressbar class="progress-striped active" max=amountOfQuestions value=questionNumber type="success"><i> {{questionNumber}} / {{amountOfQuestions}}</i></uib-progressbar></div>
+        <div class="col-sm-12"><uib-progressbar style="background-color: white;text-align: center;" class="active" max=amountOfQuestions value=questionNumber type="success"><span ng-show="amountOfQuestions" style="position: absolute; right:0;left:0;color: black"> {{questionNumber}} / {{amountOfQuestions}}</span></uib-progressbar></div>
     </div>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-4">
-        <h3 id="scoreStatus">{{playerToStart[0]}}'s Score: <br>{{playerToStart[2]}}</h3>
+        <h3 id="scoreStatus" ng-show="playerToStart[0]" style="margin-right: 15px;">{{playerToStart[0]}}'s Score <br>{{playerToStart[2]}}</h3>
       </div>
     </div>
   </div>
 
   <div id="coveringDiv" ng-show=switchQuestion class="slide-down">
     <p ng-show="nextPlayer">
-      <h2>Next player's turn is {{nextPlayer[0]}}. Are you ready?</h2>
+      <h2 class="covDiv">Next player's turn is {{nextPlayer[0]}}. Are you ready?</h2>
     </p>
-    <button ng-click="nextQuestion()" ng-show=switchQuestion class="button_example">Ready</button>
+    <button ng-click="nextQuestion()" ng-show=switchQuestion class="button_example covBtn" id="rdyBtn">Ready</button>
   </div>
 
 
 
   <div id="coveringDiv" ng-show=firstReload class="slide-down">
     <p>
-      <h2>{{nextPlayer[0]}}, you will start the game. Are you ready?</h2>
+      <h2 class="covDiv">{{nextPlayer[0]}}, you will start the game. Are you ready?</h2>
     </p>
-    <button ng-click="firstReloadB()" class="button_example">Ready</button>
+    <button ng-click="firstReloadB()" class="button_example covBtn">Ready</button>
   </div>
 
 
   <div id="coveringDiv" ng-show=Reload class="slide-down">
     <p>
-      <h2>Something went wrong. Please continue!</h2>
+      <h2 class="covDiv">Something went wrong. Please continue!</h2>
     </p>
-    <button ng-click="ReloadB()" class="button_example">Start</button>
+    <button ng-click="ReloadB()" class="button_example covBtn">Start</button>
   </div>
 
 
@@ -92,7 +92,7 @@
                 <div class="btn btn-default btn-droppable slide-down" id="btnDroppable" data-drop="true" ng-model='draggedAnswer' jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback',onOver: 'overCallback', onOut: 'outCallback'}">
                   <h4 id="dragText" ng-show="!draggedAnswer[$index].title">Drag your answer here</h4>
                   <br>
-                  <div class="btn btn-info btn-draggable btn-inline bouncy-scale-in slide-down button_example" id="answer" id="innerBtnDroppable" ng-show="draggedAnswer[$index].title" data-drag="{{draggedAnswer[$index].drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="draggedAnswer" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">{{draggedAnswer[$index].title}} - {{draggedAnswer[$index].answer}}</div>
+                  <div class="btn btn-info btn-inline bouncy-scale-in slide-down button_example" id="answer" id="innerBtnDroppable" ng-show="draggedAnswer[$index].title" data-jqyoui-options="{revert: 'invalid'}" ng-model="draggedAnswer" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">{{draggedAnswer[$index].title}} - {{draggedAnswer[$index].answer}}</div>
                 </div>
               </p>
             </li>

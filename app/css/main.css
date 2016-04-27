@@ -131,6 +131,41 @@ html,body,#container, #viewHolder{
   #homeContainer{
     height: 60%;
   }
+
+    #questionHead{
+    font-size: 10px !important;
+  }
+
+  #rdyBtn{
+    font-size: 10px !important;
+  }
+  #questionHead{
+    font-size: 10px;
+  }
+
+  #innerBtnDraggable{
+    font-size: 10px !important;
+  }
+  #question{font-size: 15px !important;}
+  #questionDiv{height: 80px;}
+
+  #innerDiven{height: auto; margin: 0;}
+
+  #innerBtnDraggable{
+    padding: 5px;
+  }
+  #btnDraggable{
+    padding: 5px;
+  }
+  #btnDroppable{
+    padding: 5px;
+    height: 80px;
+  }
+
+  #innerBtnDroppable{
+    padding: 5px;
+  }
+  #coveringDiv{height:80px;}
 }
 
 @media only screen and (max-width: 550px) {
@@ -138,7 +173,88 @@ html,body,#container, #viewHolder{
   #divDraggable{
     padding: 0px !important;
   }
+
+    #questionHead{
+    font-size: 10px !important;
+  }
+
+  #rdyBtn{
+    font-size: 10px !important;
+  }
+
+  #innerBtnDraggable{
+    font-size: 10px !important;
+  }
+  #question{font-size: 15px !important;}
+  #questionDiv{height: 80px;}
+
+  #innerDiven{height: auto; margin: 0;}
+
+  #innerBtnDraggable{
+    padding: 5px;
+  }
+  #btnDraggable{
+    padding: 5px;
+  }
+
+  #btnDroppable{
+    padding: 5px;
+    height: 80px;
+  }
+
+  #questionHead{
+    font-size: 10px;
+  }
+
+  #innerBtnDroppable{
+    padding: 5px;
+  }
+  #coveringDiv{height:80px;}
 }
+@media only screen and (max-height: 700px){
+  #questionHead{
+    font-size: 10px !important;
+  }
+
+  #rdyBtn{
+    font-size: 10px !important;
+  }
+
+  #innerBtnDraggable{
+    font-size: 10px !important;
+  }
+  #question{font-size: 15px !important;}
+  #questionDiv{height: 80px !important;}
+  #coveringDiv{height:80px;}
+  #innerDiven{height: auto; margin: 0;}
+
+  #innerBtnDraggable{
+    padding: 15px;
+  }
+  #btnDraggable{
+    padding: 15px;
+  }
+  #btnDroppable{
+    padding: 15px;
+    height: 80px;
+  }
+
+  #innerBtnDroppable{
+    padding: 15px;
+  }
+
+  #questionHead{
+    font-size: 10px;
+  }
+  .covDiv{
+    font-size: 15px;
+  }
+
+  .covBtn{
+    padding: 5px;
+  }
+}
+
 
 
 @media only screen and (max-width: 900px) and (max-height: 800px){
@@ -186,6 +302,36 @@ html,body,#container, #viewHolder{
     margin-top: 0%;
     font-size: 50px;
     color:white;
+  }
+
+    #questionHead{
+    font-size: 10px !important;
+  }
+
+  #rdyBtn{
+    font-size: 10px !important;
+  }
+
+  #innerBtnDraggable{
+    font-size: 10px !important;
+  }
+  #question{font-size: 15px !important;}
+  #questionDiv{height: 80px;}
+
+  #innerDiven{height: auto; margin: 0;}
+
+  #innerBtnDraggable{
+    padding: 5px;
+  }
+  #btnDraggable{
+    padding: 5px;
+  }
+  #btnDroppable{
+    padding: 5px;
+  }
+
+  #innerBtnDroppable{
+    padding: 5px;
   }
 
 }
@@ -538,6 +684,10 @@ html,body,#container, #viewHolder{
 
 #timer{
   margin: 3px;
+  font-size: 20px;
+}
+#time{
+  font-size: 50px !important;
 }
 
 #coveringDiv{
@@ -564,6 +714,24 @@ html,body,#container, #viewHolder{
 
 #question{
   margin: 0px;
+}
+
+
+#innerBtnDraggable{
+  cursor: -webkit-grab; 
+  cursor: -moz-grab; 
+}
+
+#innerBtnDraggable::active{
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+#btnDraggable{
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
 }
 
 #innerDiven{
@@ -596,12 +764,18 @@ html,body,#container, #viewHolder{
 #btnDroppable{
   height:150px;
   width: 200px;
+  cursor: default !important;
 }
 
 #innerBtnDroppable{
   text-align: center;
   margin:0 auto;
   background-color: yellow;
+  cursor: default !important;
+}
+
+#answer:hover{
+  cursor: default !important;
 }
 
 #divDraggable{
@@ -632,13 +806,16 @@ html,body,#container, #viewHolder{
 #answer{
   width: 90%;
   background-color: yellow;
+  color: black;
   background-image: none;
+  cursor: default !important;
 }
 
 #dragText{
   position: relative;
   top: 40%;
   transform: translateY(-40%);
+  color: #D3D3D3;
 }
 
 #answer{
@@ -732,19 +909,18 @@ html,body,#container, #viewHolder{
 }
 
 @media only screen and (max-width: 500px) {
-.giphy-embed{
-  /*content:url("//giphy.com/embed/TC8Cap201LtsI" );*/
-  pointer-events: none;
-  /*src="//giphy.com/embed/TC8Cap201LtsI"*/ 
-  z-index: -10;
-  position: absolute;
-  height:120%;
-  width: 400%;
-  margin-top: 35px;
-  margin-bottom: 20px;
-}
+  .giphy-embed{
+    /*content:url("//giphy.com/embed/TC8Cap201LtsI" );*/
+    pointer-events: none;
+    /*src="//giphy.com/embed/TC8Cap201LtsI"*/ 
+    z-index: -10;
+    position: absolute;
+    height:120%;
+    width: 400%;
+    margin-top: 35px;
+    margin-bottom: 20px;
+  }
 }
 /*----------------------------------Style Fonts-------------------------------*/
-
 
 

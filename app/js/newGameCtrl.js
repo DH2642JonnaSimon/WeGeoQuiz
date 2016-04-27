@@ -116,7 +116,6 @@ $scope.deleteAddRow = function($event){
 
 $scope.removeCookies = function(){
 	$cookieStore.remove('multiplayer');
-	$cookieStore.remove('numPlayers');
 }
 
 $scope.init();
