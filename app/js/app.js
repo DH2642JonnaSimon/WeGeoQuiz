@@ -28,6 +28,8 @@ dinnerPlannerApp.config(['$routeProvider',
 
 //Makes sure the user is authenticated to be a specific location/path.
 dinnerPlannerApp.run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
+
+
     $rootScope.$on('$routeChangeStart', function (event) {
         console.log($location.$$path);
          
@@ -43,15 +45,17 @@ dinnerPlannerApp.run(['$rootScope', '$location', 'Auth', function ($rootScope, $
             console.log('ALLOW');
         }
     });
+
+
 }]);
 
 //load fb sdk, set up db api and the Auth service
 dinnerPlannerApp.run(['$rootScope', '$window', 'Auth',
   function($rootScope, $window, Auth) {
-
   $rootScope.user = {};
 
   $window.fbAsyncInit = function() {
+
 
     FB.init({ 
 
@@ -67,6 +71,7 @@ dinnerPlannerApp.run(['$rootScope', '$window', 'Auth',
   };
 
   (function(d){
+
     var js, 
     id = 'facebook-jssdk', 
     ref = d.getElementsByTagName('script')[0];
@@ -83,4 +88,16 @@ dinnerPlannerApp.run(['$rootScope', '$window', 'Auth',
     ref.parentNode.insertBefore(js, ref);
   }(document));
 
+
+
+
 }]);
+
+
+
+
+
+
+
+
+

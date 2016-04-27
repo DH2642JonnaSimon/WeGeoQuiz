@@ -87,27 +87,27 @@
         </a>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6">
-        <fb:login-button ng-show="singleplayerMode && !loggedIn" class="button_example" style="width: 90%;" show-faces="false" max-rows="1" 
-        size="xlarge" data-auto-logout-link="false"></fb:login-button>
+        <fb:login-button ng-show="!user" class="button_example" style="width: 90%;" show-faces="false" max-rows="1" 
+        size="xlarge" data-auto-logout-link="false"></fb:login-button><div id="fb-root"></div>
       
       
 
       <!-- Shown if singpleyer is selected and you are logged in -->
         <a href="#/game" ng-show="singleplayerMode && loggedIn" pe="button" class="btn btn-warning btn-responsive standardButton button_example" class="btn btn-info standardButton
-        button_example" role="button" ng-click="addSinglePlayer()" style="margin: 0px;width: 90%;padding: 25px;">Start Game</a>
+        button_example" role="button" ng-click="addSinglePlayer()" style="margin-top: 10px;width: 90%;padding: 25px;">Start Game</a>
      </div>
      </div>
       <div id="scrollDiv" ng-show="singleplayerMode && loggedIn" class="panel-group" style="overflow-y:scroll;height: 360px;">
-      <div class="panel panel-default">
-        <div class="panel-heading">
+      <div class="panel panel-default" style="background-color: rgba(0,60,0,0.6);">
+        <div class="panel-heading" style="background-color: rgba(0,60,0,0.6);">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-target="#collapse1" class="btn button_example" style="width: 100%;">Toplist</a>
           </h4>
         </div>
-        <div id="collapse1" class="panel-collapse collapse">
-          <div class="panel-body"><ng-include src="'partials/topplist.html'" ng-controller="ToplistCtrl">
+        <div id="collapse1" class="panel-collapse collapse"  style="background-color: rgba(0,60,0,0.6);color: white">
+          <div class="panel-body"><ng-include src="'partials/topplist.html'" ng-controller="ToplistCtrl"  style="background-color: rgba(0,60,0,0.6);color: white">
         </ng-include></div></div>
-        <div class="panel-footer"></div>
+        <div class="panel-footer" style="background-color: rgba(0,60,0,0.6);color: white"></div>
       </div>
     </div>
     </div>

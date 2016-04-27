@@ -140,7 +140,7 @@ html,body,#container, #viewHolder{
     padding-left: 0px;
     padding-right: 0px;
     position: relative;
-    margin-top: 4%;
+    margin-top: 3%;
 }
 
 @media only screen and (max-height: 480px) {
@@ -576,6 +576,7 @@ html,body,#container, #viewHolder{
   text-align: center;
   display: inline-block;
   width: 90%;
+  height: 230px !important;
 }
 #playerForm{
   margin-top: 20px !important;

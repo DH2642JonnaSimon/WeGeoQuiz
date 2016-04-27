@@ -9,7 +9,7 @@ Auth.multiplayer = false;
 Auth.addObservable(this);
 
 
-//$window.fbAsyncInit();
+$window.fbAsyncInit();
 
 
 //set's number of players in multiplayer mode, it was a design choice to put this function on this routing location
@@ -159,10 +159,12 @@ $scope.activateAPI = function(){
 
 }
 
+$scope.loggedIn = $cookieStore.get("loggedIn");
+
 //used as an observerfunction to change the logged in status when logging in/out from facebook api, 1 view is dependent on this as of yet
 this.setLoggedIn = function(loggedIn){
     $scope.$apply(function(){
-            $scope.loggedIn = loggedIn; 
+            $scope.loggedIn = loggedIn;
     });
 }
 
@@ -171,12 +173,19 @@ this.setUser = function(user){
     $timeout(function() {
         $scope.$apply(function(){
           $scope.user = user;
+          $cookieStore.put("loggedIn", user); 
           console.log($scope.user);
-          Game.newPlayer(user.name, "1");
-          Game.whoStarts();
         }); 
       });
 
+}
+
+$scope.user = $cookieStore.get("loggedIn"); 
+
+$scope.addSinglePlayer = function(){
+    Game.newPlayer($scope.user.name, "1");
+    Game.whoStarts();
+    Game.numOfPlayers = 1;
 }
 
 $scope.deleteAddRow = function($event){
