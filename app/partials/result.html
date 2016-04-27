@@ -2,11 +2,21 @@
 <script type="text/javascript">
       $(document).ready(function() {
       $("#resultScroll").css("max-height", $("#resultPage").height()-$(".jumbotron").height() -$("#newGame").height() - 45);
+      $("#scrollDiv").css("height", $("#resultPage").height()-$("#resultScroll").height() - 20);
       $(window).resize(function(){
       $("#resultScroll").css("max-height", $("#resultPage").height()-$(".jumbotron").height() -$("#newGame").height() - 45);
+   	  $("#scrollDiv").css("height", $("#resultPage").height()-$("#resultScroll").height() - 20);
+
     });
   });
 </script>
+
+<script type="text/javascript">
+      $(document).ready(function() {
+      $(window).resize(function(){
+    });
+  });
+    </script>
 
 <div id="resultPage" style="width: 100%;height: 100%;">
 	
@@ -35,9 +45,16 @@
 	</div>
 
 <!-- We include the sidebar as it is shared across two screens. -->
-<div ng-show="showToplist">
-<ng-include  src="'partials/topplist.html'" ng-controller="ToplistCtrl">
-</ng-include>
-</div>
-
-</div>
+<div id="scrollDiv" class="panel-group" style="overflow-y:scroll;height: 360px;">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-target="#collapse1" class="btn button_example" style="width: 100%;">Toplist</a>
+          </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+          <div class="panel-body"><ng-include src="'partials/topplist.html'" ng-controller="ToplistCtrl">
+        </ng-include></div></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>

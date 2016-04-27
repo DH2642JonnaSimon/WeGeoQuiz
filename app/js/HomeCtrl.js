@@ -54,9 +54,9 @@ $scope.callback = function(weather, ctrl){
     console.log("CURRENT WEATHER IN CONTROLER HUEHUE: " + $scope.weather);
     $scope.randomNumber=0;
     if($scope.weather >= 801 && $scope.weather <=804 || $scope.weather >= 951 && $scope.weather <=954){
+        var cloudArr = ["//giphy.com/embed/TC8Cap201LtsI", "//giphy.com/embed/SnI9JZGHU9vb2", "//giphy.com/embed/Xmq44SuwVpr1e"];
         if ($("#iframeWeather").attr('src') === ""){
             console.log("MOLN1");
-            var cloudArr = ["//giphy.com/embed/TC8Cap201LtsI", "//giphy.com/embed/SnI9JZGHU9vb2", "//giphy.com/embed/Xmq44SuwVpr1e"];
             $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
             $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
         }else{
@@ -65,18 +65,17 @@ $scope.callback = function(weather, ctrl){
         }
     }else if($scope.weather >= 800){
         console.log("KLART, molnfritt");
+        var cloudArr = ["//giphy.com/embed/NU9hqIw9vN0fm", "//giphy.com/embed/SnI9JZGHU9vb2", "//giphy.com/embed/CkShVRmZnvHqM"];
         if ($("#iframeWeather").attr('src') === ""){
-            var cloudArr = ["//giphy.com/embed/NU9hqIw9vN0fm", "//giphy.com/embed/SnI9JZGHU9vb2", "//giphy.com/embed/CkShVRmZnvHqM"];
             $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
             $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
         }else{
-            var cloudArr = ["//giphy.com/embed/NU9hqIw9vN0fm", "//giphy.com/embed/SnI9JZGHU9vb2", "//giphy.com/embed/CkShVRmZnvHqM"];
             $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);
         }
     }else if($scope.weather >= 500 && $scope.weather <=531 || $scope.weather >= 300 && $scope.weather <= 321){
         console.log("rain!!");
+        var cloudArr = ["//giphy.com/embed/qczA5gN00zI8U", "//giphy.com/embed/QCL9EzG4pHiFi", "//giphy.com/embed/2xdzNrPE50WLC"];
         if ($("#iframeWeather").attr('src') === ""){
-            var cloudArr = ["//giphy.com/embed/qczA5gN00zI8U", "//giphy.com/embed/QCL9EzG4pHiFi", "//giphy.com/embed/2xdzNrPE50WLC"];
             $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
             $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
         }else{
@@ -84,8 +83,8 @@ $scope.callback = function(weather, ctrl){
         }
     }else if($scope.weather >= 200 && $scope.weather <=232){
         console.log("thunderStorm");
+        var cloudArr = ["//giphy.com/embed/9vb54xSyXXo8o", "//giphy.com/embed/Ik9yPi8vsYDXq", "//giphy.com/embed/9vb54xSyXXo8o", "//giphy.com/embed/d7PElE9GaaodG"];
         if ($("#iframeWeather").attr('src') === ""){
-            var cloudArr = ["//giphy.com/embed/9vb54xSyXXo8o", "//giphy.com/embed/Ik9yPi8vsYDXq", "//giphy.com/embed/9vb54xSyXXo8o", "//giphy.com/embed/d7PElE9GaaodG"];
             $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
             $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
         }else{
@@ -93,8 +92,8 @@ $scope.callback = function(weather, ctrl){
         }
     }else if($scope.weather >= 600 && $scope.weather <=622 || $scope.weather === 903){
         console.log("snow");
+        var cloudArr = ["//giphy.com/embed/THKr9ClAOJAFa", "//giphy.com/embed/8XdaAvz3eN4Qw", "//giphy.com/embed/mwiOcCHkSwLrq"];
         if ($("#iframeWeather").attr('src') === ""){
-            var cloudArr = ["//giphy.com/embed/THKr9ClAOJAFa", "//giphy.com/embed/8XdaAvz3eN4Qw", "//giphy.com/embed/mwiOcCHkSwLrq"];
             $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
             $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
         }else{
@@ -102,8 +101,8 @@ $scope.callback = function(weather, ctrl){
         }
     }else if($scope.weather >= 701 && $scope.weather <=781){
         console.log("mist, smoke");
+        var cloudArr = ["//giphy.com/embed/ofrQ8FYfTD8gE", "//giphy.com/embed/KU57UJZIYdgha", "//giphy.com/embed/3oGRFx7dy5pEywA9Ec"];
         if ($("#iframeWeather").attr('src') === ""){
-            var cloudArr = ["//giphy.com/embed/ofrQ8FYfTD8gE", "//giphy.com/embed/KU57UJZIYdgha", "//giphy.com/embed/3oGRFx7dy5pEywA9Ec"];
             $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
             $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
         }else{

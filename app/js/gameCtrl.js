@@ -20,7 +20,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
   $scope.init = function(){
     Game.initL(callbackQuestionsLoaded, Game);
     console.log("INIT");
-    alert(Auth.user);
+    //alert(Auth.user);
       var cloudArr = ["//giphy.com/embed/xwy9AbBlXlIFW", "//giphy.com/embed/c5Rlke9hRLoDS", "//giphy.com/embed/pPtbW1ziRZsBO"];
       var randomNumber = Math.floor(Math.random()*cloudArr.length);
     if ($("#iframeQ").attr('src') === ""){

@@ -1,5 +1,6 @@
 <script type="text/javascript">
       $(document).ready(function() {
+      $("#scrollDiv").css("height", $("#homeContainer").height()-$("#heightDiv").height() - 20);
       $(window).resize(function(){
       $("#scrollDiv").css("height", $("#homeContainer").height()-$("#heightDiv").height() - 20);
     });
