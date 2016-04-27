@@ -49,7 +49,6 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
         	$('#answer').css("color", "Black");
           $('[name="answer' + $scope.finalAnswer + '"]').css("background-color", "Green");
         } 
-        // $scope.onNewquestion();
       },1000);
    }
 
@@ -105,7 +104,6 @@ $scope.onTimeout= function(){
   $scope.stopAddPoints = function(){
     console.log("stop, go to add points");
     var time = $scope.counter;
-    // var player = $scope.playerToStart[0];
     Game.timePoint(time);
     $interval.cancel($scope.timer);
     $scope.onNewquestion();
@@ -178,6 +176,7 @@ $scope.onTimeout= function(){
           { 'title': 'D', 'answer': $scope.answerD, 'drag': true }
         ];
     }
+
     $scope.onTimeout();
 
   }
@@ -206,13 +205,6 @@ $scope.onTimeout= function(){
    
   }
 
-  /*$scope.draggedAnswer = {title: 'Drag and Drop with custom confirmation'};
-  $scope.options = {};
-  $scope.onDrop = function(item, ui) {
-    //alert("You dropped and answer, check if it is correct, give feedback, check if game is over, give new question or go to result page.");
-    console.log(ui.draggable.attr('id'));
-    $scope.answered(ui.draggable.attr('id'));
-  };*/
  $scope.images = [{'thumb': '1.png'}]
   $scope.draggedAnswer = [];
   angular.forEach($scope.images, function(val, key) {

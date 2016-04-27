@@ -8,7 +8,7 @@ dinnerPlannerApp.factory('API',function ($resource, $http, $cookieStore) {
 // callbacks in apgee: api.openweathermap.org/data/2.5/weather?callback=test&q=Stockholm&appid=ec6ab1cca646a53d843540957780ac3e
 //all questions
 
-/////////////////////////// FLYTTA TILL NY MODELL /////////////////////////////
+/////////////////////////// /////////////////////////////
 this.curWeather ="";
 
 this.initMap = function(API, ctrl) {

@@ -11,6 +11,14 @@ $scope.init = function() {
 			$scope.avatar = i[1];
 		}
 	}
+
+	if ($("#iframeWeather").attr('src') === ""){
+		var backgroungImg = $cookieStore.get('backgroungImg');
+		console.log("Nu har vi laddat om sidan "+backgroungImg);
+		$("#iframeWeather").attr("src", backgroungImg); 
+	}else{
+		console.log("Vi har inte laddat om sidan");
+	}
 }
 
 $scope.getNumOfPlayers = function() {
@@ -106,20 +114,10 @@ $scope.deleteAddRow = function($event){
 	}
 }
 
-
-// $scope.delete = function($event) {
-// 	var id = $event.currentTarget.id;
-// 	var values = id.split(",");
-// 	var nickname = values[0];
-// 	var avatar = values[1];
-// 	$("[name='"+ nickname +"']").remove();
-// 	$("[name='"+ avatar +"']").remove();
-// 	$("[id='"+ id +"']").remove();
-// 	$("[id='"+ nickname +"']").remove();
-// 	var numOfPlayer = $cookieStore.get('numPlayers');
-// 	numOfPlayer--;
-// 	$cookieStore.put('numPlayers', numOfPlayer);
-// };
+$scope.removeCookies = function(){
+	$cookieStore.remove('multiplayer');
+	$cookieStore.remove('numPlayers');
+}
 
 $scope.init();
 

@@ -9,12 +9,15 @@ Auth.multiplayer = false;
 Auth.addObservable(this);
 
 
+
 //set's number of players in multiplayer mode, it was a design choice to put this function on this routing location
 //if cookie exists it sets the number of players to the valune int he cookie.
 if($cookieStore.get("numPlayers")){
     $scope.num= $cookieStore.get("numPlayers");
 }else{
-    $scope.num= 2;   
+    console.log("sätter värdet på num i home till 2");
+    $scope.num = 2;
+    $cookieStore.put("numPlayers", $scope.num);
 }
 
 $scope.setNumOfPlayers = function(number){
@@ -58,7 +61,7 @@ $scope.callback = function(weather, ctrl){
         if ($("#iframeWeather").attr('src') === ""){
             console.log("MOLN1");
             $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
-            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
+            $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);          
         }else{
             var cloudArr = ["//giphy.com/embed/TC8Cap201LtsI", "//giphy.com/embed/SnI9JZGHU9vb2", "//giphy.com/embed/Xmq44SuwVpr1e"];
             $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);
@@ -126,12 +129,16 @@ $scope.callback = function(weather, ctrl){
         $("#iframeWeather").attr("src", "//giphy.com/embed/HRwfngi7yYpfq");
     }
 
-    this.APIrespoFunc();
+    var weatherHttp = cloudArr[$scope.randomNumber];
+    console.log(weatherHttp);
+
+    this.APIrespoFunc(weatherHttp);
 
 }
 
-$scope.APIrespoFunc = function(){
+$scope.APIrespoFunc = function(weatherHttp){
     console.log("kollar scope var");
+    $cookieStore.put('backgroungImg', weatherHttp);
     $timeout(function() {
         $scope.$apply(function(){
             $scope.APIrespo = true;
