@@ -24,6 +24,7 @@ this.amountOfQuestions = 2;
 this.counter = 0;
 this.timePoints = 0;
 this.curPlayer = "";
+// this.reloadedPage="";
 
 //this.rnList = [];
 this.reloadedTime = 0;
@@ -192,6 +193,8 @@ this.currentQuestion = function(rn){
 		$cookieStore.put('rnList', this.rnList);
 		this.question = this.questions[rn];
 		this.counter = $cookieStore.get('numOfQ');
+		this.reloadedPage="yes";
+		$cookieStore.put('firstQAsked', this.reloadedPage);
 		if(typeof $cookieStore.get('numOfQ') === "undefined"){
 			console.log("Nu är den undefind" + typeof(this.counter));
 			this.counter = 0;

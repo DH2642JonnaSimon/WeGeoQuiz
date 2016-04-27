@@ -28,7 +28,7 @@
 </script>
 
 
-<div id="gameView" class="col-md-12" ng-controller="GameCtrl" ng-init="init()" style="padding: 0px;color: white;">
+<div id="gameView" class="col-md-12" ng-init="init()" style="padding: 0px;color: white;">
   <div class="jumbotron" id="jumboheader" style="">
     <div class="row">
       <div class="col-xs-4 col-sm-4 col-md-4">
@@ -57,19 +57,24 @@
   </div>
 
 
-<!-- 
-  <div id="coveringDiv" ng-hide= class="slide-down">
+
+  <div id="coveringDiv" ng-show=firstReload class="slide-down">
     <p>
-      <h2>Next player's turn is {{nextPlayer[0]}}. Are you ready?</h2>
+      <h2>{{nextPlayer[0]}}, you will start the game. Are you ready?</h2>
     </p>
-    <button ng-click="nextQuestion()" class="button_example">Ready</button>
+    <button ng-click="firstReloadB()" class="button_example">Ready</button>
   </div>
 
-  
+
+  <div id="coveringDiv" ng-show=Reload class="slide-down">
+    <p>
+      <h2>Something went wrong. Please continue!</h2>
+    </p>
+    <button ng-click="ReloadB()" class="button_example">Start</button>
+  </div>
 
 
-  
- -->
+
   <div class="row" id="questionDiv">
     <div class="col-md-12" id="innerQuestionDiv">
       <h5 id="questionHead">Question: </h5>

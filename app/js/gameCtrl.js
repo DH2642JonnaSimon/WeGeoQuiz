@@ -13,22 +13,55 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
   $scope.questionNumber = 0;
   $scope.playerToStart = "";
   $scope.timeOut = false;
-  // Game.weather.get({q:"Stockholm,uk"}, function(data){
-  //   console.log(data);
-  // });
+
+
 
   $scope.init = function(){
-    Game.initL(callbackQuestionsLoaded, Game);
-    console.log("INIT");
-    //alert(Auth.user);
-      var cloudArr = ["//giphy.com/embed/xwy9AbBlXlIFW", "//giphy.com/embed/c5Rlke9hRLoDS", "//giphy.com/embed/pPtbW1ziRZsBO"];
-      var randomNumber = Math.floor(Math.random()*cloudArr.length);
+    $scope.nextPlayer = Game.currentPlayer;
+    var cloudArr = ["//giphy.com/embed/xwy9AbBlXlIFW", "//giphy.com/embed/c5Rlke9hRLoDS", "//giphy.com/embed/pPtbW1ziRZsBO"];
+    var randomNumber = Math.floor(Math.random()*cloudArr.length);
+    var firstAsked = $cookieStore.get('firstQAsked');
+    console.log(typeof(firstAsked));
+    if(firstAsked == undefined){
+      console.log("Här ska jag vara första hången sidan laddas");
+        $timeout(function() {
+          $scope.$apply(function(){
+            $scope.firstReload = true;
+          }); 
+        });
+    }else if(firstAsked === "yes"){
+        $timeout(function() {
+        $scope.$apply(function(){
+            $scope.Reload = true;
+          }); 
+        }); 
+    }
+
     if ($("#iframeQ").attr('src') === ""){
       console.log("iframe scr är tom");
       $("#iframeQ").attr("src", cloudArr[randomNumber]);          
     }else{
       $("#iframeQ").attr("src", cloudArr[randomNumber]);
     }
+  }
+
+  $scope.firstReloadB = function(){
+    $timeout(function() {
+      $scope.$apply(function(){
+        $scope.firstReload = false;
+      }); 
+    });    
+    
+    Game.initL(callbackQuestionsLoaded, Game);
+  }
+
+  $scope.ReloadB = function(){
+    $timeout(function() {
+      $scope.$apply(function(){
+        $scope.Reload = false;
+      }); 
+    });   
+    Game.initL(callbackQuestionsLoaded, Game);
   }
 
   $scope.player = function(){
