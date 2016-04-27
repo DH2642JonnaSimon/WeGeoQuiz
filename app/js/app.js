@@ -1,8 +1,8 @@
 
-var dinnerPlannerApp = angular.module('dinnerPlanner', ['ngRoute','ngResource', 'ngCookies', 'ngDragDrop', 'ngAnimate', 'ui.bootstrap']);
+var weGeoQuizApp = angular.module('weGeoQuiz', ['ngRoute','ngResource', 'ngCookies', 'ngDragDrop', 'ngAnimate', 'ui.bootstrap']);
 
 
-dinnerPlannerApp.config(['$routeProvider',
+weGeoQuizApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/home', {
@@ -27,7 +27,7 @@ dinnerPlannerApp.config(['$routeProvider',
   }]);
 
 //Makes sure the user is authenticated to be a specific location/path.
-dinnerPlannerApp.run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
+weGeoQuizApp.run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
 
 
     $rootScope.$on('$routeChangeStart', function (event) {
@@ -50,7 +50,7 @@ dinnerPlannerApp.run(['$rootScope', '$location', 'Auth', function ($rootScope, $
 }]);
 
 //load fb sdk, set up db api and the Auth service
-dinnerPlannerApp.run(['$rootScope', '$window', 'Auth',
+weGeoQuizApp.run(['$rootScope', '$window', 'Auth',
   function($rootScope, $window, Auth) {
   $rootScope.user = {};
 

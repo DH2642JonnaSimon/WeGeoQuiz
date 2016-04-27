@@ -1,6 +1,6 @@
 // Search controller that we use whenever we have a search inputs
 // and search results
-dinnerPlannerApp.controller('ToplistCtrl', function ($scope, Game, $http) {
+weGeoQuizApp.controller('ToplistCtrl', function ($scope, Game, $http) {
   
     //hämta ut topplistan
     $http.get("http://simonfra.se/WeGeoQuiz/topplist.php")

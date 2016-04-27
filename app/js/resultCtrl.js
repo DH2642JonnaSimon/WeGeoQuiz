@@ -1,5 +1,5 @@
 
-dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$cookieStore,Auth,$http,$timeout) {
+weGeoQuizApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$cookieStore,Auth,$http,$timeout) {
 
   $scope.result=[];
   $scope.showToplist = true;

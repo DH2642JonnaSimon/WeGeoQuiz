@@ -1,5 +1,5 @@
 
-dinnerPlannerApp.factory('API',function ($resource, $http, $cookieStore) {
+weGeoQuizApp.factory('API',function ($resource, $http, $cookieStore) {
 
 
 // this.weather = $resource("http://api.openweathermap.org/data/2.5/weather",{callback:"test",q:"Stockholm",appid:"ec6ab1cca646a53d843540957780ac3e"});

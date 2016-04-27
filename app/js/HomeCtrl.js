@@ -1,5 +1,5 @@
 
-dinnerPlannerApp.controller('HomeCtrl', function ($scope, $cookieStore, $routeParams, Game, $http, Auth, API, $timeout, $window) {
+weGeoQuizApp.controller('HomeCtrl', function ($scope, $cookieStore, $routeParams, Game, $http, Auth, API, $timeout, $window) {
 
 $scope.numOfPlayers = 1;
 

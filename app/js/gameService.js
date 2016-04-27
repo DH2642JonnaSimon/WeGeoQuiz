@@ -1,5 +1,5 @@
 
-dinnerPlannerApp.factory('Game',function ($resource, $http, $cookieStore) {
+weGeoQuizApp.factory('Game',function ($resource, $http, $cookieStore) {
 
 this.questions = '';
 this.question = '';

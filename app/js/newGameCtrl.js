@@ -1,4 +1,4 @@
-dinnerPlannerApp.controller('NewGameCtrl', function ($scope,$routeParams,Game,$cookieStore) {
+weGeoQuizApp.controller('NewGameCtrl', function ($scope,$routeParams,Game,$cookieStore) {
 
 
 

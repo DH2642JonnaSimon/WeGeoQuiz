@@ -1,4 +1,4 @@
-dinnerPlannerApp.factory('Auth', function($rootScope, $cookieStore){
+weGeoQuizApp.factory('Auth', function($rootScope, $cookieStore){
 var user;
 
 this.multiplayer = false;

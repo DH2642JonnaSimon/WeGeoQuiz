@@ -1,4 +1,4 @@
-dinnerPlannerApp.controller('loginCtrl', [ '$scope', 'Auth', function ($scope, Auth) {
+weGeoQuizApp.controller('loginCtrl', [ '$scope', 'Auth', function ($scope, Auth) {
   //submit
   $scope.login = function () {
     // Ask to the server, do your job and THEN set the user

@@ -1,4 +1,4 @@
-dinnerPlannerApp.controller('mainCtrl', ['$scope', 'Auth', '$location', function ($scope, Auth, $location) {
+weGeoQuizApp.controller('mainCtrl', ['$scope', 'Auth', '$location', function ($scope, Auth, $location) {
 
   $scope.$watch(Auth.isLoggedIn, function (value, oldValue) {
 
