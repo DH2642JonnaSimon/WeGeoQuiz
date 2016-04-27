@@ -52,6 +52,7 @@ $scope.back = function(){
     $scope.multiplayerMode = false;
     $scope.singleplayerMode = false;
     $cookieStore.put("multiplayer", Auth.multiplayer);
+    //Game.resetGame();
 }
 
 $scope.callback = function(weather, ctrl){

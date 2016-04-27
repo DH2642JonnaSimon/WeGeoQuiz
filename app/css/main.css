@@ -195,6 +195,7 @@ html,body,#container, #viewHolder{
   #divDraggable{
     margin-top: 30px !important;
   }
+  
   #coveringDiv{height:80px;}
   #prgbar{
     display: none !important;
