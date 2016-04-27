@@ -140,7 +140,7 @@ html,body,#container, #viewHolder{
     padding-left: 0px;
     padding-right: 0px;
     position: relative;
-    margin-top: 5%;
+    margin-top: 4%;
 }
 
 @media only screen and (max-height: 480px) {
@@ -150,7 +150,10 @@ html,body,#container, #viewHolder{
   #homeContainer{
     height: 60%;
   }
-
+  .avatarGame{
+    width: 15px;
+    height: 15px;
+  }
     #questionHead{
     font-size: 10px !important;
   }
@@ -178,13 +181,24 @@ html,body,#container, #viewHolder{
   }
   #btnDroppable{
     padding: 5px;
-    height: 80px;
+    height: 90px !important;
+  }
+
+  #playerStatus{
+    display: none !important;
   }
 
   #innerBtnDroppable{
     padding: 5px;
   }
+
+  #divDraggable{
+    margin-top: 30px !important;
+  }
   #coveringDiv{height:80px;}
+  #prgbar{
+    display: none !important;
+  }
 }
 
 @media only screen and (max-width: 550px) {
@@ -197,6 +211,14 @@ html,body,#container, #viewHolder{
     font-size: 10px !important;
   }
 
+  #playerStatus{
+    display: none !important;
+  }
+
+  #divDraggable{
+    margin-top: 30px !important;
+  }
+
   #rdyBtn{
     font-size: 10px !important;
   }
@@ -218,7 +240,7 @@ html,body,#container, #viewHolder{
 
   #btnDroppable{
     padding: 5px;
-    height: 80px;
+    height: 90px !important;
   }
 
   #questionHead{
@@ -228,11 +250,34 @@ html,body,#container, #viewHolder{
   #innerBtnDroppable{
     padding: 5px;
   }
+  .avatarGame{
+    width: 15px;
+    height: 15px;
+  }
   #coveringDiv{height:80px;}
+  #prgbar{
+    display: none !important;
+  }
 }
 @media only screen and (max-height: 700px){
   #questionHead{
     font-size: 10px !important;
+  }
+  .avatarGame{
+   width: 15px;
+    height: 15px;
+  }
+
+  #playerStatus{
+    display: none !important;
+  }
+
+  #divDraggable{
+    margin-top: 30px !important;
+  }
+  
+  #prgbar{
+    display: none !important;
   }
 
   #rdyBtn{
@@ -247,6 +292,8 @@ html,body,#container, #viewHolder{
   #coveringDiv{height:80px;}
   #innerDiven{height: auto; margin: 0;}
 
+
+
   #innerBtnDraggable{
     padding: 15px;
   }
@@ -255,7 +302,7 @@ html,body,#container, #viewHolder{
   }
   #btnDroppable{
     padding: 15px;
-    height: 80px;
+    height: 90px !important;
   }
 
   #innerBtnDroppable{

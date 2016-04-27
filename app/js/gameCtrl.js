@@ -254,6 +254,7 @@ $scope.onTimeout= function(){
   $scope.stopCallback = function(event, ui) {
     //Objektet blev droppat över ett icke droppbart ställe
     ui.helper.css("border-color", "#7c5b2b");
+    ui.helper.css("cursor", "-webkit-grab", "important");
   };
 
   $scope.dragCallback = function(event, ui) {
@@ -262,6 +263,7 @@ $scope.onTimeout= function(){
 
   $scope.dropCallback = function(event, ui) {
     //dragbart objekt blev droppat till en ny droppbar zon/element
+    ui.helper.css("cursor", "-webkit-grab", "important");
     ui.draggable.css("border-color", "Yellow");
     $scope.answered($scope.draggedTitle);
   };
