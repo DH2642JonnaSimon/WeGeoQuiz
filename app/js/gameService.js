@@ -44,6 +44,7 @@ this.timePoint = function(time,player){
 	this.curPlayer = this.spelargrupp[this.rnStart];
 
 	console.log(this.curPlayer);
+	
 	this.curPlayer[2] += timePoints; 
 	$cookieStore.put('spelargrupp', this.spelargrupp);
 }
@@ -63,6 +64,7 @@ this.whoStarts = function(){
 		this.rnStart = 0;
 	}
 
+		
 	$cookieStore.put('whoToPlay', this.rnStart);
 	this.currentPlayer = this.spelargrupp[this.rnStart];
 	// console.log(this.spelargrupp);

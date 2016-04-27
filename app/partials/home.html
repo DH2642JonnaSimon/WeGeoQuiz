@@ -90,7 +90,7 @@
 
       <!-- Shown if singpleyer is selected and you are logged in -->
       <a href="#/game" ng-show="singleplayerMode && loggedIn" pe="button" class="btn btn-warning btn-responsive standardButton button_example" class="btn btn-info standardButton
-     button_example" role="button" style="margin: 0px;width: 90%;padding: 25px;">Start Game</a>
+     button_example" role="button" ng-click="addSinglePlayer()" style="margin: 0px;width: 90%;padding: 25px;">Start Game</a>
      </div>
      </div>
       <div id="scrollDiv" ng-show="singleplayerMode && loggedIn" class="panel-group" style="overflow-y:scroll;height: 360px;">

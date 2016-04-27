@@ -356,12 +356,40 @@ html,body,#container, #viewHolder{
   color: white;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (min-width: 600px){
+  .resultCell-1{
+    background-image: url("../../Images/first.png") !important;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+    font-weight: bold !important;
+    border-width: 10px !important;
+  }
+
+  .resultCell-2{
+    background-image: url("../../Images/second.png") !important;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+    font-weight: bold !important;
+    border-width: 10px !important;
+  }
+
+  .resultCell-3{
+    background-image: url("../../Images/third.png") !important;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+    font-weight: bold !important;
+    border-width: 10px !important;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
   .resultTable{
-    font-size: 20px;
     margin: 10px !important;
     color: white;
-
+    font-size: 20px;
   }
   #result{
   height:15%;
@@ -377,6 +405,29 @@ html,body,#container, #viewHolder{
   #resultRow{
     margin-left: 10%;
     text-align: center;
+  }
+  .avaPic{
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .resultTable{
+    font-size: 20px;
+  }
+  
+  .resultCell-1, .resultCell-2, .resultCell-3{
+    background-image: none !important;
+  }
+  .avaPic{
+    width: 40px;
+    height: 40px;
+  }
+
+  .leftCol{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
   }
 }
 
@@ -396,11 +447,6 @@ html,body,#container, #viewHolder{
   border-radius: 25px;
 }
 
-.resultCell-1{
-  background-image: url("../../Images/first.png") !important;
-  font-weight: bold !important;
-  border-width: 10px !important;
-}
 
 
 .button_example{
@@ -413,7 +459,7 @@ html,body,#container, #viewHolder{
   background-image: linear-gradient(to bottom, #a67939, #845108);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#a67939, endColorstr=#845108);
 }
 
-.button_example:hover{
+.button_example:hover, #avatarBtns:hover{
    border:1px solid #5a421f;
    background-color: #805d2c; background-image: -webkit-gradient(linear, left top, left bottom, from(#805d2c), to(#543305));
    background-image: -webkit-linear-gradient(top, #805d2c, #543305);
@@ -426,6 +472,16 @@ html,body,#container, #viewHolder{
 #selectAvatar{
   position: relative;
 }
+
+
+.avatarGame{
+    display: none !important;
+}
+
+
+.avatarGame[src] {
+   display: inline-block !important;
+ }
 
 #select{
   float:left;
@@ -586,17 +642,23 @@ html,body,#container, #viewHolder{
   color: white;
 }
 
-#del{
-  margin-top: 25px;
-}
 
 .glyphicon-remove, .glyphicon-plus {
     font-size: 2.0em;
 }
 
 #avatarBtns{
-  background-image: none;
-  background-color: #a67939;
+  background-image: linear-gradient(to bottom, #a67939, #845108);
+  border-color: #845108;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary{
+  background-image: none !important;
+  background-color: #533203;
+  border-color: #000 !important;
 }
 
 
@@ -670,6 +732,4 @@ html,body,#container, #viewHolder{
 /*----------------------------------Style Fonts-------------------------------*/
 
 
-
->>>>>>> origin/master
 

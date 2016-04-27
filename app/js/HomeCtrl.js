@@ -3,12 +3,19 @@ dinnerPlannerApp.controller('HomeCtrl', function ($scope, $cookieStore, $routePa
 
 $scope.numOfPlayers = 1;
 
+$cookieStore.remove("multiplayer");
+
 Auth.multiplayer = false;
 Auth.addObservable(this);
 
-//set's number of players in multiplayer mode, it was a design choice to put this function on this routing location
 
-$scope.num= 1;
+//set's number of players in multiplayer mode, it was a design choice to put this function on this routing location
+//if cookie exists it sets the number of players to the valune int he cookie.
+if($cookieStore.get("numPlayers")){
+    $scope.num= $cookieStore.get("numPlayers");
+}else{
+    $scope.num= 2;   
+}
 
 $scope.setNumOfPlayers = function(number){
     Game.setNumOfPlayers(number);
@@ -53,6 +60,7 @@ $scope.callback = function(weather, ctrl){
             $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
             $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
         }else{
+            var cloudArr = ["//giphy.com/embed/TC8Cap201LtsI", "//giphy.com/embed/SnI9JZGHU9vb2", "//giphy.com/embed/Xmq44SuwVpr1e"];
             $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);
         }
     }else if($scope.weather >= 800){
@@ -62,6 +70,7 @@ $scope.callback = function(weather, ctrl){
             $scope.randomNumber = Math.floor(Math.random()*cloudArr.length);
             $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);           
         }else{
+            var cloudArr = ["//giphy.com/embed/NU9hqIw9vN0fm", "//giphy.com/embed/SnI9JZGHU9vb2", "//giphy.com/embed/CkShVRmZnvHqM"];
             $("#iframeWeather").attr("src",cloudArr[$scope.randomNumber]);
         }
     }else if($scope.weather >= 500 && $scope.weather <=531 || $scope.weather >= 300 && $scope.weather <= 321){
@@ -148,6 +157,18 @@ this.setLoggedIn = function(loggedIn){
     });
 }
 
+this.setUser = function(user){
+    
+    $timeout(function() {
+        $scope.$apply(function(){
+          $scope.user = user;
+          console.log($scope.user);
+          Game.newPlayer(user.name, "1");
+          Game.whoStarts();
+        }); 
+      });
+
+}
 
 $scope.deleteAddRow = function($event){
     var id = $event.currentTarget.id;

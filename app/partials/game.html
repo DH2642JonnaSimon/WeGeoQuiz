@@ -32,13 +32,19 @@
   <div class="jumbotron" id="jumboheader" style="">
     <div class="row">
       <div class="col-xs-4 col-sm-4 col-md-4">
-        <h3 id="playerStatus">Player's Turn: {{playerToStart[0]}}</h3>
+        <h3 id="playerStatus">Player's Turn:
+        <br> 
+        <img class="avatarGame" src="../../images/avatars/{{playerToStart[1]}}.png" id="1" height="80" width="80">  {{playerToStart[0]}}</h3>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-4" id="timerDiv">
-        <h1 id="timer">TIMER: <br> {{counter}}</h1>
+        <h1 id="timer">TIMER: <br> {{counter}}</h1><br>
+        Total questions answered:
+        <div class="row">
+        <div class="col-sm-12"><uib-progressbar class="progress-striped active" max=amountOfQuestions value=questionNumber type="success"><i> {{questionNumber}} / {{amountOfQuestions}}</i></uib-progressbar></div>
+    </div>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-4">
-        <h3 id="scoreStatus">Current Score: {{playerToStart[2]}}</h3>
+        <h3 id="scoreStatus">{{playerToStart[0]}}'s Score: <br>{{playerToStart[2]}}</h3>
       </div>
     </div>
   </div>

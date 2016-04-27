@@ -1,7 +1,7 @@
 
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
-dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $location, Game, $timeout, $interval, $cookieStore) {
+dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $location, Game, $timeout, $interval, $cookieStore, Auth) {
   // TODO in Lab 5: you need to get the dish according to the routing parameter
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
@@ -9,7 +9,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
   $scope.answer = "";
   $scope.questionquestionFromModel = "";
   $scope.show = true;
-  $scope.amountOfQuestions = Game.amountOfQuestions;
+  $scope.amountOfQuestions = Game.amountOfQuestions * Game.numOfPlayers;
   $scope.questionNumber = 0;
   $scope.playerToStart = "";
   $scope.timeOut = false;
@@ -20,6 +20,7 @@ dinnerPlannerApp.controller('GameCtrl', function ($scope, $routeParams, $locatio
   $scope.init = function(){
     Game.initL(callbackQuestionsLoaded, Game);
     console.log("INIT");
+    alert(Auth.user);
       var cloudArr = ["//giphy.com/embed/xwy9AbBlXlIFW", "//giphy.com/embed/c5Rlke9hRLoDS", "//giphy.com/embed/pPtbW1ziRZsBO"];
       var randomNumber = Math.floor(Math.random()*cloudArr.length);
     if ($("#iframeQ").attr('src') === ""){

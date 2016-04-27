@@ -59,12 +59,19 @@ notifyHomeCtrl = function(loggedIn){
 	}
 }
 
+notifyHomeCtrlUser = function(user){
+	for (var i = 0; i < views.length; ++i ){
+		views[i].setUser(user);
+	}
+}
+
 //get an authenticated users information and stores it in the variable Auth.user
 getUserInfo = function() {
 	var _self = this;
 	FB.api('/me', function(res) {
 		$rootScope.$apply(function() { 
-     		$rootScope.user = _self.user = res; 
+     		$rootScope.user = _self.user = res;
+     		notifyHomeCtrlUser(res); 
      	});
 	});
 }

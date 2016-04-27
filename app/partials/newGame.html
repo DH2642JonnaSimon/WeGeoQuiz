@@ -1,8 +1,9 @@
 <script type="text/javascript">
       $(document).ready(function() {
-      $("#newGameScroll").css("height", $("#homeContainer").height()-$("#startGame").height() - 20);
+      $("#newGameScroll").css("height", $("#homeContainer").height()-$("#startGame").height() - 50);
+
       $(window).resize(function(){
-      $("#newGameScroll").css("height", $("#homeContainer").height()-$("#startGame").height() - 20);
+      $("#newGameScroll").css("height", $("#homeContainer").height()-$("#startGame").height() - 50);
     });
   });
 </script>
@@ -24,12 +25,12 @@
 				<div class="row" id="nickName-{{$index}}">
 					<form name="PlayerForm" role="form" id="playerFormen">
 						<div class="row" id="nameInForm">
-							<div class="col-xs-11 col-sm-11 col-md-11">
-						      <label id="playerName" for="usr">Player {{$index + 1}}:</label>
+							<div class="col-xs-10 col-sm-10 col-md-10">
+						      <label id="playerName" for="usr" style="width:100%;text-align: center;margin-left: 10%;">Player {{$index + 1}}:</label>
 						      <!-- ng-model="feedback.text" -->
-						      <input type="text" name="nickName-{{$index}}" ng-model="nickName" class="form-control inputfieldValue" placeholder="Your_Username" ng-pattern="feedback.word" required ng-trim="false" id="usr">
+						      <input type="text" name="nickName-{{$index}}" ng-model="nickName" class="form-control inputfieldValue" placeholder="Please enter nickname {{$index + 1}}" ng-pattern="feedback.word" required ng-trim="false" id="usr">
 					      </div>
-					      <div class="col-xs-1 col-sm-1 col-md-1">
+					      <div class="col-xs-2 col-sm-2 col-md-2">
 					      <div class="glyphicon glyphicon-remove" id="del" ng-click="deleteAddRow($event)">
 							</div>
 						</div>
@@ -53,14 +54,14 @@
 							</div>
 							-->
 							<div class="row">
-								<div id="errorMessage" class="col-xs-12 col-sm-12 col-md-12">
+								<div id="errorMessage" class="col-xs-11 col-sm-11 col-md-11">
 									<div name="errorDiv-{{$index}}"></div>
 								      
 								 	<div name="errorDivSelect-{{$index}}"></div>
 								</div>
 							</div>
 						<div class="row" style="text-align: center;margin-bottom: 10px;">
-							<div class="col-md-12">							
+							<div class="col-md-11">							
 							<div class="btn-group" data-toggle="buttons" class="avatarButtons">
 							  <label class="btn btn-primary active" id="avatarBtns">
 							    <input type="radio" name="options" id="1" autocomplete="off" checked> <img src="../../images/avatars/1.png" class="avatar" ng-click="avatar($event)" id="1" alt="Smiley face" height="30" width="30">
@@ -112,7 +113,9 @@
 			</div>
 		</div>
 		<div id="startGame" class="col-xs-12 col-sm-12 col-md-12" style="text-align:center;">
-			<a data-target="#/game" href="#/game" pe="button" class="btn btn-warning btn-responsive button_example"role="button" ng-click="setPlayerList($event)">Start Game
+			<a data-target="#/home" href="#/home" pe="button" id="cancelBtn" class="btn btn-warning btn-responsive button_example" style="width: 200px;" role="button">Cancel
+			</a>
+			<a data-target="#/game" href="#/game" pe="button" class="btn btn-warning btn-responsive button_example"role="button" style="width: 200px;" id="startBtn" ng-click="setPlayerList($event)">Start Game
 			</a>
 		</div>
 	</div>
