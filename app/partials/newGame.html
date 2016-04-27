@@ -27,32 +27,15 @@
 						<div class="row" id="nameInForm">
 							<div class="col-xs-10 col-sm-10 col-md-10">
 						      <label id="playerName" for="usr" style="width:100%;text-align: center;margin-left: 10%;">Player {{$index + 1}}:</label>
-						      <!-- ng-model="feedback.text" -->
+
 						      <input type="text" name="nickName-{{$index}}" ng-model="nickName" class="form-control inputfieldValue" placeholder="Please enter nickname {{$index + 1}}" ng-pattern="feedback.word" required ng-trim="false" id="usr">
 					      </div>
-					      <div class="col-xs-2 col-sm-2 col-md-2">
+					      <div class="col-xs-2 col-sm-2 col-md-2" id="divDelete">
 					      <div class="glyphicon glyphicon-remove" id="del" ng-click="deleteAddRow($event)">
 							</div>
 						</div>
 					    </div>
-		<!-- onkeyup="stoppedTyping()" -->
-		<!-- 			    <div role="alert"><br>
-						    <span class="error" ng-show="PlayerForm.input.$error.required">
-						      Required!</span>
-						    <span class="error" ng-show="PlayerForm.input.$error.pattern">
-						      Single word only!</span>
-		  				</div> -->
-		  				
-		  				<!--<div class="row" id="selectInForm">
-		  					<div id="selectAvatar" class="col-xs-12 col-sm-12 col-md-8">
-								<select id="select" name="avatar-{{$index}}" ng-model="avatar" class="selectValue">
-									<option value="smile" ></option>
-									<option value="saab">Saab</option>
-									<option value="honda">Honda</option>
-									<option value="audi">Audi</option>
-								</select>
-							</div>
-							-->
+
 							<div class="row">
 								<div id="errorMessage" class="col-xs-11 col-sm-11 col-md-11">
 									<div name="errorDiv-{{$index}}"></div>
@@ -100,7 +83,6 @@
 							</div>
 						</div>
 					</form>
-					<!-- <div class="glyphicon glyphicon-remove" id="nickName-{{$index}},avatar-{{$index}}" ng-click="delete($event)"></div> -->
 					
 				</div>
 			</div>

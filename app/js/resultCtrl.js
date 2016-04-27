@@ -42,7 +42,9 @@ dinnerPlannerApp.controller('ResultCtrl', function ($scope,Game,$routeParams,$co
   	$cookieStore.remove('numPlayers');
     $cookieStore.remove('backgroundImg');
     $cookieStore.remove('multiplayer');
+    $cookieStore.remove('firstQAsked');
     Game.resetGame();
+   
   }
  
 

@@ -37,7 +37,7 @@ $scope.setPlayerList =function($event){
  	$(".inputfieldValue").each(function(index, data){
  		$scope.valueInput = $(this).val();
  		if($scope.valueInput == ''){
- 			$("[name='errorDiv-" + index + "']").html("<p id='errorTextColor'>*You need a name</p>");
+ 			$("[name='errorDiv-" + index + "']").html("<p id='errorTextColor'>*Please enter an username</p>");
  			$scope.errorList += 1;
  			$event.preventDefault();
 
